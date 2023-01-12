@@ -22,6 +22,7 @@ function getNameRole($role_id) {
                 <th scope="col">#</th>
                 <th scope="col">Tên người dùng</th>
                 <th scope="col">Tài khoản</th>
+                <th scope="col">Email</th>
                 <th scope="col">Số điện thoại</th>
                 <th scope="col">Quyền tài khoản</th>
                 <th scope="col">Trạng thái tài khoản</th>
@@ -33,6 +34,7 @@ function getNameRole($role_id) {
                 <td>{{ $item->id }}</td>
                 <td>{{ $item->name }}</td>
                 <td>{{ $item->username }}</td>
+                <td>{{ $item->email }}</td>
                 <td>{{ $item->phone_number }}</td>
                 <td>{{ getNameRole($item->role_id) }}</td>
                 {{-- @if ($item->is_blocked == true)
