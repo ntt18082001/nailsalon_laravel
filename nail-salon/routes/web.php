@@ -33,6 +33,24 @@ Route::prefix("/admin")->namespace("App\Http\Controllers\Admin")->name("admin")-
         Route::post("/login", "$controller@auth")->name("auth");
         Route::get("/logout", "$controller@logout")->name("logout");
     });
+
+    Route::prefix('/service-category')->name('.servicecate.')->group(function() {
+        $controller = "ServiceCategoryController";
+        Route::get('/', "$controller@index")->name('index');
+        Route::get('/create', "$controller@create")->name('create');
+        Route::get('/update/{id}', "$controller@update")->name('update');
+        Route::get('/delete/{id}', "$controller@delete")->name('delete');
+        Route::post('/save/{id?}', "$controller@save")->name('save');
+    });
+
+    Route::prefix('/nail-service')->name('.nailservice.')->group(function(){
+        $controller = "NailServiceController";
+        Route::get('/', "$controller@index")->name('index');
+        Route::get('/create', "$controller@create")->name('create');
+        Route::get('/update/{id}', "$controller@update")->name('update');
+        Route::get('/delete/{id}', "$controller@delete")->name('delete');
+        Route::post('/save/{id?}', "$controller@save")->name('save');
+    });
 });
 
 Route::prefix("/")->namespace("App\Http\Controllers\Client")->name("client.")->group(function() {

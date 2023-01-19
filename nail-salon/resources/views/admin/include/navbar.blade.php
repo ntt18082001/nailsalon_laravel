@@ -43,6 +43,18 @@
                         <i class="mdi mdi-account"></i> <span data-key="t-widgets">Quản lý tài khoản</span>
                     </a>
                 </li>
+				<li class="nav-item">
+                    <a class="nav-link menu-link" 
+                        href="{{ route('admin.servicecate.index') }}">
+                        <i class="mdi mdi-layers"></i> <span data-key="t-widgets">Quản lý thể loại dịch vụ</span>
+                    </a>
+                </li>
+				<li class="nav-item">
+                    <a class="nav-link menu-link" 
+                        href="{{ route('admin.nailservice.index') }}">
+                        <i class="mdi mdi-weight"></i> <span data-key="t-widgets">Quản lý dịch vụ</span>
+                    </a>
+                </li>
 			</ul>
 		</div>
 		<!-- Sidebar -->

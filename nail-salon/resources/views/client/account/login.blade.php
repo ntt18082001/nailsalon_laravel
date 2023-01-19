@@ -69,7 +69,8 @@
                         </div>
                         <button class="w-100 btn btn-lg btn-primary" type="submit">Đăng nhập</button>
                         <div class="mt-2">
-                            Bạn chưa có tài khoản? <a href="{{ route('client.account.register') }}">Đăng ký ngay!</a>
+                            <a href="{{ route('client.home') }}">Trang chủ</a>
+                                | Bạn chưa có tài khoản? <a href="{{ route('client.account.register') }}">Đăng ký ngay!</a>
                         </div>
                     </form>
                 </div>

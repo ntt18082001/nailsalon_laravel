@@ -11,6 +11,9 @@ class AccountController extends Controller
 {
     public function login()
     {
+        if(Auth::check()){
+            return view('admin.home.index');
+        }
         return view("admin.account.login");
     }
     public function logout(Request $request)
