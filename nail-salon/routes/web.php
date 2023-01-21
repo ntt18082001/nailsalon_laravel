@@ -51,6 +51,16 @@ Route::prefix("/admin")->namespace("App\Http\Controllers\Admin")->name("admin")-
         Route::get('/delete/{id}', "$controller@delete")->name('delete');
         Route::post('/save/{id?}', "$controller@save")->name('save');
     });
+    
+    Route::prefix('/ticket')->name('.ticket.')->group(function(){
+        $controller = "TicketController";
+        Route::get('/', "$controller@index")->name('index');
+        Route::get('/update/{id}', "$controller@update")->name('update');
+        Route::get('/delete/{id}', "$controller@delete")->name('delete');
+        Route::get('/detail/{id}', "$controller@detail")->name('detail');
+        Route::post('/save/{id?}', "$controller@save")->name('save');
+        Route::get('/update-status/{id}-{id_status}', "$controller@updateStatus")->name('update_status');
+    });
 });
 
 Route::prefix("/")->namespace("App\Http\Controllers\Client")->name("client.")->group(function() {

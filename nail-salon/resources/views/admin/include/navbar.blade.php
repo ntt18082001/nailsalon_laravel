@@ -32,7 +32,7 @@
 			<ul class="navbar-nav" id="navbar-nav">
 				<li class="menu-title"><span data-key="t-menu">Menu</span></li>
                 <li class="nav-item">
-                    <a class="nav-link menu-link active" 
+                    <a class="nav-link menu-link" 
                         href="{{ route('admin.home.index') }}">
                         <i class="mdi mdi-puzzle-outline"></i> <span data-key="t-widgets">Dashboard</span>
                     </a>
@@ -53,6 +53,12 @@
                     <a class="nav-link menu-link" 
                         href="{{ route('admin.nailservice.index') }}">
                         <i class="mdi mdi-weight"></i> <span data-key="t-widgets">Quản lý dịch vụ</span>
+                    </a>
+                </li>
+				<li class="nav-item">
+                    <a class="nav-link menu-link" 
+                        href="{{ route('admin.ticket.index') }}">
+                        <i class="mdi mdi-ticket"></i> <span data-key="t-widgets">Quản lý ticket</span>
                     </a>
                 </li>
 			</ul>

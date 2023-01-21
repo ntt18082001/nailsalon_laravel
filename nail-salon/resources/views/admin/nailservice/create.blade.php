@@ -6,7 +6,7 @@
                 <x-input name="name" label="Tên dịch vụ" />
                 <x-input name="cover_path" label="Hình ảnh" type="file" />
                 <x-textarea name="description" label="Mô tả" />
-            <x-mst-select name="service_cate_id" label="Danh mục loại dịch vụ" table="service_categories" displayColumn="name" />
+                <x-mst-select name="service_cate_id" label="Danh mục loại dịch vụ" table="service_categories" displayColumn="name" />
 
             </div>
             <div class="col-md-6">
