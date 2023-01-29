@@ -61,6 +61,14 @@ Route::prefix("/admin")->namespace("App\Http\Controllers\Admin")->name("admin")-
         Route::post('/save/{id?}', "$controller@save")->name('save');
         Route::get('/update-status/{id}-{id_status}', "$controller@updateStatus")->name('update_status');
     });
+
+    Route::prefix('/config')->name('.config.')->group(function() {
+        $controller = "WebConfigController";
+        Route::get('/', "$controller@index")->name('index');
+        Route::get('/about', "$controller@about")->name('about');
+        Route::post('/save', "$controller@save")->name('save');
+        Route::post('/saveabout', "$controller@saveAbout")->name('saveabout');
+    });
 });
 
 Route::prefix("/")->namespace("App\Http\Controllers\Client")->name("client.")->group(function() {

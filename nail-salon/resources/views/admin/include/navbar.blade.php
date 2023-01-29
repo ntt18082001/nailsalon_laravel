@@ -61,6 +61,18 @@
                         <i class="mdi mdi-ticket"></i> <span data-key="t-widgets">Quản lý ticket</span>
                     </a>
                 </li>
+				<li class="nav-item">
+                    <a class="nav-link menu-link" 
+                        href="{{ route('admin.config.index') }}">
+                        <i class="mdi mdi-wrench"></i> <span data-key="t-widgets">Cấu hình</span>
+                    </a>
+                </li>
+				<li class="nav-item">
+                    <a class="nav-link menu-link" 
+                        href="{{ route('admin.config.about') }}">
+                        <i class="mdi mdi-alert-circle"></i> <span data-key="t-widgets">Giới thiệu</span>
+                    </a>
+                </li>
 			</ul>
 		</div>
 		<!-- Sidebar -->
