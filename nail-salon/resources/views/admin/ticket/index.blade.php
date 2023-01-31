@@ -17,7 +17,7 @@
                     <td>{{ $item->id }}</td>
                     <td>{{ $item->cus_name }}</td>
                     <td>{{ $item->cus_phone }}</td>
-                    <td>{{ $item->total }}</td>
+                    <td>{{ $item->total }} €</td>
                     <td >
                         @if ($item->status_id == 1)
                             <span class="badge border border-dark text-dark status-{{$item->id}}">{{ $item->status->name }}</span>

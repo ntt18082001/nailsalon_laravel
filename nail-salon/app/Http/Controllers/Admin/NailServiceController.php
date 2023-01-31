@@ -9,49 +9,49 @@ use Illuminate\Support\Facades\Validator;
 
 class NailServiceController extends Controller
 {
-    function index() {
-        $result = NailServices::orderByDesc('id')->paginate();
-        return view('admin.nailservice.index')->with('data', $result);
-    }
-    function create() {
-        return view('admin.nailservice.create');
-    }
-    function save(Request $request, $id = null)
-    {
-        $data = $request->all();
-        unset($data["_token"]);
-        $this->customValidate($data, $id);
-  
-        $file = $request->file('cover_path');
-        if ($file != null) {
-           $fileName = $file->hashName(); //tạo tên file ngẩu nhiên
-           $file->storeAs("/public/nailservice", $fileName);
-           $data['cover_path'] = $fileName;
-        }
-        $obj = NailServices::updateOrCreate(["id" => $id], $data);
-  
-        return redirect()->route("admin.nailservice.index");
-    }
-    function update($id)
-    {
-       $data = NailServices::findOrFail($id);
-       return view("admin.nailservice.update", compact("data"));
-    }
-    function delete($id)
-    {
-       $data = NailServices::findOrFail($id);
-       $data->delete();
-       return redirect()->route("admin.nailservice.index");
-    }
-    private function customValidate($data, $id = null)
-    {
+   function index()
+   {
+      $result = NailServices::orderByDesc('id')->paginate();
+      return view('admin.nailservice.index')->with('data', $result);
+   }
+   function create()
+   {
+      return view('admin.nailservice.create');
+   }
+   function save(Request $request, $id = null)
+   {
+      $data = $request->all();
+      unset($data["_token"]);
+      $this->customValidate($data, $id);
+      
+      $file = $request->file('cover_path');
+      if ($file != null) {
+         $fileName = $file->hashName(); //tạo tên file ngẩu nhiên
+         $file->storeAs("/public/nailservice", $fileName);
+         $data['cover_path'] = $fileName;
+      }
+      $obj = NailServices::updateOrCreate(["id" => $id], $data);
+
+      return redirect()->route("admin.nailservice.index");
+   }
+   function update($id)
+   {
+      $data = NailServices::findOrFail($id);
+      return view("admin.nailservice.update", compact("data"));
+   }
+   function delete($id)
+   {
+      $data = NailServices::findOrFail($id);
+      $data->delete();
+      return redirect()->route("admin.nailservice.index");
+   }
+   private function customValidate($data, $id = null)
+   {
       $rules = [
          "name" => ["required"],
-         "description" => ["required","max:500"],
+         "description" => ["required", "max:500"],
          "duration" => ["required", "numeric"],
-         "price" => ["required", "numeric"],
-         "discount_price" => ["numeric", "nullable"],
-         "discount_to" => ["after:discount_from", "nullable"],
+         "price_couleur" => ["required", "numeric"],
          "service_cate_id" => ["required"]
       ];
 
@@ -60,10 +60,9 @@ class NailServiceController extends Controller
          "cover_path" => "Hình ảnh",
          "description" => "Mô tả",
          "duration" => "Thời gian",
-         "price" => "Giá",
-         "discount_from" => "Ngày bắt đầu",
-         "discount_to" => "Ngày kết thúc",
-         "discount_price" => "Giá khuyến mãi",
+         "price_couleur" => "Giá Couleur",
+         "price_naturel" => "Giá Naturel",
+         "price_french" => "Giá French",
          "service_cate_id" => "Loại dịch vụ"
       ];
 
@@ -74,5 +73,5 @@ class NailServiceController extends Controller
 
       $validator = Validator::make($data, $rules, [], $fields);
       $validator->validate();
-    }
+   }
 }

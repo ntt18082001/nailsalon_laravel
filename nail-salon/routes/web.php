@@ -69,6 +69,20 @@ Route::prefix("/admin")->namespace("App\Http\Controllers\Admin")->name("admin")-
         Route::post('/save', "$controller@save")->name('save');
         Route::post('/saveabout', "$controller@saveAbout")->name('saveabout');
     });
+
+    Route::prefix('/slider')->name('.slider.')->group(function() {
+        $controller = "SliderController";
+        Route::get('/', "$controller@index")->name('index');
+        Route::get('/create', "$controller@create")->name('create');
+        Route::post('/save/{id?}', "$controller@save")->name('save');
+        Route::get('/update/{id}', "$controller@update")->name('update');
+        Route::get('/delete/{id}', "$controller@delete")->name('delete');
+    });
+
+    Route::prefix('/subscriber')->name('.subscriber.')->group(function() {
+        $controller = "SubscriberController";
+        Route::get('/', "$controller@index")->name('index');
+    });
 });
 
 Route::prefix("/")->namespace("App\Http\Controllers\Client")->name("client.")->group(function() {
@@ -82,5 +96,20 @@ Route::prefix("/")->namespace("App\Http\Controllers\Client")->name("client.")->g
         Route::get("/logout", "$controller@logout")->name("logout");
         Route::get("/register", "$controller@register")->name("register");
         Route::post("/register", "$controller@save")->name("save");
+    });
+
+    Route::prefix('/booking')->name('booking.')->group(function() {
+        $controller = "BookingController";
+        Route::get('/', "$controller@index")->name('index');
+        Route::post('/save', "$controller@save")->name('save');
+    });
+
+    Route::prefix('/pricing')->name('pricing.')->group(function() {
+        $controller = "PricingController";
+        Route::get('/', "$controller@index")->name('index');
+    });
+    Route::prefix('/subscriber')->name('subscriber.')->group(function() {
+        $controller = "SubscriberController";
+        Route::post('/save', "$controller@save")->name('save');
     });
 });

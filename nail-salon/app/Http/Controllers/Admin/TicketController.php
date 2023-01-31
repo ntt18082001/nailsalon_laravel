@@ -27,4 +27,10 @@ class TicketController extends Controller
         $ticket->save();
         return response()->json(["message" => true]);
     }
+    function delete($id)
+    {
+       $data = Ticket::findOrFail($id);
+       $data->delete();
+       return redirect()->route("admin.ticket.index");
+    }
 }

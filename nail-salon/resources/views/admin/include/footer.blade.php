@@ -2,7 +2,7 @@
 	<div class="container-fluid">
 		<div class="row">
 			<div class="col-sm-6">
-				<x-web-config displayData="brand_name" />
+				<span><x-web-config displayData="brand_name" /></span>
 			</div>
 			<div class="col-sm-6">
 				<div class="text-sm-end d-none d-sm-block">

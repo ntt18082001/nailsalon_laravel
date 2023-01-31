@@ -1,1 +1,1 @@
-<span>{{ $data->value }}</span>
+{!! $data->value !!}

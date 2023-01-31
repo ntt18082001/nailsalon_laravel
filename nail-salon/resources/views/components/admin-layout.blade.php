@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en" data-layout="vertical" data-topbar="light" data-sidebar="dark" data-sidebar-size="lg" data-sidebar-image="none" data-preloader="disable">
 @php
-    $title = $attributes["title"] ?? 'Quản lý thông tin ủy ban';
+    $title = $attributes["title"] ?? 'Quản lý Nailsalon';
 @endphp
 <head>
 

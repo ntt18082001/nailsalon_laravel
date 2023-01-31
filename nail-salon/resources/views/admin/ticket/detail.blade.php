@@ -20,7 +20,7 @@
 				<p class="text-muted bigger-text">{{ $data->cus_note }}</p>
 
 				<strong><i class="fas fa-money-bill mr-1"></i>Tổng tiền</strong>
-				<p class="text-muted bigger-text">{{ $data->total }} VNĐ</p>
+				<p class="text-muted bigger-text">{{ $data->total }} €</p>
 
 				<strong><i class="fas fa-bookmark mr-1"></i>Trạng thái</strong>
 				<p class="text-muted bigger-text">
@@ -64,7 +64,7 @@
 										<td>
 											{{ $item->service_name }}
 										</td>
-										<td>{{ $item->price }} VNĐ</td>
+										<td>{{ $item->price }} €</td>
 									</tr>
                                 @endforeach
                             @endif

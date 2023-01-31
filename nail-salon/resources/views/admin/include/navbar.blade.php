@@ -12,7 +12,7 @@
 			</span>
 		</a>
 		<!-- Light Logo-->
-		<a asp-action="Index" asp-controller="Home" class="logo logo-light">
+		<a href="{{ route('client.home') }}" target="_blank" class="logo logo-light">
 			<span class="logo-sm">
 				<img src="{{ asset('assets/images/logo-sm.png') }}" alt="" height="22">
 			</span>
@@ -31,12 +31,6 @@
 			</div>
 			<ul class="navbar-nav" id="navbar-nav">
 				<li class="menu-title"><span data-key="t-menu">Menu</span></li>
-                <li class="nav-item">
-                    <a class="nav-link menu-link" 
-                        href="{{ route('admin.home.index') }}">
-                        <i class="mdi mdi-puzzle-outline"></i> <span data-key="t-widgets">Dashboard</span>
-                    </a>
-                </li>
 				<li class="nav-item">
                     <a class="nav-link menu-link" 
                         href="{{ route('admin.user.index') }}">
@@ -64,13 +58,25 @@
 				<li class="nav-item">
                     <a class="nav-link menu-link" 
                         href="{{ route('admin.config.index') }}">
-                        <i class="mdi mdi-wrench"></i> <span data-key="t-widgets">Cấu hình</span>
+                        <i class="mdi mdi-wrench"></i> <span data-key="t-widgets">Thông tin cấu hình</span>
                     </a>
                 </li>
 				<li class="nav-item">
                     <a class="nav-link menu-link" 
                         href="{{ route('admin.config.about') }}">
                         <i class="mdi mdi-alert-circle"></i> <span data-key="t-widgets">Giới thiệu</span>
+                    </a>
+                </li>
+				<li class="nav-item">
+                    <a class="nav-link menu-link" 
+                        href="{{ route('admin.slider.index') }}">
+                        <i class="mdi mdi-image"></i> <span data-key="t-widgets">Quản lý slider</span>
+                    </a>
+                </li>
+				<li class="nav-item">
+                    <a class="nav-link menu-link" 
+                        href="{{ route('admin.subscriber.index') }}">
+                        <i class="mdi mdi-email"></i> <span data-key="t-widgets">Subscriber</span>
                     </a>
                 </li>
 			</ul>

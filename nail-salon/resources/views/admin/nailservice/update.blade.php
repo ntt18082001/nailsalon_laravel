@@ -1,37 +1,62 @@
 <x-admin-layout title="Sửa dịch vụ">
-    <form action="{{ route('admin.nailservice.save', ["id" => $data->id]) }}" method="POST" autocomplete="off" enctype="multipart/form-data">
+    <x-slot name="header">
+        <link rel="stylesheet" href="{{ asset('css/preview_img.css') }}">
+    </x-slot>
+    <form action="{{ route('admin.nailservice.save', ['id' => $data->id]) }}" method="POST" autocomplete="off"
+        enctype="multipart/form-data">
         @csrf
         <div class="row">
             <div class="col-md-6">
+                {{-- <x-input name="cover_path" label="Hình ảnh" type="file" /> --}}
+                <div class="form-group group-container">
+                    <label class="control-label required">Ảnh</label>
+                    <input name="cover_path" id="cover_path" type="file" class="form-control fake-d-none">
+                    <div class="position-relative">
+                        <input type="button" class="btn btn-choose-file w-100 h-100 position-absolute">
+                        <div class="selectedImages" style="height: 250px !important;">
+                            @if (isset($data->cover_path))
+                                <img class="image-review" src="/storage/nailservice/{{ $data->cover_path }}" />
+                            @else
+                                <img class="image-review" />
+                            @endif
+                        </div>
+                    </div>
+                    @error('cover_path')
+                        <span class="text-danger">
+                            {{ $message }}
+                        </span>
+                    @enderror
+                </div>
                 <x-input name="name" label="Tên dịch vụ" value="{{ $data->name }}" />
-                <x-input name="cover_path" label="Hình ảnh" type="file" />
                 <x-textarea name="description" label="Mô tả" value="{{ $data->description }}" />
-            <x-mst-select name="service_cate_id" label="Danh mục loại dịch vụ" table="service_categories" displayColumn="name" value="{{ $data->service_cate_id }}" />
-
+                <x-mst-select name="service_cate_id" label="Danh mục loại dịch vụ" table="service_categories"
+                    displayColumn="name" value="{{ $data->service_cate_id }}" />
             </div>
             <div class="col-md-6">
                 <x-input name="duration" label="Thời gian làm (phút)" type="number" value="{{ $data->duration }}" />
                 <div class="row">
                     <div class="col-md-6">
-                        <x-input name="price" label="Giá" value="{{ $data->price }}" />
+                        <x-input name="price_naturel" label="Giá Naturel" type="number"
+                            value="{{ $data->price_naturel }}" />
                     </div>
                     <div class="col-md-6">
-                        <x-input name="discount_price" label="Giá khuyến mãi" value="{{ $data->discount_price }}" />
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-6">
-                        <x-input name="discount_from" label="Từ ngày" type="date" value="{{ date('Y-m-d', strtotime($data->discount_from)) }}"/>
+                        <x-input name="price_couleur" label="Giá Couleur" type="number"
+                            value="{{ $data->price_couleur }}" />
                     </div>
                     <div class="col-md-6">
-                        <x-input name="discount_to" label="Đến ngày" type="date" value="{{ date('Y-m-d', strtotime($data->discount_to)) }}"/>
+                        <x-input name="price_french" label="Giá French" type="number"
+                            value="{{ $data->price_french }}" />
                     </div>
                 </div>
             </div>
         </div>
         <div class="mt-3">
-            <input type="submit" class="btn btn-primary text-white" value="Thêm" />
+            <input type="submit" class="btn btn-primary text-white" value="Sửa" />
+            <button type="reset" class="btn btn-success"><i class="fa fa-undo"></i> Nhập lại</button>
             <a href="{{ route('admin.nailservice.index') }}" class="btn btn-secondary">Về trang trước</a>
         </div>
     </form>
+    <x-slot name="script">
+        <script src="{{ asset('js/admin/nailservice/index.js') }}"></script>
+    </x-slot>
 </x-admin-layout>
