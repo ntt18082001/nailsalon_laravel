@@ -7,7 +7,7 @@
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Hugo 0.84.0">
-    <title>Đăng nhập</title>
+    <title>Login</title>
 
 
     <!-- Bootstrap core CSS -->
@@ -46,31 +46,30 @@
                 <div class="col-md-4">
                     <form action="{{ route('client.account.auth') }}" method="POST">
                         @csrf
-                        <h1 class="h3 mb-3 fw-normal">Đăng nhập</h1>
+                        <h1 class="h3 mb-3 fw-normal">Login</h1>
                         @if (session('login-err-msg'))
                             <div class="alert alert-danger" role="alert">
                                 {{ session('login-err-msg') }}
                             </div>
                         @endif
-                        <div class="form-floating">
+                        <div class="form-floating mb-2">
                             <input type="email" name="email" class="form-control" id="floatingInput"
                                 placeholder="name@example.com">
-                            <label for="floatingInput">Nhập email</label>
+                            <label for="floatingInput">Enter email</label>
                         </div>
                         <div class="form-floating">
                             <input type="password" name="password" class="form-control" id="floatingPassword" placeholder="Password">
-                            <label for="floatingPassword">Nhập mật khẩu</label>
+                            <label for="floatingPassword">Enter password</label>
                         </div>
 
                         <div class="checkbox mb-3 mt-2">
                             <label>
-                                <input type="checkbox" checked value="remember-me"> Nhớ mật khẩu
+                                <input type="checkbox" checked value="remember-me"> Remember me
                             </label>
                         </div>
-                        <button class="w-100 btn btn-lg btn-primary" type="submit">Đăng nhập</button>
+                        <button class="w-100 btn btn-lg btn-primary" type="submit">Submit</button>
                         <div class="mt-2">
-                            <a href="{{ route('client.home') }}">Trang chủ</a>
-                                | Bạn chưa có tài khoản? <a href="{{ route('client.account.register') }}">Đăng ký ngay!</a>
+                            <a href="{{ route('client.home') }}">Homepage</a> | <a href="{{ route('client.account.register') }}">Register</a>
                         </div>
                     </form>
                 </div>

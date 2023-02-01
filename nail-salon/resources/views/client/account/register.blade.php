@@ -7,7 +7,7 @@
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Hugo 0.84.0">
-    <title>Đăng ký</title>
+    <title>Register</title>
 
 
     <!-- Bootstrap core CSS -->
@@ -39,24 +39,21 @@
     <main class="form-signin">
         <div class="container">
             <div class="row justify-content-center mt-5">
-                <div class="col-md-6 d-flex justify-content-center">
+                <div class="col-md-4">
                     
                     <form action="{{ route('client.account.save') }}" method="post" autocomplete="off">
-                        <h3 class="text-center">Đăng ký ngay</h3>
+                        <h3 class="text-center">Register</h3>
                         @csrf
-                        <x-input name="name" type="text" placeholder="" label="Tên người dùng" />
-                        <x-input name="username" label="Tên tài khoản" />
+                        <x-input name="name" type="text" placeholder="" label="Fullname" />
+                        <x-input name="username" label="Username" />
                         <x-input name="email" placeholder="Email" label="Email" />
-                        <x-input name="phone_number" placeholder="Số điện thoại" label="Số điện thoại" />
-                        <x-input name="password" type="password" placeholder="Mật khẩu" label="Mật khẩu" />
-                        <x-input name="confirmPassword" type="password" placeholder="" label="Nhập lại mật khẩu" />
+                        <x-input name="phone_number" placeholder="Phone number" label="Phone number" />
+                        <x-input name="password" type="password" placeholder="Password" label="Password" />
+                        <x-input name="confirmPassword" type="password" placeholder="" label="Confirm pasword" />
                         <div class="form-group mt-3">
-                            <button type="submit" class="btn btn-primary">Đăng ký</button>
+                            <button type="submit" class="btn btn-primary">Submit</button>
                             <div class="mt-2">
-                                <a href="{{ route('client.home') }}">Trang chủ</a>
-                                |
-                                Bạn đã có tài khoản?
-                                <a href="{{ route('client.account.login') }}">Đăng nhập ngay!</a>
+                                <a href="{{ route('client.home') }}">Homepage</a> | <a href="{{ route('client.account.login') }}">Login</a>
                             </div>
                         </div>
                     </form>

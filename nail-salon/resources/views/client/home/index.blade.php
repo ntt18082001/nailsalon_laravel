@@ -1,7 +1,21 @@
 <x-client-layout title="Homepage">
-
+    @php
+        $success = session()->get('successMsg');
+    @endphp
+    @if (isset($success))
+        <div class="toast align-items-center text-white bg-success border-0" role="alert" aria-live="assertive"
+            aria-atomic="true">
+            <div class="d-flex">
+                <div class="toast-body">
+                    {{ $success }}
+                </div>
+                <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"
+                    aria-label="Close"></button>
+            </div>
+        </div>
+    @endif
     <x-slider-component />
-   
+
     <!-- SERVICES-2
    ============================================= -->
     <section id="services-2" class="wide-70 services-section division">
@@ -89,7 +103,8 @@
                 <!-- IMAGE BLOCK -->
                 <div class="col-md-5 col-lg-6">
                     <div class="img-block right-column wow fadeInLeft">
-                        <img class="img-fluid" src="storage/webconfig/<x-web-config displayData='about_img' />" alt="about-image" />
+                        <img class="img-fluid" src="storage/webconfig/<x-web-config displayData='about_img' />"
+                            alt="about-image" />
                     </div>
                 </div>
             </div>

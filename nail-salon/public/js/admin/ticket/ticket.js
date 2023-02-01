@@ -14,7 +14,6 @@ $(document).ready(function () {
 	});
 	const noti = new AWN();
 	$("#exampleModalgrid .btn-submit-status").on("click", function (ev) {
-        console.log(orderIdGlobal);
 		const statusSelect = $("#exampleModalgrid #service_cate_id");
 		const statusId = statusSelect.val();
 		const statusText = statusSelect.children("option").filter(":selected").text();
@@ -29,6 +28,9 @@ $(document).ready(function () {
 				$("#exampleModalgrid").modal("hide");
 				$('.modal-backdrop').remove();
 				$('body').removeClass("modal-open");
+				if (statusId == 3 || statusId == 4) {
+					$(`.btn-update-status[data-order-id=${orderIdGlobal}]`).addClass('invisible');
+				}
 			}
 		});
 	});

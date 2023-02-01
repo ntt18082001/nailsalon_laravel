@@ -17,6 +17,6 @@ class SubscriberController extends Controller
         $sub->email = $data['email'];
         $sub->save();
         
-        return redirect()->route('client.home');
+        return redirect()->route('client.home')->with('successMsg', "Subscribed!");
     }
 }

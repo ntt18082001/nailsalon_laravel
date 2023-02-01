@@ -1,5 +1,3 @@
-<!-- FOOTER-2
-   ============================================= -->
 <footer id="footer-2" class="footer division">
     <div class="container">
         <!-- FOOTER CONTENT -->

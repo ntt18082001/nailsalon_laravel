@@ -92,7 +92,7 @@
     <script src="{{ asset('client/js/wow.js') }}"></script>
 
     <!-- Custom Script -->
-    {{-- <script src="{{ asset('client/js/custom.js') }}"></script> --}}
+    <script src="{{ asset('client/js/custom.js') }}"></script>
 
     <!-- Google Analytics: Change UA-XXXXX-X to be your site's ID. Go to http://www.google.com/analytics/ for more information. -->
     <!--

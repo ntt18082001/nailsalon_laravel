@@ -17,6 +17,7 @@ class DatabaseSeeder extends Seeder
         $this->call([
             TicketStatusSeeder::class,
             WebConfigSeeder::class,
+            WebConfig2Seeder::class,
             AboutConfigSeeder::class,
         ]);
     }

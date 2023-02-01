@@ -96,12 +96,14 @@ Route::prefix("/")->namespace("App\Http\Controllers\Client")->name("client.")->g
         Route::get("/logout", "$controller@logout")->name("logout");
         Route::get("/register", "$controller@register")->name("register");
         Route::post("/register", "$controller@save")->name("save");
+        Route::get("/profile", "$controller@profile")->name("profile");
     });
 
     Route::prefix('/booking')->name('booking.')->group(function() {
         $controller = "BookingController";
         Route::get('/', "$controller@index")->name('index');
         Route::post('/save', "$controller@save")->name('save');
+        Route::get('/cancel/{id}', "$controller@cancel_appoinment")->name('cancel_appoinment');
     });
 
     Route::prefix('/pricing')->name('pricing.')->group(function() {

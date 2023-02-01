@@ -166,7 +166,7 @@
                             <!-- Title -->
                             <h4 class="h4-xl">Make An Appointment</h4>
                             <!-- Booking Form -->
-                            <form action="{{ route('client.booking.save') }}" method="POST" class="row booking-form">
+                            <form action="{{ route('client.booking.save') }}" method="POST" class="row booking-form" autocomplete="off">
                                 @csrf
                                 <!-- Form Input -->
                                 <div class="col-md-12">

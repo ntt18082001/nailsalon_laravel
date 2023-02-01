@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Client;
 
 use App\Http\Controllers\Controller;
+use App\Models\Ticket;
 use App\Models\User;
+use App\Models\WebConfigs;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -86,6 +88,16 @@ class AccountController extends Controller
         $user->email = $request->email;
         $user->password = Hash::make($request->password);
         $user->save();
-        return redirect()->route("client.home");
+        return redirect()->route("client.account.login");
+    }
+
+    function profile() {
+        if(Auth::check()) {
+            $user = Auth::user();
+            $bookingHistory = Ticket::where('cus_id', '=', $user->id)->orderByDesc('id')->paginate();
+            $conf = WebConfigs::where('name', '=', 'time_cancel')->get();
+            return view('client.account.profile')->with('user', $user)->with('data', $bookingHistory)->with('time_cancel', $conf[0]->value);
+        }
+        return redirect()->route('client.account.login');
     }
 }
