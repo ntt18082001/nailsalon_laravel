@@ -56,6 +56,7 @@
 
     <!-- RESPONSIVE CSS -->
     <link href="{{ asset('client/css/responsive.css') }}" rel="stylesheet" />
+    {{ $header ?? '' }}
 </head>
 
 <body>
@@ -115,6 +116,7 @@
 
     <script src="{{ asset('client/js/changer.js') }}"></script>
     <script defer src="{{ asset('client/js/styleswitch.js') }}"></script>
+	{{ $script ?? '' }}
 </body>
 
 </html>

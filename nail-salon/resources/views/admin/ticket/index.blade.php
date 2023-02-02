@@ -24,10 +24,10 @@
                                 class="badge border border-dark text-dark status-{{ $item->id }}">{{ $item->status->name }}</span>
                         @elseif ($item->status_id == 2)
                             <span
-                                class="badge border bg-info status-{{ $item->id }}">{{ $item->status->name }}</span>
+                                class="badge border bg-success status-{{ $item->id }}">{{ $item->status->name }}</span>
                         @elseif ($item->status_id == 3)
                             <span
-                                class="badge border bg-success status-{{ $item->id }}">{{ $item->status->name }}</span>
+                                class="badge border bg-dark status-{{ $item->id }}">{{ $item->status->name }}</span>
                         @elseif ($item->status_id == 4)
                             <span
                                 class="badge border bg-dark status-{{ $item->id }}">{{ $item->status->name }}</span>
@@ -47,7 +47,7 @@
                         $invisible = 'invisible';
                     @endphp
                     <td class="fit">
-                        @if ($item->status_id == 1 || $item->status_id == 2)
+                        @if ($item->status_id == 1)
                             @if ($datetime_now->lessThan($date_book))
                                 @php
                                     $invisible = "";

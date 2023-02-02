@@ -28,9 +28,9 @@
 						@if ($data->status_id == 1)
 							<span class="badge border border-dark text-dark">{{ $data->status->name }}</span>
 						@elseif ($data->status_id == 2)
-							<span class="badge border bg-info">{{ $data->status->name }}</span>
-						@elseif ($data->status_id == 3)
 							<span class="badge border bg-success">{{ $data->status->name }}</span>
+						@elseif ($data->status_id == 3)
+							<span class="badge border bg-dark">{{ $data->status->name }}</span>
 						@elseif ($data->status_id == 4)
 							<span class="badge border bg-dark">{{ $data->status->name }}</span>
                         @endif

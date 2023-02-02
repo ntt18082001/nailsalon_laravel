@@ -1,4 +1,32 @@
 <x-client-layout title="Profile">
+    <x-slot name="header">
+        <style>
+            @media only screen and (max-width: 640px) {
+
+                thead,
+                .id_tbl {
+                    display: none;
+                }
+
+                td {
+                    white-space: nowrap;
+                }
+            }
+
+            @media only screen and (max-width: 768px) {
+
+                thead,
+                .id_tbl {
+                    display: none;
+                }
+
+                td {
+                    white-space: nowrap;
+                    display: block;
+                }
+            }
+        </style>
+    </x-slot>
     <div class="container wide-100">
         <div class="row">
             <div class="col-md-9">
@@ -19,7 +47,7 @@
                         <tbody>
                             @foreach ($data as $item)
                                 <tr>
-                                    <td>{{ $item->id }}</td>
+                                    <td class="id_tbl">{{ $item->id }}</td>
                                     <td>{{ $item->cus_name }}</td>
                                     <td>{{ $item->cus_email }}</td>
                                     <td>{{ $item->cus_phone }}</td>
@@ -30,10 +58,10 @@
                                                 class="badge border border-dark text-dark status-{{ $item->id }}">{{ $item->status->name }}</span>
                                         @elseif ($item->status_id == 2)
                                             <span
-                                                class="badge border bg-info status-{{ $item->id }}">{{ $item->status->name }}</span>
+                                                class="badge border bg-success status-{{ $item->id }}">{{ $item->status->name }}</span>
                                         @elseif ($item->status_id == 3)
                                             <span
-                                                class="badge border bg-success status-{{ $item->id }}">{{ $item->status->name }}</span>
+                                                class="badge border bg-dark status-{{ $item->id }}">{{ $item->status->name }}</span>
                                         @elseif ($item->status_id == 4)
                                             <span
                                                 class="badge border bg-dark status-{{ $item->id }}">{{ $item->status->name }}</span>
@@ -46,20 +74,18 @@
                                         $datetime_now = Carbon\Carbon::parse(date('d-m-Y H:i:s', $date_now / 1000));
                                         $date_book = Carbon\Carbon::parse(date('d-m-Y H:i:s', $item->start_at / 1000));
                                     @endphp
-                                    <td class="fit">
-                                        @if ($item->status_id == 1 || $item->status_id == 2)
+                                    @if ($item->status_id == 1)
+                                        <td class="fit">
                                             @if ($datetime_now->greaterThan($date_book))
                                                 <span></span>
                                             @else
-                                                <a href="{{route('client.booking.cancel_appoinment', ['id' => $item->id])}}"
+                                                <a href="{{ route('client.booking.cancel_appoinment', ['id' => $item->id]) }}"
                                                     class="btn-danger" style="padding: 5px 5px">
                                                     Cancel
                                                 </a>
                                             @endif
-                                        @else
-                                            <span>Canceled</span>
-                                        @endif
-                                    </td>
+                                        </td>
+                                    @endif
                                 </tr>
                             @endforeach
                         </tbody>

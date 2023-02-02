@@ -3,10 +3,12 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Jobs\SendMail;
 use App\Mail\AppMail;
 use App\Models\Ticket;
 use App\Models\TicketDetail;
 use App\Models\WebConfigs;
+use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
@@ -26,7 +28,8 @@ class TicketController extends Controller
         return view("admin.ticket.detail", compact("data", "childs"));
     }
 
-    function updateStatus($id, $id_status) {
+    function updateStatus($id, $id_status)
+    {
         $user = Auth::user();
         $ticket = Ticket::findOrFail($id);
         $ticket->status_id = $id_status;
@@ -37,6 +40,7 @@ class TicketController extends Controller
             ->orWhere('name', '=', 'mail_reciver')
             ->orWhere('name', '=', 'list_mail_reciver')->get();
         $name = $config[0]->value;
+        $mail_admin_reciver = $config[2]->value;
         $mail_details = [
             'cus_name' => $ticket->cus_name,
             'cus_email' => $ticket->cus_email,
@@ -45,21 +49,20 @@ class TicketController extends Controller
             'time' => date("d-m-Y H:i:s", ($ticket->start_at / 1000)),
             'title' => "$user->name canceled appoinment!",
             'body' => "",
+            'mail_admin_reciver' => $mail_admin_reciver
         ];
-        $mail_admin_reciver = $config[2]->value;
-        $send_mail = new AppMail($mail_details);
-        $list_mail = str_replace(array( '[', ']', '{', '}', '"', "value:" ), "", $config[3]->value);
+        $list_mail = str_replace(array('[', ']', '{', '}', '"', "value:"), "", $config[3]->value);
         $array_mail = explode(",", $list_mail);
-        Mail::to($ticket->cus_email, $mail_admin_reciver)->send($send_mail);
-        foreach($array_mail as $key => $value) {
-            Mail::to($value)->send($send_mail);
-        }
+
+        $job = (new SendMail($mail_details, $array_mail));
+        dispatch($job)->delay(now()->addSeconds(30));
+
         return response()->json(["message" => true]);
     }
     function delete($id)
     {
-       $data = Ticket::findOrFail($id);
-       $data->delete();
-       return redirect()->route("admin.ticket.index");
+        $data = Ticket::findOrFail($id);
+        $data->delete();
+        return redirect()->route("admin.ticket.index");
     }
 }

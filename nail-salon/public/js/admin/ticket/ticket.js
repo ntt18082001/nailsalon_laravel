@@ -1,8 +1,8 @@
 $(document).ready(function () {
 	const orderStatus = {
 		1: "border border-dark text-dark",
-		2: "bg-info",
-		3: "bg-success",
+		2: "bg-success",
+		3: "bg-dark",
 		4: "bg-dark"
 	}
 	let orderIdGlobal = 0;
@@ -18,6 +18,9 @@ $(document).ready(function () {
 		const statusId = statusSelect.val();
 		const statusText = statusSelect.children("option").filter(":selected").text();
 		$.get(`/admin/ticket/update-status/${orderIdGlobal}-${statusId}`, function(res) {
+			$("#exampleModalgrid").modal("hide");
+			$('.modal-backdrop').remove();
+			$('body').removeClass("modal-open");
 			if(res.message) {
 				noti.success(`Cập nhật trạng thái ticket #${orderIdGlobal} thành công!`);
 				$(`.btn-status-${orderIdGlobal}`).attr('data-status-id', statusId);
@@ -25,10 +28,7 @@ $(document).ready(function () {
 					.text(statusText)
 					.removeClass(`${orderStatus[1]} ${orderStatus[2]} ${orderStatus[3]} ${orderStatus[4]} text-dark`)
 					.addClass(orderStatus[statusId]);
-				$("#exampleModalgrid").modal("hide");
-				$('.modal-backdrop').remove();
-				$('body').removeClass("modal-open");
-				if (statusId == 3 || statusId == 4) {
+				if (statusId == 2 ||statusId == 3 || statusId == 4) {
 					$(`.btn-update-status[data-order-id=${orderIdGlobal}]`).addClass('invisible');
 				}
 			}
