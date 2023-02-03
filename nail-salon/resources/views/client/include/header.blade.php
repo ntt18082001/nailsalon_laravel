@@ -18,12 +18,7 @@
                     <ul class="wsmenu-list">
                         <!-- DROPDOWN MENU -->
                         <li aria-haspopup="true">
-                            <a href="#">About <span class="wsarrow"></span></a>
-                            <ul class="sub-menu">
-                                <li aria-haspopup="true">
-                                    <a href="#about-3">About Studio</a>
-                                </li>
-                            </ul>
+                            <a href="#about-3">About</a>
                         </li>
 
                         <!-- SIMPLE NAVIGATION LINK -->
@@ -55,8 +50,21 @@
                         </li>
 
                         @if (Auth::check())
-                            <li class="nl-simple" aria-haspopup="true">
-                                <a href="{{ route('client.account.profile') }}">Profile</a>
+                            <li aria-haspopup="true">
+                                <a href="#about-3">Account <span class="wsarrow"></span></a>
+                                <ul class="sub-menu">
+                                    @if (Auth::user()->role_id == 1 || Auth::user()->role_id == 2)
+                                        <li class="nl-simple" aria-haspopup="true">
+                                            <a href="{{ route('admin.home.index') }}">Manage website</a>
+                                        </li>
+                                    @endif
+                                    <li class="nl-simple" aria-haspopup="true">
+                                        <a href="{{ route('client.account.profile') }}">Profile</a>
+                                    </li>
+                                    <li aria-haspopup="true">
+                                        <a href="{{ route('client.account.logout') }}">Logout</a>
+                                    </li>
+                                </ul>
                             </li>
                         @else
                             <li class="nl-simple" aria-haspopup="true">
