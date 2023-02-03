@@ -46,8 +46,9 @@
                     $success = session()->get('successMsg');
                 @endphp
                 @if (isset($success))
-                    <div class="alert alert-success alert-dismissible fade {{ isset($success) ? 'show' : '' }}" role="alert">
-                        <strong>{{$success}}</strong>
+                    <div class="alert alert-success alert-dismissible fade {{ isset($success) ? 'show' : '' }}"
+                        role="alert">
+                        <strong>{{ $success }}</strong>
                         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                     </div>
                 @endif
@@ -166,7 +167,8 @@
                             <!-- Title -->
                             <h4 class="h4-xl">Make An Appointment</h4>
                             <!-- Booking Form -->
-                            <form action="{{ route('client.booking.save') }}" method="POST" class="row booking-form" autocomplete="off">
+                            <form action="{{ route('client.booking.save') }}" method="POST" class="row booking-form"
+                                autocomplete="off">
                                 @csrf
                                 <!-- Form Input -->
                                 <div class="col-md-12">
@@ -197,9 +199,16 @@
                                         class="form-control date" placeholder="Appointment Date*" required>
                                 </div>
                                 <!-- Form Button -->
-                                <div class="col-md-12 mt-10 text-end">
-                                    <button type="submit" class="btn rose--btn">Book Now</button>
-                                </div>
+                                @if (Auth::check())
+                                    <div class="col-md-12 mt-10 text-end">
+                                        <button type="submit" class="btn rose--btn">Book Now</button>
+                                    </div>
+                                @else
+                                    <div class="col-md-12 mt-10 text-end">
+                                        <a href="{{ route('client.account.login') }}" class="btn rose--btn">Login to
+                                            booking</a>
+                                    </div>
+                                @endif
                             </form> <!-- End Booking Form -->
 
                         </div>

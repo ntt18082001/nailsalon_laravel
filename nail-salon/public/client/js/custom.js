@@ -515,3 +515,12 @@
 
 
 	});
+	$(".detail-price").map(function(index, item) {
+		if($(item).width() > $(window).width()) {
+			$(item).find(".price-name .h5-lg").css({
+				'max-width': '230px',
+				'overflow': 'hidden',
+				'text-overflow': 'ellipsis',
+			});
+		}
+	});

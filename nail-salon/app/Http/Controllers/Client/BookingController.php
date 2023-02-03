@@ -17,10 +17,7 @@ use Illuminate\Support\Facades\Mail;
 class BookingController extends Controller
 {
     function index() {
-        if(Auth::check()){
-            return view('client.booking.index');
-        }
-        return redirect()->route('client.account.login');
+        return view('client.booking.index');
     }
 
     function save(Request $request) {

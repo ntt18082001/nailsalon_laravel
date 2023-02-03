@@ -33,7 +33,7 @@ class AccountController extends Controller
         $user = User::where('email', '=', $request->email)->first();
         $loginFail = redirect()
             ->back()
-            ->with("login-err-msg", "Email không hợp lệ");
+            ->with("login-err-msg", "Email is not valid");
         if ($user == null) {
             return $loginFail;
         }
@@ -43,7 +43,7 @@ class AccountController extends Controller
         ];
         if (Auth::attempt($userData)) {
             $request->session()->regenerate();
-            return redirect("/");
+            return redirect()->route('client.booking.index');
         } else {
             return $loginFail;
         }
@@ -67,12 +67,12 @@ class AccountController extends Controller
             'confirmPassword' => ['same:password'],
         ];
         $fields = [
-            'name' => 'Họ và tên',
-            'username' => "Tên tài khoản",
+            'name' => 'Fullname',
+            'username' => "Username",
             'email' => "Email",
-            "phone_number" => "Số điên thoại",
-            'password' => "Mật khẩu",
-            "confirmPassword" => "Xác nhận mật khẩu"
+            "phone_number" => "Phone number",
+            'password' => "Password",
+            "confirmPassword" => "Confirm password"
         ];
         unset($data["_token"]);
         $validator = Validator::make($data, $rules, [], $fields);
