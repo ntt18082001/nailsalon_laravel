@@ -199,23 +199,14 @@
                                         class="form-control date" placeholder="Appointment Date*" required>
                                 </div>
                                 <!-- Form Button -->
-                                @if (Auth::check())
-                                    <div class="col-md-12 mt-10 text-end">
-                                        <button type="submit" class="btn rose--btn">Book Now</button>
-                                    </div>
-                                @else
-                                    <div class="col-md-12 mt-10 text-end">
-                                        <a href="{{ route('client.account.login') }}" class="btn rose--btn">Login to
-                                            booking</a>
-                                    </div>
-                                @endif
+                                <div class="col-md-12 mt-10 text-end">
+                                    <button type="submit" class="btn rose--btn">Book Now</button>
+                                </div>
                             </form> <!-- End Booking Form -->
 
                         </div>
                     </div>
                 </div> <!-- END BOOKING-1 WRAPPER -->
-
-
             </div> <!-- End row -->
         </div> <!-- End container -->
     </section> <!-- END BOOKING-1 -->
