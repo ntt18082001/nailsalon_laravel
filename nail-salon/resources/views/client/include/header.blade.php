@@ -18,18 +18,18 @@
                     <ul class="wsmenu-list">
                         <!-- DROPDOWN MENU -->
                         <li aria-haspopup="true">
-                            <a href="#about-3">About</a>
+                            <a href="{{route('client.home')}}#about-3">About</a>
                         </li>
 
                         <!-- SIMPLE NAVIGATION LINK -->
                         <li class="nl-simple" aria-haspopup="true">
-                            <a href="#pricing-6">Our Services</a>
+                            <a href="{{route('client.home')}}#pricing-6">Our Services</a>
                         </li>
 
 
                         <!-- SIMPLE NAVIGATION LINK -->
                         <li class="nl-simple" aria-haspopup="true">
-                            <a href="#gallery-4">Gallery</a>
+                            <a href="{{route('client.home')}}#gallery-4">Gallery</a>
                         </li>
                         <!-- HEADER LOGO -->
                         <li aria-haspopup="true" class="wscenterlogo">
