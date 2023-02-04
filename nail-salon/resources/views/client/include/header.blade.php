@@ -4,7 +4,7 @@
     <div class="header-wrapper">
         <!-- MOBILE HEADER -->
         <div class="wsmobileheader clearfix">
-            <span class="smllogo"><img src="{{ asset('client/images/logo-01.png') }}" alt="mobile-logo" /></span>
+            <span class="smllogo"><img src="storage/webconfig/<x-web-config displayData='logo'/>" alt="mobile-logo" /></span>
             <a id="wsnavtoggle" class="wsanimated-arrow"><span></span></a>
             <a href="tel:<x-web-config displayData='brand_phone'/>" class="callusbtn ico-20"><span
                     class="flaticon-phone-call-1"></span></a>
