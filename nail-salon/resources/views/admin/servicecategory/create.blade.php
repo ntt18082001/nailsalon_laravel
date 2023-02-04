@@ -1,4 +1,4 @@
-<x-admin-layout title="Thêm mới thể loại dịch vụ">
+<x-admin-layout title="Create service category">
     <x-slot name="header">
         <link rel="stylesheet" href="{{ asset('css/preview_img.css') }}">
     </x-slot>
@@ -7,7 +7,7 @@
         @csrf
         {{-- <x-input name="cover_path" label="Hình ảnh" type="file" /> --}}
         <div class="form-group group-container">
-            <label class="control-label required">Ảnh</label>
+            <label class="control-label required">Image</label>
             <input name="cover_path" id="cover_path" type="file" class="form-control fake-d-none">
             <div class="position-relative">
                 <input type="button" class="btn btn-choose-file w-100 h-100 position-absolute">
@@ -21,11 +21,11 @@
                 </span>
             @enderror
         </div>
-        <x-input name="name" label="Tên thể loại" />
-        <x-textarea name="note" label="Ghi chú" />
+        <x-input name="name" label="Name" />
+        <x-textarea name="note" label="Note" />
         <div class="mt-3">
-            <input type="submit" class="btn btn-primary text-white" value="Thêm" />
-            <a href="{{ route('admin.servicecate.index') }}" class="btn btn-secondary">Về trang trước</a>
+            <input type="submit" class="btn btn-primary text-white" value="Create" />
+            <a href="{{ route('admin.servicecate.index') }}" class="btn btn-secondary">Back</a>
         </div>
     </form>
     <x-slot name="script">

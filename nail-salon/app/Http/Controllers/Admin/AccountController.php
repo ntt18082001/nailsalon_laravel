@@ -28,7 +28,7 @@ class AccountController extends Controller
         $user = User::where('email', '=', $request->email)->first();
         $loginFail = redirect()
             ->back()
-            ->with("login-err-msg", "Tên đăng nhập hoặc tài khoản không hợp lệ");
+            ->with("login-err-msg", "Account is not valid");
         if ($user == null) {
             return $loginFail;
         }

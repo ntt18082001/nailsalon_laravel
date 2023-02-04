@@ -1,4 +1,4 @@
-<x-admin-layout title="Thêm mới slide">
+<x-admin-layout title="Create slider">
     <x-slot name="header">
         <link rel="stylesheet" href="{{ asset('css/preview_img.css') }}">
     </x-slot>
@@ -8,7 +8,7 @@
             <div class="col-md-6">
                 {{-- <x-input name="img_path" label="Hình ảnh" type="file" /> --}}
                 <div class="form-group group-container">
-                    <label class="control-label required">Ảnh slider</label>
+                    <label class="control-label required">Image slider</label>
                     <input name="img_path" id="img_path" type="file" class="form-control fake-d-none">
                     <div class="position-relative">
                         <input type="button" class="btn btn-choose-file w-100 h-100 position-absolute" >
@@ -22,13 +22,13 @@
                         </span>
                     @enderror
                 </div>
-                <x-input name="from" label="Từ ngày" type="date" />
-                <x-input name="to" label="Đến ngày" type="date" />
+                <x-input name="from" label="From date" type="date" />
+                <x-input name="to" label="To date" type="date" />
             </div>
         </div>
         <div class="mt-3">
-            <input type="submit" class="btn btn-primary text-white" value="Thêm" />
-            <a href="{{ route('admin.slider.index') }}" class="btn btn-secondary">Về trang trước</a>
+            <input type="submit" class="btn btn-primary text-white" value="Create" />
+            <a href="{{ route('admin.slider.index') }}" class="btn btn-secondary">Back</a>
         </div>
     </form>
     <x-slot name="script">

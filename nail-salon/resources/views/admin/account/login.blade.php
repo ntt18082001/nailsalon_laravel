@@ -5,7 +5,7 @@
 <head>
 
     <meta charset="utf-8" />
-    <title>Đăng nhập</title>
+    <title>Login</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
     <meta content="Themesbrand" name="author" />
@@ -62,8 +62,8 @@
 
                             <div class="card-body p-4">
                                 <div class="text-center mt-2">
-                                    <h5 class="text-primary">Chào mừng trở lại</h5>
-                                    <p class="text-muted">Đăng nhập để tiếp tục</p>
+                                    <h5 class="text-primary">Welcome</h5>
+                                    <p class="text-muted">Login</p>
                                 </div>
                                 <div class="p-2 mt-4">
                                     <form method="post" action="{{ route('admin.account.auth') }}">
@@ -76,14 +76,14 @@
                                         <div class="mb-3">
                                             <label for="email" class="form-label">Email</label>
                                             <input name="email" type="email" class="form-control" id="email"
-                                                placeholder="Nhập email....">
+                                                placeholder="Enter email....">
                                         </div>
                                         <div class="mb-3">
-                                            <label class="form-label" for="password-input">Mật khẩu</label>
+                                            <label class="form-label" for="password-input">Password</label>
                                             <div class="position-relative auth-pass-inputgroup mb-3">
                                                 <input name="password" type="password"
                                                     class="form-control pe-5 password-input"
-                                                    placeholder="Nhập mật khẩu..." id="password-input">
+                                                    placeholder="Enter password..." id="password-input">
                                                 <button
                                                     class="btn btn-link position-absolute end-0 top-0 text-decoration-none text-muted password-addon"
                                                     type="button" id="password-addon"><i
@@ -94,11 +94,11 @@
                                         <div class="form-check">
                                             <input class="form-check-input" type="checkbox" value="" checked
                                                 id="auth-remember-check">
-                                            <label class="form-check-label" for="auth-remember-check">Ghi nhớ đăng nhập</label>
+                                            <label class="form-check-label" for="auth-remember-check">Remember me</label>
                                         </div>
 
                                         <div class="mt-4">
-                                            <button class="btn btn-success w-100" type="submit">Đăng nhập</button>
+                                            <button class="btn btn-success w-100" type="submit">Login</button>
                                         </div>
                                     </form>
                                 </div>

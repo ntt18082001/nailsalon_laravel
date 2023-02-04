@@ -56,19 +56,19 @@ class NailServiceController extends Controller
       ];
 
       $fields = [
-         "name" => "Tên dịch vụ",
-         "cover_path" => "Hình ảnh",
-         "description" => "Mô tả",
-         "duration" => "Thời gian",
-         "price_couleur" => "Giá Couleur",
-         "price_naturel" => "Giá Naturel",
-         "price_french" => "Giá French",
-         "service_cate_id" => "Loại dịch vụ"
+         "name" => "Name",
+         "cover_path" => "Image",
+         "description" => "Description",
+         "duration" => "Time duration",
+         "price_couleur" => "Price Couleur",
+         "price_naturel" => "Price Naturel",
+         "price_french" => "Price French",
+         "service_cate_id" => "Service category"
       ];
 
       if ($id == null) {
          $rules["cover_path"] = ["required"];
-         $fields["cover_path"] = "Hình ảnh";
+         $fields["cover_path"] = "Image";
       }
 
       $validator = Validator::make($data, $rules, [], $fields);

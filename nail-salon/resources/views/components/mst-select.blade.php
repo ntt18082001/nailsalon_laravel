@@ -11,7 +11,7 @@ $_value = empty($_old_value) ? $_value : $_old_value;
     <label for="{{ $_name }}" class="form-label">{{ $_label }}</label>
 
     <select id="{{ $_name }}" name="{{ $_name }}" class="form-control @error($_name) is-invalid @enderror">
-        <option value="">-- Chọn 1 giá trị --</option>
+        <option value="">-- Choose a value --</option>
         @foreach ($data as $item)
             @if ($_value == $item->id)
             <option value="{{ $item->id }}" selected>{{ $item->$displayColumn }}</option>

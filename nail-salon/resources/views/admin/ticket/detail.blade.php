@@ -1,28 +1,28 @@
-<x-admin-layout title="Chi tiết ticket">
+<x-admin-layout title="Ticket details">
 <div class="row">
 	<div class="col-md-4">
 		<div class="card">
-			<h3 class="card-header">Thông tin ticket</h3>
+			<h3 class="card-header">Ticket information</h3>
 			<div class="card-body">
-				<strong><i class="fas fa-code mr-1"></i>Mã ticket</strong>
+				<strong><i class="fas fa-code mr-1"></i>#</strong>
 				<p class="text-muted bigger-text">{{ $data->id }}</p>
 
-				<strong><i class="fas fa-book mr-1"></i>Tên khách hàng</strong>
+				<strong><i class="fas fa-book mr-1"></i>Customer name</strong>
 				<p class="text-muted bigger-text">{{ $data->cus_name }}</p>
 
-				<strong><i class="fas fa-envelope mr-1"></i>Email</strong>
+				<strong><i class="fas fa-envelope mr-1"></i>Customer email</strong>
 				<p class="text-muted bigger-text">{{ $data->cus_email }}</p>
 				
-				<strong><i class="fas fa-phone mr-1"></i>Số điện thoại</strong>
+				<strong><i class="fas fa-phone mr-1"></i>Phone number</strong>
 				<p class="text-muted bigger-text">{{ $data->cus_phone }}</p>
                 
-				<strong><i class="fas fa-sticky-note mr-1"></i>Ghi chú</strong>
+				<strong><i class="fas fa-sticky-note mr-1"></i>Note</strong>
 				<p class="text-muted bigger-text">{{ $data->cus_note }}</p>
 
-				<strong><i class="fas fa-money-bill mr-1"></i>Tổng tiền</strong>
+				<strong><i class="fas fa-money-bill mr-1"></i>Total</strong>
 				<p class="text-muted bigger-text">{{ $data->total }} €</p>
 
-				<strong><i class="fas fa-bookmark mr-1"></i>Trạng thái</strong>
+				<strong><i class="fas fa-bookmark mr-1"></i>Status</strong>
 				<p class="text-muted bigger-text">
 					<h5>
 						@if ($data->status_id == 1)
@@ -41,16 +41,16 @@
 	</div>
 	<div class="col-md-8">
 		<div class="card">
-			<h3 class="card-header">Chi tiết ticket</h3>
+			<h3 class="card-header">Ticket details</h3>
 			<div class="card-body">
 				<div class="table-responsive">
 					<table class="table table-bordered table-hover">
 						<thead>
 							<tr>
 								<th>#</th>
-								<th class="text-center fit">Ảnh sản phẩm</th>
-								<th>Tên dịch vụ</th>
-								<th>Đơn giá</th>
+								<th class="text-center fit">Image</th>
+								<th>Name</th>
+								<th>Price</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -76,7 +76,7 @@
 	</div>
 	<div>
         <a href="{{ route('admin.ticket.index') }}" class="btn btn-secondary">
-            Về trang trước
+            Back
         </a>
     </div>
 </div>

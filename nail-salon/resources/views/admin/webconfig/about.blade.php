@@ -1,4 +1,4 @@
-<x-admin-layout title="Giới thiệu">
+<x-admin-layout title="About">
     <x-slot name="header">
         <link rel="stylesheet" href="{{ asset('summernote/summernote-bs4.min.css') }}">
         <link rel="stylesheet" href="{{ asset('css/preview_img.css') }}">
@@ -6,7 +6,7 @@
     <form action="{{ route('admin.config.saveabout') }}" method="post" enctype="multipart/form-data">
         @csrf
         <div class="form-group group-container mb-3">
-            <label class="control-label required">Ảnh bìa</label>
+            <label class="control-label required">Image</label>
             <input name="about_img" id="about_img" type="file" class="form-control fake-d-none">
             <div class="position-relative">
                 <input type="button" class="btn btn-choose-file w-100 h-100 position-absolute" >
@@ -20,10 +20,10 @@
             </div>
         </div>
 
-        <label class="control-label required">Nội dung</label>
+        <label class="control-label required">Content</label>
         <textarea id="summernote" name="about">{{$data->value}}</textarea>
         <div class="form-group">
-            <button type="submit" class="btn btn-success"><i class="fa fa-save"></i>Lưu</button>
+            <button type="submit" class="btn btn-success"><i class="fa fa-save"></i>Submit</button>
         </div>
     </form>
     <x-slot name="script">
@@ -33,7 +33,7 @@
         <script>
             $(document).ready(function() {
                 $('#summernote').summernote({
-                    placeholder: 'Nội dung giới thiệu',
+                    placeholder: 'About content',
                     tabsize: 2,
                     height: 500,
                     toolbar: [

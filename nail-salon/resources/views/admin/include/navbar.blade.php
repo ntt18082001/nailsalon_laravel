@@ -34,43 +34,43 @@
 				<li class="nav-item">
                     <a class="nav-link menu-link" 
                         href="{{ route('admin.user.index') }}">
-                        <i class="mdi mdi-account"></i> <span data-key="t-widgets">Quản lý tài khoản</span>
+                        <i class="mdi mdi-account"></i> <span data-key="t-widgets">Account</span>
                     </a>
                 </li>
 				<li class="nav-item">
                     <a class="nav-link menu-link" 
                         href="{{ route('admin.servicecate.index') }}">
-                        <i class="mdi mdi-layers"></i> <span data-key="t-widgets">Quản lý thể loại dịch vụ</span>
+                        <i class="mdi mdi-layers"></i> <span data-key="t-widgets">Service Category</span>
                     </a>
                 </li>
 				<li class="nav-item">
                     <a class="nav-link menu-link" 
                         href="{{ route('admin.nailservice.index') }}">
-                        <i class="mdi mdi-weight"></i> <span data-key="t-widgets">Quản lý dịch vụ</span>
+                        <i class="mdi mdi-weight"></i> <span data-key="t-widgets">Nail Service</span>
                     </a>
                 </li>
 				<li class="nav-item">
                     <a class="nav-link menu-link" 
                         href="{{ route('admin.ticket.index') }}">
-                        <i class="mdi mdi-ticket"></i> <span data-key="t-widgets">Quản lý ticket</span>
+                        <i class="mdi mdi-ticket"></i> <span data-key="t-widgets">Ticket</span>
                     </a>
                 </li>
 				<li class="nav-item">
                     <a class="nav-link menu-link" 
                         href="{{ route('admin.config.index') }}">
-                        <i class="mdi mdi-wrench"></i> <span data-key="t-widgets">Thông tin cấu hình</span>
+                        <i class="mdi mdi-wrench"></i> <span data-key="t-widgets">Web Config</span>
                     </a>
                 </li>
 				<li class="nav-item">
                     <a class="nav-link menu-link" 
                         href="{{ route('admin.config.about') }}">
-                        <i class="mdi mdi-alert-circle"></i> <span data-key="t-widgets">Giới thiệu</span>
+                        <i class="mdi mdi-alert-circle"></i> <span data-key="t-widgets">About</span>
                     </a>
                 </li>
 				<li class="nav-item">
                     <a class="nav-link menu-link" 
                         href="{{ route('admin.slider.index') }}">
-                        <i class="mdi mdi-image"></i> <span data-key="t-widgets">Quản lý slider</span>
+                        <i class="mdi mdi-image"></i> <span data-key="t-widgets">Slider</span>
                     </a>
                 </li>
 				<li class="nav-item">

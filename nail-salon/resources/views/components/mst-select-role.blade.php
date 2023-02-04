@@ -23,7 +23,7 @@ function getNameRole($role_id) {
     <label for="{{ $_name }}" class="form-label">{{ $_label }}</label>
 
     <select id="{{ $_name }}" name="{{ $_name }}" class="form-control @error($_name) is-invalid @enderror">
-        <option value="">-- Chọn 1 giá trị --</option>
+        <option value="">-- Choose a value --</option>
         @foreach ($data as $item => $val)
         @if ($_value == $val)
         <option value="{{ $val }}" selected>{{ getNameRole($val) }}</option>

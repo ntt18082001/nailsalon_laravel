@@ -50,13 +50,13 @@ class SliderController extends Controller
       ];
 
       $fields = [
-         "from" => "Ngày bắt đầu",
-         "to" => "Ngày kết thúc",
+         "from" => "From date",
+         "to" => "To date",
       ];
 
       if ($id == null) {
          $rules["img_path"] = ["required"];
-         $fields["img_path"] = "Hình ảnh";
+         $fields["img_path"] = "Image";
       }
 
       $validator = Validator::make($data, $rules, [], $fields);

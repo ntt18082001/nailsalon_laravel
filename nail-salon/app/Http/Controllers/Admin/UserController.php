@@ -35,14 +35,14 @@ class UserController extends Controller
             'confirmPassword' => ['same:password'],
         ];
         $fields = [
-            'name' => 'Họ và tên',
-            'username' => "Tên tài khoản",
+            'name' => 'Fullname',
+            'username' => "Username",
             'email' => "Email",
-            'address' => "Địa chỉ",
-            "role_id" => "Danh mục quyền",
-            "phone_number" => "Số điên thoại",
-            'password' => "Mật khẩu",
-            "confirmPassword" => "Xác nhận mật khẩu"
+            'address' => "Address",
+            "role_id" => "Role",
+            "phone_number" => "Phone number",
+            'password' => "Password",
+            "confirmPassword" => "Confirm password"
         ];
         if ($id != null){
             // Bỏ qua check unique khi update

@@ -1,4 +1,4 @@
-<x-admin-layout title="Thông tin cửa hàng">
+<x-admin-layout title="Web config">
     <x-slot name="header">
         <link rel="stylesheet" href="{{ asset('lib/tagify/tagify.css') }}" />
         <style>
@@ -15,28 +15,28 @@
 
     @php
         $arrLabel = [
-            'logo' => 'Hình ảnh logo',
-            'brand_name' => 'Tên thương hiệu',
-            'brand_phone' => 'Số điện thoại',
-            'brand_address' => 'Địa chỉ',
+            'logo' => 'Logo image',
+            'brand_name' => 'Brand name',
+            'brand_phone' => 'Phone number',
+            'brand_address' => 'Address',
             'brand_email' => 'Email',
             'facebook' => 'Facebook',
             'instagram' => 'Instagram',
-            'time_cancel' => 'Thời gian hủy đặt lịch (Phút)',
-            'mail_reciver' => 'Mail nhận thông báo đặt lịch',
-            'list_mail_reciver' => 'Danh sách mail nhận thông báo đặt lịch',
+            'time_cancel' => 'Time cancel booking (minutes)',
+            'mail_reciver' => 'Mail reciver booking',
+            'list_mail_reciver' => 'List mail reciver booking',
         ];
         $arrPlaceholder = [
-            'logo' => 'Đường dẫn logo...',
-            'brand_name' => 'Nhập tên thương hiệu...',
-            'brand_phone' => 'Nhập số điện thoại...',
-            'brand_address' => 'Nhập địa chỉ...',
-            'brand_email' => 'Nhập email...',
-            'facebook' => 'Đường dẫn facebook...',
-            'instagram' => 'Đường dẫn instagram...',
+            'logo' => 'Path logo...',
+            'brand_name' => 'Enter brand name...',
+            'brand_phone' => 'Enter phone number...',
+            'brand_address' => 'Enter address...',
+            'brand_email' => 'Enter email...',
+            'facebook' => 'Path facebook...',
+            'instagram' => 'Path instagram...',
             'time_cancel' => '',
-            'mail_reciver' => 'Mail nhận thông báo...',
-            'list_mail_reciver' => 'Danh sách mail nhận thông báo',
+            'mail_reciver' => 'Mail reciver booking...',
+            'list_mail_reciver' => 'List mail reciver booking',
         ];
     @endphp
 
@@ -47,7 +47,7 @@
             <section class="content">
                 <div class="card">
                     <div class="card-header">
-                        <h3 class="card-title">Thông tin cơ bản</h3>
+                        <h3 class="card-title">Information</h3>
                     </div>
                     <div class="card-body">
                         <div class="row">
@@ -103,8 +103,8 @@
             </section>
         </div>
         <div class="form-group">
-            <button type="submit" class="btn btn-success"><i class="fa fa-save"></i> Lưu</button>
-            <button type="reset" class="btn btn-default"><i class="fa fa-undo"></i> Nhập lại</button>
+            <button type="submit" class="btn btn-success"><i class="fa fa-save"></i>Submit</button>
+            <button type="reset" class="btn btn-default"><i class="fa fa-undo"></i>Reset</button>
         </div>
     </form>
     <x-slot name="script">

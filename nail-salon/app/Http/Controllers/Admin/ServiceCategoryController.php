@@ -53,14 +53,14 @@ class ServiceCategoryController extends Controller
       ];
 
       $fields = [
-         "name" => "Tên dịch vụ",
-         "cover_path" => "Hình ảnh",
-         "note" => "Ghi chú",
+         "name" => "Name",
+         "cover_path" => "Image",
+         "note" => "Note",
       ];
 
       if ($id == null) {
          $rules["cover_path"] = ["required"];
-         $fields["cover_path"] = "Hình ảnh";
+         $fields["cover_path"] = "Image";
       }
 
       $validator = Validator::make($data, $rules, [], $fields);
