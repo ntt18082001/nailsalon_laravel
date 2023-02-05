@@ -4,7 +4,11 @@
     <div class="header-wrapper">
         <!-- MOBILE HEADER -->
         <div class="wsmobileheader clearfix">
-            <span class="smllogo"><img src="storage/webconfig/<x-web-config displayData='logo'/>" alt="mobile-logo" /></span>
+            @php
+                $logo = App\Models\WebConfigs::where('name', '=', 'logo')->get();
+                $logoPath = $logo[0]->value;
+            @endphp
+            <span class="smllogo"><img src="{{"storage/webconfig/$logoPath"}}" alt="mobile-logo" /></span>
             <a id="wsnavtoggle" class="wsanimated-arrow"><span></span></a>
             <a href="tel:<x-web-config displayData='brand_phone'/>" class="callusbtn ico-20"><span
                     class="flaticon-phone-call-1"></span></a>
@@ -34,9 +38,9 @@
                         <!-- HEADER LOGO -->
                         <li aria-haspopup="true" class="wscenterlogo">
                             <a href="/" class="logo-black"><img
-                                    src="storage/webconfig/<x-web-config displayData='logo' />" alt="header-logo" /></a>
+                                    src="{{"storage/webconfig/$logoPath"}}" alt="header-logo" /></a>
                             <a href="/" class="logo-white"><img
-                                    src="storage/webconfig/<x-web-config displayData='logo' />" alt="header-logo" /></a>
+                                    src="{{"storage/webconfig/$logoPath"}}" alt="header-logo" /></a>
                         </li>
 
                         <!-- SIMPLE NAVIGATION LINK -->
