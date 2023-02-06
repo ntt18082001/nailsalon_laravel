@@ -34,7 +34,6 @@ class SendMail implements ShouldQueue
     public function handle()
     {
         $send_mail = new AppMail($this->mail_data);
-        Mail::to($this->mail_data['cus_email'], $this->mail_data['mail_admin_reciver'])->send($send_mail);
         foreach ($this->list_mail_reciver as $key => $value) {
             Mail::to($value)->send($send_mail);
         }

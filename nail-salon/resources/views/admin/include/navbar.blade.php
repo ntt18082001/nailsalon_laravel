@@ -2,23 +2,14 @@
 <div class="app-menu navbar-menu">
 	<!-- LOGO -->
 	<div class="navbar-brand-box">
-		<!-- Dark Logo-->
-		<a href="index.html" class="logo logo-dark">
-			<span class="logo-sm">
-				<img src="{{ asset('assets/images/logo-sm.png') }}" alt="" height="22">
-			</span>
-			<span class="logo-lg">
-				<img src="{{ asset('assets/images/logo-dark.png') }}" alt="" height="17">
-			</span>
-		</a>
 		<!-- Light Logo-->
 		<a href="{{ route('client.home') }}" target="_blank" class="logo logo-light">
-			<span class="logo-sm">
-				<img src="{{ asset('assets/images/logo-sm.png') }}" alt="" height="22">
-			</span>
-			<span class="logo-lg">
-				<img src="{{ asset('assets/images/logo-light.png') }}" alt="" height="17">
-			</span>
+			<h4 class="logo-sm text-white mt-4">
+				<span><x-web-config displayData="brand_name" /></span>
+			</h4>
+			<h4 class="logo-lg text-white mt-4">
+				<span><x-web-config displayData="brand_name" /></span>
+			</h4>
 		</a>
 		<button type="button" class="btn btn-sm p-0 fs-20 header-item float-end btn-vertical-sm-hover"
 				id="vertical-hover">
@@ -31,6 +22,18 @@
 			</div>
 			<ul class="navbar-nav" id="navbar-nav">
 				<li class="menu-title"><span data-key="t-menu">Menu</span></li>
+				<li class="nav-item">
+                    <a class="nav-link menu-link" 
+                        href="{{ route('admin.ticket.index') }}">
+                        <i class="mdi mdi-ticket"></i> <span data-key="t-widgets">Ticket</span>
+                    </a>
+                </li>
+				<li class="nav-item">
+                    <a class="nav-link menu-link" 
+                        href="{{ route('admin.slider.index') }}">
+                        <i class="mdi mdi-image"></i> <span data-key="t-widgets">Slider</span>
+                    </a>
+                </li>
 				<li class="nav-item">
                     <a class="nav-link menu-link" 
                         href="{{ route('admin.user.index') }}">
@@ -51,12 +54,6 @@
                 </li>
 				<li class="nav-item">
                     <a class="nav-link menu-link" 
-                        href="{{ route('admin.ticket.index') }}">
-                        <i class="mdi mdi-ticket"></i> <span data-key="t-widgets">Ticket</span>
-                    </a>
-                </li>
-				<li class="nav-item">
-                    <a class="nav-link menu-link" 
                         href="{{ route('admin.config.index') }}">
                         <i class="mdi mdi-wrench"></i> <span data-key="t-widgets">Web Config</span>
                     </a>
@@ -65,12 +62,6 @@
                     <a class="nav-link menu-link" 
                         href="{{ route('admin.config.about') }}">
                         <i class="mdi mdi-alert-circle"></i> <span data-key="t-widgets">About</span>
-                    </a>
-                </li>
-				<li class="nav-item">
-                    <a class="nav-link menu-link" 
-                        href="{{ route('admin.slider.index') }}">
-                        <i class="mdi mdi-image"></i> <span data-key="t-widgets">Slider</span>
                     </a>
                 </li>
 				<li class="nav-item">

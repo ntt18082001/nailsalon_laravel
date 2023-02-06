@@ -22,7 +22,7 @@ function getNameRole($role_id) {
 <div class="form-group mt-3 ">
     <label for="{{ $_name }}" class="form-label">{{ $_label }}</label>
 
-    <select id="{{ $_name }}" name="{{ $_name }}" class="form-control @error($_name) is-invalid @enderror">
+    <select id="{{ $_name }}" name="{{ $_name }}" class="form-select @error($_name) is-invalid @enderror">
         <option value="">-- Choose a value --</option>
         @foreach ($data as $item => $val)
         @if ($_value == $val)

@@ -23,7 +23,6 @@
             'facebook' => 'Facebook',
             'instagram' => 'Instagram',
             'time_cancel' => 'Time cancel booking (minutes)',
-            'mail_reciver' => 'Mail reciver booking',
             'list_mail_reciver' => 'List mail reciver booking',
         ];
         $arrPlaceholder = [
@@ -35,7 +34,6 @@
             'facebook' => 'Path facebook...',
             'instagram' => 'Path instagram...',
             'time_cancel' => '',
-            'mail_reciver' => 'Mail reciver booking...',
             'list_mail_reciver' => 'List mail reciver booking',
         ];
     @endphp

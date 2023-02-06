@@ -11,7 +11,8 @@ class WebConfigController extends Controller
     function index()
     {
         $data = WebConfigs::where('name', '!=', 'about')
-            ->where('name', '!=', 'about_img')->get();
+            ->where('name', '!=', 'about_img')
+            ->where('name', '!=', 'mail_reciver')->get();
         return view('admin.webconfig.index')->with('data', $data);
     }
     function about()
