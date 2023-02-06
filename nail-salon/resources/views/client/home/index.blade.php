@@ -103,7 +103,11 @@
                 <!-- IMAGE BLOCK -->
                 <div class="col-md-5 col-lg-6">
                     <div class="img-block right-column wow fadeInLeft">
-                        <img class="img-fluid" src="storage/webconfig/<x-web-config displayData='about_img' />"
+                        @php
+                            $about_img = App\Models\WebConfigs::where('name', '=', 'about_img')->get();
+                            $about_imgPath = $about_img[0]->value;
+                        @endphp
+                        <img class="img-fluid" src="{{"storage/webconfig/$about_imgPath"}}"
                             alt="about-image" />
                     </div>
                 </div>

@@ -33,7 +33,6 @@ class TicketController extends Controller
         $user = Auth::user();
         $ticket = Ticket::findOrFail($id);
         $ticket->status_id = $id_status;
-        $ticket->save();
 
         $config = WebConfigs::where('name', '=', 'brand_name')
             ->orWhere('name', '=', 'time_cancel')
@@ -54,9 +53,18 @@ class TicketController extends Controller
         $list_mail = str_replace(array('[', ']', '{', '}', '"', "value:"), "", $config[3]->value);
         $array_mail = explode(",", $list_mail);
 
-        $job = (new SendMail($mail_details, $array_mail));
-        dispatch($job)->delay(now()->addSeconds(30));
-
+        $configApp = config('sendmail');
+        if ($configApp) {
+            $job = (new SendMail($mail_details, $array_mail));
+            dispatch($job)->delay(now()->addSeconds(30));
+        } else {
+            $send_mail = new AppMail($mail_details);
+            Mail::to($mail_details['cus_email'], $mail_details['mail_admin_reciver'])->send($send_mail);
+            foreach ($array_mail as $key => $value) {
+                Mail::to($value)->send($send_mail);
+            }
+        }
+        $ticket->save();
         return response()->json(["message" => true]);
     }
     function delete($id)

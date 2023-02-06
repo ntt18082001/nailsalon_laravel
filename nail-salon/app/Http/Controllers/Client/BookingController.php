@@ -16,17 +16,19 @@ use Illuminate\Support\Facades\Mail;
 
 class BookingController extends Controller
 {
-    function index() {
+    function index()
+    {
         return view('client.booking.index');
     }
 
-    function save(Request $request) {
+    function save(Request $request)
+    {
         $data = $request->all();
         unset($data["_token"]);
 
         $service = NailServices::findOrFail($data['service_id']);
         $ticket = new Ticket();
-        if(Auth::check()){
+        if (Auth::check()) {
             $ticket->cus_id = Auth::id();
         }
         $ticket->cus_name = $data["cus_name"];
@@ -38,7 +40,7 @@ class BookingController extends Controller
         $ticket->start_at = strtotime($data["start_at"]) * 1000;
         $ticket->total = $service->price_couleur;
         $ticket->update_at = Carbon::now();
-        
+
         $ticket->save();
         $ticket->ticket_details()->create([
             'bill_id' => $ticket->id,
@@ -65,15 +67,25 @@ class BookingController extends Controller
             'body' => "You can cancel your appoinment before $time_cancel minutes",
             'mail_admin_reciver' => $mail_admin_reciver
         ];
-        $list_mail = str_replace(array( '[', ']', '{', '}', '"', "value:" ), "", $config[3]->value);
+        $list_mail = str_replace(array('[', ']', '{', '}', '"', "value:"), "", $config[3]->value);
         $array_mail = explode(",", $list_mail);
 
-        $job = (new SendMail($mail_details, $array_mail));
-        dispatch($job)->delay(now()->addSeconds(30));
+        $configApp = config('sendmail');
+        if ($configApp) {
+            $job = (new SendMail($mail_details, $array_mail));
+            dispatch($job)->delay(now()->addSeconds(30));
+        } else {
+            $send_mail = new AppMail($mail_details);
+            Mail::to($mail_details['cus_email'], $mail_details['mail_admin_reciver'])->send($send_mail);
+            foreach ($array_mail as $key => $value) {
+                Mail::to($value)->send($send_mail);
+            }
+        }
 
         return redirect()->route('client.booking.index')->with('successMsg', "Booking success!");
     }
-    function cancel_appoinment($id) {
+    function cancel_appoinment($id)
+    {
         $ticket = Ticket::findOrFail($id);
         $ticket->status_id = 3;
         $ticket->save();
@@ -94,11 +106,20 @@ class BookingController extends Controller
             'body' => "",
             'mail_admin_reciver' => $mail_admin_reciver
         ];
-        $list_mail = str_replace(array( '[', ']', '{', '}', '"', "value:" ), "", $config[3]->value);
+        $list_mail = str_replace(array('[', ']', '{', '}', '"', "value:"), "", $config[3]->value);
         $array_mail = explode(",", $list_mail);
 
-        $job = (new SendMail($mail_details, $array_mail));
-        dispatch($job)->delay(now()->addSeconds(30));
+        $configApp = config('sendmail');
+        if ($configApp) {
+            $job = (new SendMail($mail_details, $array_mail));
+            dispatch($job)->delay(now()->addSeconds(30));
+        } else {
+            $send_mail = new AppMail($mail_details);
+            Mail::to($mail_details['cus_email'], $mail_details['mail_admin_reciver'])->send($send_mail);
+            foreach ($array_mail as $key => $value) {
+                Mail::to($value)->send($send_mail);
+            }
+        }
 
         return redirect()->back();
     }
