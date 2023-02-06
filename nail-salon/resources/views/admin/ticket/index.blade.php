@@ -1,4 +1,45 @@
 <x-admin-layout title="List ticket">
+    <!-- Collapse Example -->
+    <div class="hstack gap-2 flex-wrap mb-3">
+        <button type="button" class="btn btn-success btn-icon waves-effect waves-light"  data-bs-toggle="collapse" data-bs-target="#Search"
+        aria-expanded="false" aria-controls="Search"><i class="ri-search-line"></i></button>
+    </div>
+
+    @php
+        $cus_name = app('request')->input('cus_name');
+        $cus_phone = app('request')->input('cus_phone');
+        $status_id = app('request')->input('status_id');
+        $show = "show";
+        if (!isset($cus_name) && !isset($cus_phone) && !isset($status_id)){
+            $show = "";
+        }
+    @endphp
+    <div class="collapse {{$show}} mb-4" id="Search">
+        <div class="card mb-0">
+            <div class="card-header">
+                <h4>Search form</h4>
+            </div>
+            <div class="card-body">
+                <form method="GET" action="{{ route('admin.ticket.index') }}">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <x-input name="cus_name" label="Fullname" value={{$cus_name}} />
+                        </div>
+                        <div class="col-md-4">
+                            <x-input name="cus_phone" label="Phone Number" value={{$cus_phone}}/>
+                        </div>
+                        <div class="col-md-4">
+                            <x-mst-select name="status_id" label="Status" table="ticket_statuses" displayColumn="name" value={{$status_id}} />
+                        </div>
+                        <div class="col-md-12 mt-3">
+                            <button id="btn-search" class="btn btn-primary ml-3 my-sm-0" type="submit">Search</button>
+                            <a href="{{route('admin.ticket.index')}}" class="btn btn-success ml-3 my-sm-0">Reset</a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
     <div class="table-responsive">
         <table class="table table-bordered">
             <thead>
@@ -51,12 +92,12 @@
                             @if ($item->status_id == 1)
                                 @if ($datetime_now->lessThan($date_book))
                                     @php
-                                        $invisible = "";
+                                        $invisible = '';
                                     @endphp
                                 @endif
                                 <button type="button" data-order-id={{ $item->id }}
                                     data-status-id={{ $item->status_id }}
-                                    class="btn btn-primary btn-update-status btn-status{{ $item->id }} {{$invisible}}"
+                                    class="btn btn-primary btn-update-status btn-status{{ $item->id }} {{ $invisible }}"
                                     data-bs-toggle="modal" data-bs-target="#exampleModalgrid">
                                     Edit
                                 </button>
@@ -93,8 +134,7 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <x-mst-select name="service_cate_id" label="Status" table="ticket_statuses"
-                        displayColumn="name" />
+                    <x-mst-select name="service_cate_id" label="Status" table="ticket_statuses" displayColumn="name" />
                 </div>
                 <div class="modal-footer">
                     <div class="hstack gap-2 justify-content-end">
@@ -108,7 +148,6 @@
 
     <x-slot name="header">
         <link rel="stylesheet" href="{{ asset('noti-aweasome/css/style.css') }}">
-        </link>
         <script src="{{ asset('noti-aweasome/js/index.var.js') }}"></script>
     </x-slot>
     <x-slot name="script">

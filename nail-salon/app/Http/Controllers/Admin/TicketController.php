@@ -15,11 +15,30 @@ use Illuminate\Support\Facades\Mail;
 
 class TicketController extends Controller
 {
-    function index()
+    function index(Request $request)
     {
-        $result = Ticket::orderByDesc('id')->paginate();
         $conf = WebConfigs::where('name', '=', 'time_cancel')->get();
-        return view('admin.ticket.index')->with('data', $result)->with('time_cancel', $conf[0]->value);
+        if (isset($request->cus_name) || isset($request->cus_phone) || isset($request->status_id)) {
+            $cus_name = isset($request->cus_name) ? $request->cus_name : false;
+            $cus_phone = isset($request->cus_phone) ? $request->cus_phone : false;
+            $status_id = isset($request->status_id) ? $request->status_id : false;
+
+            $query = Ticket::query();
+            if ($cus_name) {
+                $query->where('cus_name', 'like', "%$cus_name%");
+            }
+            if ($cus_phone) {
+                $query->where('cus_phone', 'like', "%$cus_phone%");
+            }
+            if ($status_id) {
+                $query->where('status_id', '=', $status_id);
+            }
+            $result = $query->orderByDesc('id')->paginate();
+            return view('admin.ticket.index')->with('data', $result)->with('time_cancel', $conf[0]->value);
+        } else {
+            $result = Ticket::orderByDesc('id')->paginate();
+            return view('admin.ticket.index')->with('data', $result)->with('time_cancel', $conf[0]->value);
+        }
     }
     function detail($id)
     {
