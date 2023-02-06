@@ -1,65 +1,111 @@
-<!doctype html>
-<html lang="en">
-
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
-    <meta name="generator" content="Hugo 0.84.0">
-    <title>Register</title>
-
-
-    <!-- Bootstrap core CSS -->
-    <link href="{{ asset('bootstrap-5.0.2-dist/css/bootstrap.min.css') }}" rel="stylesheet">
-
-    <meta name="theme-color" content="#7952b3">
-
-
-    <style>
-        .bd-placeholder-img {
-            font-size: 1.125rem;
-            text-anchor: middle;
-            -webkit-user-select: none;
-            -moz-user-select: none;
-            user-select: none;
-        }
-
-        @media (min-width: 768px) {
-            .bd-placeholder-img-lg {
-                font-size: 3.5rem;
-            }
-        }
-    </style>
-</head>
-
-<body>
-
-    <main class="form-signin">
+<x-client-layout title="Register">
+    <section id="booking-1" class="booking-section division mt-100">
         <div class="container">
-            <div class="row justify-content-center mt-5">
-                <div class="col-md-4">
-                    
-                    <form action="{{ route('client.account.save') }}" method="post" autocomplete="off">
-                        <h3 class="text-center">Register</h3>
-                        @csrf
-                        <x-input name="name" type="text" placeholder="" label="Fullname" />
-                        <x-input name="username" label="Username" />
-                        <x-input name="email" placeholder="Email" label="Email" />
-                        <x-input name="phone_number" placeholder="Phone number" label="Phone number" />
-                        <x-input name="password" type="password" placeholder="Password" label="Password" />
-                        <x-input name="confirmPassword" type="password" placeholder="" label="Confirm pasword" />
-                        <div class="form-group mt-3">
-                            <button type="submit" class="btn btn-primary">Submit</button>
-                            <div class="mt-2">
-                                <a href="{{ route('client.home') }}">Homepage</a> | <a href="{{ route('client.account.login') }}">Login</a>
-                            </div>
+            <div class="row d-flex align-items-center justify-content-center">
+                <!-- BOOKING-1 WRAPPER -->
+                <div class="col-md-6 col-lg-6">
+                    <div class="booking-1-wrapper bg--alice-blue">
+                        <div class="form-holder">
+                            <!-- Section ID -->
+                            <!-- Title -->
+                            <h4 class="h4-xl text-center">Register</h4>
+                            <!-- Booking Form -->
+                            <form action="{{ route('client.account.save') }}" method="POST" class="row booking-form"
+                                autocomplete="off">
+                                @csrf
+                                <!-- Form Input -->
+                                <div class="col-md-12 mb-20">
+                                    @php
+                                        $_old_value = old('name');
+                                        $_value = empty($_old_value) ? "" : $_old_value;
+                                    @endphp
+                                    <input type="text" name="name" class="form-control" placeholder="Fullname*"
+                                        required value="{{$_value}}">
+                                    @error('name')
+                                        <span class="text-danger">
+                                            {{ $message }}
+                                        </span>
+                                    @enderror
+                                </div>
+                                <div class="col-md-12 mb-20">
+                                    @php
+                                        $_old_value = old('username');
+                                        $_value = empty($_old_value) ? "" : $_old_value;
+                                    @endphp
+                                    <input type="text" name="username" class="form-control" placeholder="Username*"
+                                        required value="{{$_value}}">
+                                    @error('username')
+                                        <span class="text-danger">
+                                            {{ $message }}
+                                        </span>
+                                    @enderror
+                                </div>
+                                <div class="col-md-12 mb-20">
+                                    @php
+                                        $_old_value = old('email');
+                                        $_value = empty($_old_value) ? "" : $_old_value;
+                                    @endphp
+                                    <input type="email" name="email" class="form-control email"
+                                        placeholder="Email Address*" required value="{{$_value}}">
+                                    @error('email')
+                                        <span class="text-danger">
+                                            {{ $message }}
+                                        </span>
+                                    @enderror
+                                </div>
+                                <div class="col-md-12 mb-20">
+                                    @php
+                                        $_old_value = old('phone_number');
+                                        $_value = empty($_old_value) ? "" : $_old_value;
+                                    @endphp
+                                    <input type="text" name="phone_number" class="form-control"
+                                        placeholder="Phone number*" required value="{{$_value}}">
+                                </div>
+                                @error('phone_number')
+                                    <span class="text-danger">
+                                        {{ $message }}
+                                    </span>
+                                @enderror
+                                <!-- Form Input -->
+                                <div class="col-md-12 mb-20">
+                                    @php
+                                        $_old_value = old('password');
+                                        $_value = empty($_old_value) ? "" : $_old_value;
+                                    @endphp
+                                    <input type="password" name="password" class="form-control phone"
+                                        placeholder="Password*" required value="{{$_value}}">
+                                    @error('password')
+                                        <span class="text-danger">
+                                            {{ $message }}
+                                        </span>
+                                    @enderror
+                                </div>
+                                <div class="col-md-12 mb-20">
+                                    @php
+                                        $_old_value = old('confirmPassword');
+                                        $_value = empty($_old_value) ? "" : $_old_value;
+                                    @endphp
+                                    <input type="password" name="confirmPassword" class="form-control"
+                                        placeholder="Confirm password" required value="{{$_value}}">
+                                    @error('confirmPassword')
+                                        <span class="text-danger">
+                                            {{ $message }}
+                                        </span>
+                                    @enderror
+                                </div>
+                                <!-- Form Button -->
+                                <div class="col-md-12 mt-10 text-end">
+                                    <button type="submit" class="btn rose--btn">Register</button>
+                                </div>
+                                <div class="col-md-12 mt-10 text-end">
+                                    <a href="{{ route('client.account.login') }}"
+                                        style="text-decoration: underline">Login</a>
+                                </div>
+                            </form> <!-- End Booking Form -->
                         </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </main>
-</body>
-
-</html>
+                    </div>
+                </div> <!-- END BOOKING-1 WRAPPER -->
+            </div> <!-- End row -->
+        </div> <!-- End container -->
+    </section> <!-- END BOOKING-1 -->
+</x-client-layout>
