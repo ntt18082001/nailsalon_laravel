@@ -189,14 +189,14 @@
                                 <div class="col-md-12">
                                     <x-mst-select-client name="service_id" table="nail_services" displayColumn="name" />
                                 </div>
-                                <!-- Form Select -->
-                                <div class="col-md-12">
-                                    <x-mst-select-client name="employee_id" table="users" displayColumn="name" />
-                                </div>
                                 <!-- Form Input -->
                                 <div class="col-md-12">
                                     <input id="datetimepicker" type="text" name="start_at"
                                         class="form-control date" placeholder="Appointment Date*" required>
+                                </div>
+                                <div class="col-md-12">
+                                    <textarea type="text" name="cus_note"
+                                        class="form-control" placeholder="Note" style="padding: 10px 12px;" rows="3" required></textarea>
                                 </div>
                                 <!-- Form Button -->
                                 <div class="col-md-12 mt-10 text-end">

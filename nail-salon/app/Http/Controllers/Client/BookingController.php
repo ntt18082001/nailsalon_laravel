@@ -36,9 +36,9 @@ class BookingController extends Controller
         $ticket->cus_email = $data["cus_email"];
         $ticket->cus_note = '';
         $ticket->status_id = 1;
-        $ticket->employee_id = $data["employee_id"];
         $ticket->start_at = strtotime($data["start_at"]) * 1000;
         $ticket->total = $service->price_couleur;
+        $ticket->cus_note = $data['cus_note'];
         $ticket->update_at = Carbon::now();
 
         $ticket->save();

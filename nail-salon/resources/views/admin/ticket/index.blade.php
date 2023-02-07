@@ -1,20 +1,10 @@
 <x-admin-layout title="List ticket">
-    <!-- Collapse Example -->
-    <div class="hstack gap-2 flex-wrap mb-3">
-        <button type="button" class="btn btn-success btn-icon waves-effect waves-light"  data-bs-toggle="collapse" data-bs-target="#Search"
-        aria-expanded="false" aria-controls="Search"><i class="ri-search-line"></i></button>
-    </div>
-
     @php
         $cus_name = app('request')->input('cus_name');
         $cus_phone = app('request')->input('cus_phone');
         $status_id = app('request')->input('status_id');
-        $show = "show";
-        if (!isset($cus_name) && !isset($cus_phone) && !isset($status_id)){
-            $show = "";
-        }
     @endphp
-    <div class="collapse {{$show}} mb-4" id="Search">
+    <div class="mb-4" id="Search">
         <div class="card mb-0">
             <div class="card-header">
                 <h4>Search form</h4>
@@ -50,7 +40,7 @@
                     <th scope="col">Total</th>
                     <th scope="col">Status</th>
                     <th scope="col">Start time</th>
-                    <th scope="col">End time</th>
+                    <th scope="col">Note</th>
                 </tr>
             </thead>
             <tbody>
@@ -77,9 +67,7 @@
                         </td>
                         <td>{{ date('d-m-Y H:i:s', $item->start_at / 1000) }}</td>
                         <td>
-                            @if (isset($item->end_at))
-                                {{ date('d-m-Y H:i:s', $item->end_at / 1000) }}
-                            @endif
+                            {{ $item->cus_note }}
                         </td>
                         @php
                             $now = Carbon\Carbon::now();
