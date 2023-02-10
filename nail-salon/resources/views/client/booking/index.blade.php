@@ -1,5 +1,4 @@
 <x-client-layout title="Booking">
-
     <!-- PAGE HERO
    ============================================= -->
     <section id="booking-page" class="bg-fixed page-hero-section division">
@@ -12,7 +11,6 @@
                     </div>
                 </div>
             </div>
-
             <!-- BREADCRUMB -->
             <div id="breadcrumb">
                 <div class="row d-flex align-items-center">
@@ -28,14 +26,8 @@
                     </div>
                 </div>
             </div> <!-- END BREADCRUMB -->
-
-
         </div> <!-- End container -->
     </section> <!-- END PAGE HERO -->
-
-
-
-
     <!-- SERVICES-5
    ============================================= -->
     <section id="services-5" class="wide-100 services-section division">
@@ -53,96 +45,54 @@
                     </div>
                 @endif
                 <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-4">
-
                     <!-- SERVICES BOX #1 -->
                     <div class="col">
                         <div id="sb-5-1" class="sbox-5 wow fadeInUp" data-wow-delay="0.3s">
-
                             <!-- Icon -->
                             <div class="sbox-ico ico-80 black--color">
                                 <span class="flaticon-pedicure-1"></span>
                             </div>
-
                             <!-- Title -->
                             <h5 class="h5-lg">Nail Care</h5>
-
-                            <!-- Text -->
-                            <p class="p-lg">Risus auctor ligula tempus and dolor vitae neque feugiat ligula suscipit
-                                and risus mauri</p>
-
                         </div>
                     </div>
-
-
                     <!-- SERVICES BOX #2 -->
                     <div class="col">
                         <div id="sb-5-2" class="sbox-5 wow fadeInUp" data-wow-delay="0.6s">
-
                             <!-- Icon -->
                             <div class="sbox-ico ico-80 black--color">
                                 <span class="flaticon-nail-polish-3"></span>
                             </div>
-
                             <!-- Title -->
                             <h5 class="h5-lg">Nail Art</h5>
-
-                            <!-- Text -->
-                            <p class="p-lg">Risus auctor ligula tempus and dolor vitae neque feugiat ligula suscipit
-                                and risus mauri</p>
-
                         </div>
                     </div>
-
-
                     <!-- SERVICES BOX #3 -->
                     <div class="col">
                         <div id="sb-5-3" class="sbox-5 wow fadeInUp" data-wow-delay="0.9s">
-
                             <!-- Icon -->
                             <div class="sbox-ico ico-80 black--color">
                                 <span class="flaticon-soak"></span>
                             </div>
-
                             <!-- Title -->
                             <h5 class="h5-lg">Add-Ons</h5>
-
-                            <!-- Text -->
-                            <p class="p-lg">Risus auctor ligula tempus and dolor vitae neque feugiat ligula suscipit
-                                and risus mauri</p>
-
                         </div>
                     </div>
-
-
                     <!-- SERVICES BOX #4 -->
                     <div class="col">
                         <div id="sb-5-4" class="sbox-5 wow fadeInUp" data-wow-delay="1.2s">
-
                             <!-- Icon -->
                             <div class="sbox-ico ico-80 black--color">
                                 <span class="flaticon-skincare"></span>
                             </div>
-
                             <!-- Title -->
                             <h5 class="h5-lg">Treatments</h5>
-
-                            <!-- Text -->
-                            <p class="p-lg">Risus auctor ligula tempus and dolor vitae neque feugiat ligula suscipit
-                                and risus mauri</p>
-
                         </div>
                     </div>
-
-
                 </div>
             </div> <!-- END SERVICES-5 BOXES -->
-
-
         </div> <!-- End container -->
     </section> <!-- END SERVICES-5 -->
-
-
-
 
     <!-- BOOKING-1
    ============================================= -->
@@ -156,8 +106,6 @@
                             alt="booking-image">
                     </div>
                 </div>
-
-
                 <!-- BOOKING-1 WRAPPER -->
                 <div class="col-md-7 col-lg-6">
                     <div class="booking-1-wrapper bg--alice-blue">

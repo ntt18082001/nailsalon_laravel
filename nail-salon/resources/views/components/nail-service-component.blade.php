@@ -19,19 +19,21 @@
                                     <!-- PRICING ITEM #1 -->
                                     <li class="pricing-6-item">
                                         <!-- Title & Price -->
-                                        <div class="detail-price">
-                                            <div class="price-name">
-                                                <h5 class="h5-lg">{{ $child->name }}</h5>
+                                        <a href="{{ route('client.pricing.detail', ['id' => $item->id]) }}">
+                                            <div class="detail-price">
+                                                <div class="price-name">
+                                                    <h5 class="h5-lg">{{ $child->name }}</h5>
+                                                </div>
+                                                <div class="price-dots"></div>
+                                                <div class="price-number">
+                                                    <h5 class="h5-lg">{{ $child->price_couleur }} €</h5>
+                                                </div>
                                             </div>
-                                            <div class="price-dots"></div>
-                                            <div class="price-number">
-                                                <h5 class="h5-lg">{{ $child->price_couleur }} €</h5>
+                                            <!-- Description -->
+                                            <div class="price-txt">
+                                                <p class="p-md"><em>Service length {{ $child->duration }} minutes</em></p>
                                             </div>
-                                        </div>
-                                        <!-- Description -->
-                                        <div class="price-txt">
-                                            <p class="p-md"><em>Service length {{ $child->duration }} minutes</em></p>
-                                        </div>
+                                        </a>
                                     </li>
                                 @endforeach
                             </ul> <!-- END PRICING LIST -->

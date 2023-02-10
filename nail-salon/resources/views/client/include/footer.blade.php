@@ -43,7 +43,9 @@
 
                             <!-- Email -->
                             <p class="p-lg mt-5">
-                                <a href="mailto:yourdomain@mail.com" class="txt-600"><x-web-config displayData="brand_email" /></a>
+                                <a href="mailto:yourdomain@mail.com" class="txt-600">
+                                    <x-web-config displayData="brand_email" />
+                                </a>
                             </p>
 
                             <!-- Phone -->
@@ -70,10 +72,11 @@
                             <!-- Footer Links -->
                             <ul class="foo-links clearfix">
                                 <li>
-                                    <p class="p-lg"><a href="<x-web-config displayData='instagram' />">Instagram</a></p>
+                                    <p class="p-lg"><a href="<x-web-config displayData='instagram' /">Instagram</a>
+                                    </p>
                                 </li>
                                 <li>
-                                    <p class="p-lg"><a  href="<x-web-config displayData='facebook' />">Facebook</a></p>
+                                    <p class="p-lg"><a href="<x-web-config displayData='facebook' />">Facebook</a></p>
                                 </li>
                             </ul>
                         </div>

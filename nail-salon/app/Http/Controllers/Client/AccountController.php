@@ -33,7 +33,7 @@ class AccountController extends Controller
         $user = User::where('email', '=', $request->email)->first();
         $loginFail = redirect()
             ->back()
-            ->with("login-err-msg", "Email is not valid");
+            ->with("login-err-msg", "Account is not valid");
         if ($user == null) {
             return $loginFail;
         }
@@ -43,6 +43,9 @@ class AccountController extends Controller
         ];
         if (Auth::attempt($userData)) {
             $request->session()->regenerate();
+            if($user->role_id == 1) {
+                return redirect()->route('admin.ticket.index');
+            }
             return redirect()->route('client.booking.index');
         } else {
             return $loginFail;
@@ -99,5 +102,40 @@ class AccountController extends Controller
             return view('client.account.profile')->with('user', $user)->with('data', $bookingHistory)->with('time_cancel', $conf[0]->value);
         }
         return redirect()->route('client.account.login');
+    }
+    function changepassword() {
+        return view('client.account.changepassword');
+    }
+    function saveChangePassword(Request $request)
+    {
+        $user = User::findOrFail(Auth::user()->id);
+
+        // validate data
+        $rules = [
+            "password" => ["required"],
+            "newPassword" => ["required"],
+            "confirmPassword" => ["same:newPassword"],
+        ];
+
+        $fields = [
+            "password" => "Old password",
+            "newPassword" => "New password",
+            "confirmPassword" => "Confirm new password",
+        ];
+
+        $validator = Validator::make($request->all(), $rules, [], $fields);
+        $validator->validate();
+
+        if (Hash::check($request->password, $user->password)) {
+            $user->password = Hash::make($request->newPassword);
+            $user->save();
+            return redirect()
+                ->back()
+                ->with("change-success", "Change password successfully!");
+        } else {
+            return redirect()
+                ->back()
+                ->with("change-err", "Incorect old password!");
+        }
     }
 }

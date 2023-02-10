@@ -25,6 +25,8 @@ Route::prefix("/admin")->namespace("App\Http\Controllers\Admin")->name("admin")-
         Route::get('/create', "$controller@create")->name('create');
         Route::post('/createsave/{id?}', "$controller@save")->name('createsave');
         Route::get('/update/{id}', "$controller@update")->name('update');
+        Route::get('/changepassword', "$controller@changepassword")->name('changepassword');
+        Route::post('/savechangepassword', "$controller@saveChangePassword")->name('savechangepassword');
     });
 
     Route::name(".account.")->group(function() {
@@ -97,6 +99,8 @@ Route::prefix("/")->namespace("App\Http\Controllers\Client")->name("client.")->g
         Route::get("/register", "$controller@register")->name("register");
         Route::post("/register", "$controller@save")->name("save");
         Route::get("/profile", "$controller@profile")->name("profile");
+        Route::get('/changepassword', "$controller@changepassword")->name('changepassword');
+        Route::post('/savechangepassword', "$controller@saveChangePassword")->name('savechangepassword');
     });
 
     Route::prefix('/booking')->name('booking.')->group(function() {
@@ -109,6 +113,7 @@ Route::prefix("/")->namespace("App\Http\Controllers\Client")->name("client.")->g
     Route::prefix('/pricing')->name('pricing.')->group(function() {
         $controller = "PricingController";
         Route::get('/', "$controller@index")->name('index');
+        Route::get('/detail/{id}', "$controller@detail")->name('detail');
     });
     Route::prefix('/subscriber')->name('subscriber.')->group(function() {
         $controller = "SubscriberController";

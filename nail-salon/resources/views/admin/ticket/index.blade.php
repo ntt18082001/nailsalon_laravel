@@ -3,6 +3,7 @@
         $cus_name = app('request')->input('cus_name');
         $cus_phone = app('request')->input('cus_phone');
         $status_id = app('request')->input('status_id');
+        $date = app('request')->input('date');
     @endphp
     <div class="mb-4" id="Search">
         <div class="card mb-0">
@@ -20,6 +21,11 @@
                         </div>
                         <div class="col-md-4">
                             <x-mst-select name="status_id" label="Status" table="ticket_statuses" displayColumn="name" value={{$status_id}} />
+                        </div>
+                        <div class="col-md-4">
+                            @php
+                            @endphp
+                            <x-input name="date" label="Date" value="{{isset($date) ? $date : date('Y-m-d')}}" type="date"/>
                         </div>
                         <div class="col-md-12 mt-3">
                             <button id="btn-search" class="btn btn-primary ml-3 my-sm-0" type="submit">Search</button>

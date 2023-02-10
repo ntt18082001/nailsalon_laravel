@@ -8,7 +8,7 @@
                 $logo = App\Models\WebConfigs::where('name', '=', 'logo')->get();
                 $logoPath = $logo[0]->value;
             @endphp
-            <span class="smllogo"><img src="{{"storage/webconfig/$logoPath"}}" alt="mobile-logo" /></span>
+            <span class="smllogo"><img src="{{route('client.home')}}/{{"storage/webconfig/$logoPath"}}" alt="mobile-logo" /></span>
             <a id="wsnavtoggle" class="wsanimated-arrow"><span></span></a>
             <a href="tel:<x-web-config displayData='brand_phone'/>" class="callusbtn ico-20"><span
                     class="flaticon-phone-call-1"></span></a>
@@ -27,7 +27,7 @@
 
                         <!-- SIMPLE NAVIGATION LINK -->
                         <li class="nl-simple" aria-haspopup="true">
-                            <a href="{{route('client.home')}}#pricing-6">Our Services</a>
+                            <a href="{{route('client.home')}}#pricing-6">Services</a>
                         </li>
 
 
@@ -37,10 +37,10 @@
                         </li>
                         <!-- HEADER LOGO -->
                         <li aria-haspopup="true" class="wscenterlogo">
-                            <a href="/" class="logo-black"><img
-                                    src="{{"storage/webconfig/$logoPath"}}" alt="header-logo" /></a>
-                            <a href="/" class="logo-white"><img
-                                    src="{{"storage/webconfig/$logoPath"}}" alt="header-logo" /></a>
+                            <a href="{{route('client.home')}}" class="logo-black"><img
+                                    src="{{route('client.home')}}/{{"storage/webconfig/$logoPath"}}" alt="header-logo" /></a>
+                            <a href="{{route('client.home')}}" class="logo-white"><img
+                                    src="{{route('client.home')}}/{{"storage/webconfig/$logoPath"}}" alt="header-logo" /></a>
                         </li>
 
                         <!-- SIMPLE NAVIGATION LINK -->
@@ -64,6 +64,9 @@
                                     @endif
                                     <li class="nl-simple" aria-haspopup="true">
                                         <a href="{{ route('client.account.profile') }}">Profile</a>
+                                    </li>
+                                    <li class="nl-simple" aria-haspopup="true">
+                                        <a href="{{ route('client.account.changepassword') }}">Change password</a>
                                     </li>
                                     <li aria-haspopup="true">
                                         <a href="{{ route('client.account.logout') }}">Logout</a>

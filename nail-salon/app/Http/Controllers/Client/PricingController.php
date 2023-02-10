@@ -18,4 +18,8 @@ class PricingController extends Controller
         }
         return view('client.pricing.index')->with('data', $data)->with('data_childs', $arrDataChild);
     }
+    function detail($id) {
+        $data = NailServices::findOrFail($id);
+        return view('client.pricing.detail')->with('data', $data);
+    }
 }

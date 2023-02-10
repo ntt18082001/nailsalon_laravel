@@ -30,7 +30,7 @@
 	<div id="layout-wrapper">
 		@include('admin.include.header')
 		@include('admin.include.navbar')
-		<div class="main-content">
+		<div class="main-content overflow-hidden">
 			<div class="page-content">
 				<div class="container-fluid">
 					<!-- Default box -->
@@ -62,12 +62,9 @@
 	<script src="{{ asset('assets/libs/feather-icons/feather.min.js') }}"></script>
 	<script src="{{ asset('assets/js/pages/plugins/lord-icon-2.1.0.js') }}"></script>
 	<script src="{{ asset('assets/js/plugins.js') }}"></script>
-	
-	{{ $script ?? '' }}
-
 	<!-- App js -->
 	<script src="{{ asset('assets/js/app.js') }}"></script>
-
+	{{ $script ?? '' }}
 
 </body>
 

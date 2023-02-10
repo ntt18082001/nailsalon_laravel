@@ -11,6 +11,7 @@ use App\Models\WebConfigs;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
 
 class TicketController extends Controller
@@ -18,10 +19,11 @@ class TicketController extends Controller
     function index(Request $request)
     {
         $conf = WebConfigs::where('name', '=', 'time_cancel')->get();
-        if (isset($request->cus_name) || isset($request->cus_phone) || isset($request->status_id)) {
+        if (isset($request->cus_name) || isset($request->cus_phone) || isset($request->status_id) || isset($request->date)) {
             $cus_name = isset($request->cus_name) ? $request->cus_name : false;
             $cus_phone = isset($request->cus_phone) ? $request->cus_phone : false;
             $status_id = isset($request->status_id) ? $request->status_id : false;
+            $date = isset($request->date) ? $request->date : false;
 
             $query = Ticket::query();
             if ($cus_name) {

@@ -26,36 +26,25 @@
                     <!-- SERVICES BOX #1 -->
                     <div class="col">
                         <div id="sb-2-1" class="sbox-2 mb-40 wow fadeInUp" data-wow-delay="0.3s">
-
                             <!-- Icon -->
                             <div class="sbox-ico ico-95 black--color">
                                 <span class="flaticon-pedicure-1"></span>
                             </div>
-
                             <!-- Title -->
                             <h5 class="h5-lg">Nail Care</h5>
-
-                            <!-- Text -->
-                            <p class="p-lg">Ligula risus auctor tempus and dolor vitae undo purus semper sodales</p>
                         </div>
                     </div>
-
 
                     <!-- SERVICES BOX #2 -->
                     <div class="col">
                         <div id="sb-2-2" class="sbox-2 mb-40 wow fadeInUp" data-wow-delay="0.6s">
-
                             <!-- Icon -->
                             <div class="sbox-ico ico-95 black--color">
                                 <span class="flaticon-nail-polish-3"></span>
 
                             </div>
-
                             <!-- Title -->
                             <h5 class="h5-lg">Nail Art</h5>
-
-                            <!-- Text -->
-                            <p class="p-lg">Ligula risus auctor tempus and dolor vitae undo purus semper sodales</p>
                         </div>
                     </div>
 
@@ -63,25 +52,16 @@
                     <!-- SERVICES BOX #3 -->
                     <div class="col">
                         <div id="sb-2-3" class="sbox-2 mb-40 wow fadeInUp" data-wow-delay="0.9s">
-
                             <!-- Icon -->
                             <div class="sbox-ico ico-95 black--color">
                                 <span class="flaticon-soak"></span>
                             </div>
-
                             <!-- Title -->
                             <h5 class="h5-lg">Add-Ons</h5>
-
-                            <!-- Text -->
-                            <p class="p-lg">Ligula risus auctor tempus and dolor vitae undo purus semper sodales</p>
                         </div>
                     </div>
-
-
                 </div> <!-- End row -->
             </div> <!-- END SERVICES-2 WRAPPER -->
-
-
         </div> <!-- End container -->
     </section> <!-- END SERVICES-2 -->
 
@@ -95,7 +75,6 @@
                     <div class="txt-block left-column wow fadeInRight">
                         <!-- Section ID -->
                         <div class="section-id">Get Your Shine On</div>
-
                         <x-web-config displayData='about' />
                     </div>
                 </div>
@@ -117,7 +96,6 @@
         <!-- End container -->
     </section>
     <!-- END ABOUT-3 -->
-
     <x-nail-service-component />
     <x-gallery-component />
 </x-client-layout>

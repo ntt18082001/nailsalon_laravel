@@ -61,6 +61,9 @@
 						<h6 class="dropdown-header">Welcome @if(isset($name))
 							{{$name}}!
 						@endif</h6>
+						<a class="dropdown-item" href="{{ route("admin.user.changepassword") }}">
+							<i class="mdi mdi-key text-muted fs-16 align-middle me-1"></i>Change password</span>
+						</a>
 						<a class="dropdown-item" href="{{ route("admin.account.logout") }}">
 							<i class="mdi mdi-logout text-muted fs-16 align-middle me-1"></i> <span class="align-middle" data-key="t-logout">Logout</span>
 						</a>

@@ -93,4 +93,40 @@ class UserController extends Controller
         $user->save();
         return redirect()->route("index.user");
     }
+
+    function changepassword() {
+        return view('admin.user.changepassword');
+    }
+    function saveChangePassword(Request $request)
+    {
+        $user = User::findOrFail(Auth::user()->id);
+
+        // validate data
+        $rules = [
+            "password" => ["required"],
+            "newPassword" => ["required"],
+            "confirmPassword" => ["same:newPassword"],
+        ];
+
+        $fields = [
+            "password" => "Old password",
+            "newPassword" => "New password",
+            "confirmPassword" => "Confirm new password",
+        ];
+
+        $validator = Validator::make($request->all(), $rules, [], $fields);
+        $validator->validate();
+
+        if (Hash::check($request->password, $user->password)) {
+            $user->password = Hash::make($request->newPassword);
+            $user->save();
+            return redirect()
+                ->back()
+                ->with("change-success", "Change password successfully!");
+        } else {
+            return redirect()
+                ->back()
+                ->with("change-err", "Incorect old password!");
+        }
+    }
 }

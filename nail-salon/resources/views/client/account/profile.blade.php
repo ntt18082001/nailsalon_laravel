@@ -36,12 +36,12 @@
                         <thead>
                             <tr>
                                 <th scope="col" class="fit">#</th>
-                                <th scope="col">Tên khách hàng</th>
+                                <th scope="col">Fullname</th>
                                 <th scope="col">Email</th>
-                                <th scope="col">Số điện thoại</th>
-                                <th scope="col">Tổng tiền</th>
-                                <th scope="col">Trạng thái</th>
-                                <th scope="col">Giờ bắt đầu</th>
+                                <th scope="col">Phone number</th>
+                                <th scope="col">Total</th>
+                                <th scope="col">Status</th>
+                                <th scope="col">Start time</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -75,16 +75,14 @@
                                         $date_book = Carbon\Carbon::parse(date('d-m-Y H:i:s', $item->start_at / 1000));
                                     @endphp
                                     @if ($item->status_id == 1)
-                                        <td class="fit">
-                                            @if ($datetime_now->greaterThan($date_book))
-                                                <span></span>
-                                            @else
+                                        @if ($datetime_now->lessThan($date_book))
+                                            <td class="fit">
                                                 <a href="{{ route('client.booking.cancel_appoinment', ['id' => $item->id]) }}"
                                                     class="btn-danger" style="padding: 5px 5px">
                                                     Cancel
                                                 </a>
-                                            @endif
-                                        </td>
+                                            </td>
+                                        @endif
                                     @endif
                                 </tr>
                             @endforeach
@@ -100,7 +98,6 @@
                 <p>
                     Email: {{ $user->email }}
                 </p>
-                <a style="text-decoration: underline" href="{{ route('client.account.logout') }}">Logout</a>
             </div>
         </div>
     </div>
