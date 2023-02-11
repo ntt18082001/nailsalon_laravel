@@ -30,7 +30,7 @@ class MstSelectClient extends Component
         if($this->table == 'users') {
             $sql = "select id, $this->displayColumn from $this->table where role_id=2";
         } else {
-            $sql = "select $this->table.id, $this->table.$this->displayColumn, $this->table.service_cate_id, service_categories.name as name_cate
+            $sql = "select $this->table.id, $this->table.$this->displayColumn, $this->table.service_cate_id, $this->table.price_couleur, service_categories.name as name_cate
                 from $this->table LEFT join service_categories on $this->table.service_cate_id=service_categories.id order by $this->table.service_cate_id";
         }
         $data = DB::select($sql);

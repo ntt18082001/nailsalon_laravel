@@ -34,7 +34,7 @@ class BookingController extends Controller
         $ticket->cus_name = $data["cus_name"];
         $ticket->cus_phone = $data["cus_phone"];
         $ticket->cus_email = $data["cus_email"];
-        $ticket->cus_note = '';
+        $ticket->cus_note = isset($data['cus_note']) ? $data['cus_note'] : "";
         $ticket->status_id = 1;
         $ticket->start_at = strtotime($data["start_at"]) * 1000;
         $ticket->total = $service->price_couleur;

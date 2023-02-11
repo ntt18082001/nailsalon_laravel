@@ -8,8 +8,11 @@ use App\Mail\AppMail;
 use App\Models\Ticket;
 use App\Models\TicketDetail;
 use App\Models\WebConfigs;
+use Carbon\Carbon;
+use DateTime;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Http\Request;
+use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
@@ -35,11 +38,23 @@ class TicketController extends Controller
             if ($status_id) {
                 $query->where('status_id', '=', $status_id);
             }
+            if ($date) {
+                $d = Carbon::createFromFormat('Y-m-d', $date);
+                $nextD = $d->addDays()->toDateString();
+                $millsD = strtotime($date) * 1000;
+                $millsNextD = strtotime($nextD) * 1000;
+                $query->where('start_at', '>=', $millsD)->where('start_at', '<=', $millsNextD);
+            }
             $result = $query->orderByDesc('id')->paginate();
             return view('admin.ticket.index')->with('data', $result)->with('time_cancel', $conf[0]->value);
         } else {
-            $result = Ticket::orderByDesc('id')->paginate();
-            return view('admin.ticket.index')->with('data', $result)->with('time_cancel', $conf[0]->value);
+            $now = date("Y-m-d");
+            $d = Carbon::createFromFormat('Y-m-d', $now);
+            $nextD = $d->addDays()->toDateString();
+            $millsNow = strtotime($now) * 1000;
+            $millsNextD = strtotime($nextD) * 1000;
+            $data = Ticket::where('start_at', '>=', $millsNow)->where('start_at', '<=', $millsNextD)->orderByDesc('id')->paginate();
+            return view('admin.ticket.index')->with('data', $data)->with('time_cancel', $conf[0]->value);
         }
     }
     function detail($id)

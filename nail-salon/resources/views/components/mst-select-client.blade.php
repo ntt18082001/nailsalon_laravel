@@ -13,11 +13,11 @@ $_value = empty($_old_value) ? $_value : $_old_value;
         @foreach ($data as $item)
             @if ($_value == $item->id)
                 <option value="{{ $item->id }}" selected>
-                    {{ isset($item->name_cate) ? $item->name_cate . ' - ' : ''}}{{ $item->$displayColumn }}
+                    {{ isset($item->name_cate) ? $item->name_cate . ' - ' : ''}}{{ $item->$displayColumn }} - {{$item->price_couleur}} €
                 </option>
             @else
                 <option value="{{ $item->id }}">
-                    {{ isset($item->name_cate) ? $item->name_cate . ' - ' : ''}}{{ $item->$displayColumn }}
+                    {{ isset($item->name_cate) ? $item->name_cate . ' - ' : ''}}{{ $item->$displayColumn }} - {{$item->price_couleur}} €
                 </option>
             @endif
         @endforeach

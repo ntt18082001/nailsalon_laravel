@@ -144,7 +144,7 @@
                                 </div>
                                 <div class="col-md-12">
                                     <textarea type="text" name="cus_note"
-                                        class="form-control" placeholder="Note" style="padding: 10px 12px;" rows="3" required></textarea>
+                                        class="form-control" placeholder="Note" style="padding: 10px 12px;" rows="3" ></textarea>
                                 </div>
                                 <!-- Form Button -->
                                 <div class="col-md-12 mt-10 text-end">
