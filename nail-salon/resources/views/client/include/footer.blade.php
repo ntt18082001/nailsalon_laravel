@@ -71,10 +71,16 @@
 
                             <!-- Footer Links -->
                             <ul class="foo-links clearfix">
-                                <li>
-                                    <p class="p-lg"><a href="<x-web-config displayData='instagram' /">Instagram</a>
-                                    </p>
-                                </li>
+                                @php
+                                    $ins = App\Models\WebConfigs::where('name', '=', 'instagram')->get();
+                                @endphp
+                                @if (!empty($ins[0]->value))
+                                    <li>
+                                        <p class="p-lg"><a
+                                                href="{{$ins[0]->value}}">Instagram</a>
+                                        </p>
+                                    </li>
+                                @endif
                                 <li>
                                     <p class="p-lg"><a href="<x-web-config displayData='facebook' />">Facebook</a></p>
                                 </li>
