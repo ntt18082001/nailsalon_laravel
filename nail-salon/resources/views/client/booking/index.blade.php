@@ -140,7 +140,7 @@
                                 <!-- Form Input -->
                                 <div class="col-md-12">
                                     <input id="datetimepicker" type="text" name="start_at"
-                                        class="form-control date" placeholder="Appointment Date*" required>
+                                        class="form-control date" placeholder="Appointment Date*" required readonly>
                                 </div>
                                 <div class="col-md-12">
                                     <textarea type="text" name="cus_note"
