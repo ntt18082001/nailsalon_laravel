@@ -24,6 +24,7 @@
             'instagram' => 'Instagram',
             'time_cancel' => 'Time cancel booking (minutes)',
             'list_mail_reciver' => 'List mail reciver booking',
+            'disabled_date' => 'Disabled date',
         ];
         $arrPlaceholder = [
             'logo' => 'Path logo...',
@@ -35,6 +36,7 @@
             'instagram' => 'Path instagram...',
             'time_cancel' => '',
             'list_mail_reciver' => 'List mail reciver booking',
+            'disabled_date' => 'Disabled date',
         ];
     @endphp
 
@@ -76,6 +78,12 @@
                                             class="control-label">{{ $arrLabel[$item->name] }}</label>
                                         <textarea id="{{ $item->name }}" name="{{ $item->name }}" placeholder="{{ $arrPlaceholder[$item->name] }}"
                                             rows="1" class="form-control" value="{{ $item->value }}">{{ $item->value }}</textarea>
+                                    </div>
+                                @elseif($item->name == 'disabled_date')
+                                    <div class="col-md-6 form-group mb-3">
+                                        <label for="{{ $item->name }}"
+                                            class="control-label">{{ $arrLabel[$item->name] }}</label>
+                                        <input id="{{ $item->name }}" name="{{ $item->name }}" placeholder="{{ $arrPlaceholder[$item->name] }}" type="date" class="form-control" value="{{ $item->value }}"/>
                                     </div>
                                 @elseif($item->name == 'time_cancel')
                                     <div class="col-md-6 form-group mb-3">

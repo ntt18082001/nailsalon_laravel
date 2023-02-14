@@ -163,6 +163,14 @@
 			$("#datetimepicker").val(roundedTime.toLocaleDateString() + " " + roundedTime.getHours() + ":" + roundedTime.getMinutes());
 		}
 
+		const disabledDate = new Date($("#disabled_date").val());
+		const arrD = disabledDate.toLocaleDateString().split("/");
+		[arrD[0], arrD[1]] = [arrD[1], arrD[0]];
+
+		if(arrD[1] < 10) {
+			arrD[1] = '0' + arrD[1];
+		}
+		
 	    $('#datetimepicker').datetimepicker({
 			allowTimes:[
 				'10:00', '10:30', '11:00',
@@ -172,7 +180,9 @@
 			   ],
 			   disabledWeekDays: [0],
 			   minDate:'-1970/01/01',
-			   onChangeDateTime: changeDateTime
+			   onChangeDateTime: changeDateTime,
+			   disabledDates: [arrD.join(".")],
+			   formatDate:'d.m.Y'
 		});
 
 		$(".booking-form").on("submit", function(ev) {

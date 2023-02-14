@@ -18,6 +18,7 @@ class DatabaseSeeder extends Seeder
             TicketStatusSeeder::class,
             WebConfigSeeder::class,
             WebConfig2Seeder::class,
+            WebConfig3Seeder::class,
             AboutConfigSeeder::class,
         ]);
     }

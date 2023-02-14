@@ -1,4 +1,8 @@
 <x-client-layout title="Booking">
+    @php
+        $date = App\Models\WebConfigs::where('name', '=', 'disabled_date')->get();
+    @endphp
+    <input hidden id="disabled_date" type="date" value="{{$date[0]->value}}" />
     <!-- PAGE HERO
    ============================================= -->
     <section id="booking-page" class="bg-fixed page-hero-section division">
