@@ -149,6 +149,20 @@
 		/*	DateTimePicker
 		/*----------------------------------------------------*/
 
+		const checkDate = date => {
+			return new Date(date.toDateString()) < new Date(new Date().toDateString());
+		}
+
+		const changeDateTime = (currentDateTime) => {
+			var mins = currentDateTime.getMinutes();
+			if(mins === 30 || mins === 0) {
+				return;
+			}
+			var coff = 1000 * 60 * 30;
+			var roundedTime = new Date(Math.ceil(currentDateTime / coff) * coff);
+			$("#datetimepicker").val(roundedTime.toLocaleDateString() + " " + roundedTime.getHours() + ":" + roundedTime.getMinutes());
+		}
+
 	    $('#datetimepicker').datetimepicker({
 			allowTimes:[
 				'10:00', '10:30', '11:00',
@@ -157,7 +171,16 @@
 				'16:30', '17:00', '17:30', '18:00' 
 			   ],
 			   disabledWeekDays: [0],
-			   minDate:'-1970/01/02',
+			//    minDate:'-1970/01/01',
+			   onChangeDateTime: changeDateTime
+		});
+
+		$(".booking-form").on("submit", function(ev) {
+			let dateTimeVal = $("#datetimepicker").val();
+			if(checkDate(new Date(dateTimeVal))) {
+				ev.preventDefault();
+				alert("Date is invalid!");
+			}
 		});
 
 

@@ -148,7 +148,7 @@
                                 </div>
                                 <!-- Form Button -->
                                 <div class="col-md-12 mt-10 text-end">
-                                    <button type="submit" class="btn rose--btn">Book Now</button>
+                                    <button type="submit" class="btn rose--btn">Réservez</button>
                                 </div>
                             </form> <!-- End Booking Form -->
 

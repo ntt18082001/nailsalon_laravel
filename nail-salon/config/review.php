@@ -1,11 +1,11 @@
 <?php
 
 return [
-    "Rachel A." => "Etiam sapien sagittis congue an augue massa varius egestas suscipit magna a tempus and aliquet rutrum magna",
-    "Wendy T." => "At sagittis congue augue undo egestas magna ipsum vitae purus primis suscipit and blandit a cursus molestie at quisque sapien and integer congue magna",
-    "Grace L." => "Mauris donec ociis magnis sapien etiam sapien congue augue pretium and ligula augue a lectus magna suscipit egestas a vitae purus integer congu",
-    "Michelle Boxer" => "An augue in cubilia laoreet magna and suscipit egestas magna ipsum purus an ipsum undo suscipit gravida donec and pretium ipsum porta integer",
-    "Sarah D." => "An augue cubilia laoreet magna sapien suscipit undo egestas magna ipsum ligula vitae a purus cubilia a blandit and auctor integer congue magna undo justo purus pretium ligula efficitur ipsum",
-    "Nicole Byer" => "Augue egestas volutpat undo egestas augue in cubilia laoreet magna at primis libero undo suscipit luctus congue magna undo purus pretium ligula rutrum",
-    "AJ" => "Aliquam augue a suscipit luctus neque purus ipsum neque dolor primis libero at tempus blandit posuere magna sagittis congue augue magna risus mauris and volutpat and egesta",
+    "Réalisé par Alice" => "Très professionnel résultat magnifique!",
+    "Réalisé par Alice" => "Très belle pose et dure dans le temps",
+    "Réalisé par Hiu" => "Super service et superbe prestation ! Le semi permanent est excellent",
+    "Réalisé par Hoai" => "Super prestation chez Kim Nails, rapide, efficace, et juste parfaite!",
+    "Réalisé par Kim" => "Esthéticienne au top de la gentillesse, prestation parfaite ! Je conseille vivement",
+    "Réalisé par Hoai" => "J’ai effectué une pose de vernis semi permanent il y a 2 jours et le vernis est déjà parti sur un ongle, les couches de vernis sont beaucoup trop épaisses Salon pas très propre Le personnel est gentil et attentionné",
+    "Réalisé par Alice" => "Dépose+manucure+pose de semi-permament : prestation au top comme d’habitude ! Travail minutieux et personnel très gentil ! Je recommande !",
 ];
