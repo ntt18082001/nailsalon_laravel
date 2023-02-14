@@ -171,7 +171,7 @@
 				'16:30', '17:00', '17:30', '18:00' 
 			   ],
 			   disabledWeekDays: [0],
-			//    minDate:'-1970/01/01',
+			   minDate:'-1970/01/01',
 			   onChangeDateTime: changeDateTime
 		});
 
