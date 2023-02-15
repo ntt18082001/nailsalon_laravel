@@ -81,6 +81,15 @@ Route::prefix("/admin")->namespace("App\Http\Controllers\Admin")->name("admin")-
         Route::get('/delete/{id}', "$controller@delete")->name('delete');
     });
 
+    Route::prefix('/gallery')->name('.gallery.')->group(function() {
+        $controller = "GalleryController";
+        Route::get('/', "$controller@index")->name('index');
+        Route::get('/create', "$controller@create")->name('create');
+        Route::post('/save/{id?}', "$controller@save")->name('save');
+        Route::get('/update/{id}', "$controller@update")->name('update');
+        Route::get('/delete/{id}', "$controller@delete")->name('delete');
+    });
+
     Route::prefix('/subscriber')->name('.subscriber.')->group(function() {
         $controller = "SubscriberController";
         Route::get('/', "$controller@index")->name('index');

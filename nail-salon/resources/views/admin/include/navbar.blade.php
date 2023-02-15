@@ -37,6 +37,11 @@
                     </a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link menu-link" href="{{ route('admin.gallery.index') }}">
+                        <i class="mdi mdi-image"></i> <span data-key="t-widgets">Gallery</span>
+                    </a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link menu-link" href="{{ route('admin.user.index') }}">
                         <i class="mdi mdi-account"></i> <span data-key="t-widgets">Account</span>
                     </a>

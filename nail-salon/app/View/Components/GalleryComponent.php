@@ -2,7 +2,7 @@
 
 namespace App\View\Components;
 
-use App\Models\NailServices;
+use App\Models\Gallery;
 use Illuminate\View\Component;
 
 class GalleryComponent extends Component
@@ -24,7 +24,7 @@ class GalleryComponent extends Component
      */
     public function render()
     {
-        $data = NailServices::select('id', 'cover_path', 'name')->take(8)->get();
+        $data = Gallery::all();
         return view('components.gallery-component')->with('data', $data);
     }
 }

@@ -9,17 +9,17 @@
                     <div class="col">
                         <!-- IMAGE #1 -->
                         <div id="img-4-1" class="gallery-image">
-                            <a class="image-link" href="storage/nailservice/{{$item->cover_path}}">
+                            <a class="image-link" href="storage/nailservice/{{$item->img_path}}">
                                 <div class="hover-overlay">
                                     <!-- Image -->
-                                    <img class="img-fluid" src="storage/nailservice/{{$item->cover_path}}"
+                                    <img class="img-fluid" src="storage/gallery/{{$item->img_path}}"
                                         alt="gallery-image" />
                                     <div class="item-overlay"></div>
 
                                     <!-- Image Description -->
                                     <div class="image-description white--color">
                                         <div class="image-caption">
-                                            <h5 class="h5-lg">{{$item->name}}</h5>
+                                            <h5 class="h5-lg">{{$item->description}}</h5>
                                         </div>
                                     </div>
                                 </div>
