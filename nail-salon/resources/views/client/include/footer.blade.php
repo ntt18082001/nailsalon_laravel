@@ -43,7 +43,7 @@
 
                             <!-- Email -->
                             <p class="p-lg mt-5">
-                                <a href="mailto:yourdomain@mail.com" class="txt-600">
+                                <a href='mailto:<x-web-config displayData="brand_email" />' class="txt-600">
                                     <x-web-config displayData="brand_email" />
                                 </a>
                             </p>
