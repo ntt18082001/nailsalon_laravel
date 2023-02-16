@@ -6,7 +6,7 @@
             <div class="col-md-5">
                 <div class="footer-form mb-40">
                     <!-- Title -->
-                    <h5 class="h5-lg">Stay in the Know</h5>
+                    <h5 class="h5-lg">Newsletters</h5>
 
                     <!-- Newsletter Form Input -->
                     <form method="POST" action="{{ route('client.subscriber.save') }}" class="newsletter-form mt-30">
@@ -34,7 +34,7 @@
                     <div class="col-sm-8 col-md-9">
                         <div class="footer-contacts mb-40">
                             <!-- Title -->
-                            <h5 class="h5-lg">Get in Touch</h5>
+                            <h5 class="h5-lg">Info</h5>
 
                             <!-- Address -->
                             <p class="p-lg">
@@ -56,9 +56,7 @@
                             </h4>
 
                             <!-- Working Hours -->
-                            <p class="p-lg">Mon-Fri: 10AM - 9PM</p>
-                            <p class="p-lg">Saturday: 10AM - 7PM</p>
-                            <p class="p-lg">Sunday: 10PM - 7PM</p>
+                            <p class="p-lg">Mon-Saturday: 10AM - 6PM</p>
                         </div>
                     </div>
                     <!-- END FOOTER CONTACTS -->

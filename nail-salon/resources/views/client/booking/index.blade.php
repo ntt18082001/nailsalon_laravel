@@ -11,7 +11,7 @@
             <div class="row justify-content-center">
                 <div class="col-md-10 col-xl-8">
                     <div class="hero-txt text-center white--color">
-                        <h2 class="h2-xl">Book An Appointment</h2>
+                        <h2 class="h2-xl">Prendre Rendez-vous</h2>
                     </div>
                 </div>
             </div>
@@ -23,7 +23,7 @@
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item"><a href="/">Home</a></li>
-                                    <li class="breadcrumb-item active" aria-current="page">Booking Online</li>
+                                    <li class="breadcrumb-item active" aria-current="page">Prendre</li>
                                 </ol>
                             </nav>
                         </div>
@@ -79,7 +79,7 @@
                                 <span class="flaticon-soak"></span>
                             </div>
                             <!-- Title -->
-                            <h5 class="h5-lg">Add-Ons</h5>
+                            <h5 class="h5-lg">Beauté des pied</h5>
                         </div>
                     </div>
                     <!-- SERVICES BOX #4 -->
@@ -114,10 +114,8 @@
                 <div class="col-md-7 col-lg-6">
                     <div class="booking-1-wrapper bg--alice-blue">
                         <div class="form-holder">
-                            <!-- Section ID -->
-                            <span class="section-id">Booking Now</span>
                             <!-- Title -->
-                            <h4 class="h4-xl">Make An Appointment</h4>
+                            <h4 class="h4-xl">Prendre Rendez-vous</h4>
                             <!-- Booking Form -->
                             <form action="{{ route('client.booking.save') }}" method="POST" class="row booking-form"
                                 autocomplete="off">
@@ -125,7 +123,7 @@
                                 <!-- Form Input -->
                                 <div class="col-md-12">
                                     <input type="text" name="cus_name" class="form-control firstname"
-                                        placeholder="Fullname*" required>
+                                        placeholder="Name*" required>
                                 </div>
                                 <!-- Form Input -->
                                 <div class="col-md-12">
@@ -176,7 +174,7 @@
                         <span class="section-id">Testimonials</span>
 
                         <!-- Title -->
-                        <h2 class="h2-lg">What People Are Saying</h2>
+                        <h2 class="h2-lg">Avis Client</h2>
 
                     </div>
                 </div>

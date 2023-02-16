@@ -57,7 +57,7 @@
                                 <span class="flaticon-soak"></span>
                             </div>
                             <!-- Title -->
-                            <h5 class="h5-lg">Add-Ons</h5>
+                            <h5 class="h5-lg">Beauté des pied</h5>
                         </div>
                     </div>
                 </div> <!-- End row -->

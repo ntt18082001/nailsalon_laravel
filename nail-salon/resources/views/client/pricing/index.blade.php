@@ -103,7 +103,7 @@
                         <!-- Section ID -->
                         <span class="section-id">Testimonials</span>
                         <!-- Title -->
-                        <h2 class="h2-lg">What People Are Saying</h2>
+                        <h2 class="h2-lg">Avis Client</h2>
 
                     </div>
                 </div>

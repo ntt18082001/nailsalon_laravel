@@ -45,7 +45,7 @@
 
                         <!-- SIMPLE NAVIGATION LINK -->
                         <li class="nl-simple" aria-haspopup="true">
-                            <a href="{{ route('client.booking.index') }}">Booking</a>
+                            <a href="{{ route('client.booking.index') }}">Réservez</a>
                         </li>
 
                         <!-- HEADER BUTTON -->

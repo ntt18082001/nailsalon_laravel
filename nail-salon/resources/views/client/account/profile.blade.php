@@ -30,13 +30,13 @@
     <div class="container wide-100">
         <div class="row">
             <div class="col-md-9">
-                <h4>Booking history</h4>
+                <h4>Réservez history</h4>
                 <div class="table-responsive">
                     <table class="table table-bordered">
                         <thead>
                             <tr>
                                 <th scope="col" class="fit">#</th>
-                                <th scope="col">Fullname</th>
+                                <th scope="col">Name</th>
                                 <th scope="col">Email</th>
                                 <th scope="col">Phone number</th>
                                 <th scope="col">Total</th>
