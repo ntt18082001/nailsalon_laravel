@@ -46,6 +46,7 @@
                     <th scope="col">Total</th>
                     <th scope="col">Status</th>
                     <th scope="col">Start time</th>
+                    <th scope="col">Branch</th>
                     <th scope="col">Note</th>
                 </tr>
             </thead>
@@ -72,6 +73,7 @@
                             @endif
                         </td>
                         <td>{{ date('d-m-Y H:i:s', $item->start_at / 1000) }}</td>
+                        <td>{{$item->branch}}</td>
                         <td>
                             {{ $item->cus_note }}
                         </td>

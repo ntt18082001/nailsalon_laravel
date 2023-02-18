@@ -38,6 +38,7 @@ class BookingController extends Controller
         $ticket->status_id = 1;
         $ticket->start_at = strtotime($data["start_at"]) * 1000;
         $ticket->total = $service->price_couleur;
+        $ticket->branch = $data['branch'];
         $ticket->update_at = Carbon::now();
 
         $ticket->save();

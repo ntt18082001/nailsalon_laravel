@@ -15,6 +15,9 @@
 				
 				<strong><i class="fas fa-phone mr-1"></i>Phone number</strong>
 				<p class="text-muted bigger-text">{{ $data->cus_phone }}</p>
+
+				<strong><i class="fas fa-phone mr-1"></i>Branch</strong>
+				<p class="text-muted bigger-text">{{ $data->branch }}</p>
                 
 				<strong><i class="fas fa-sticky-note mr-1"></i>Note</strong>
 				<p class="text-muted bigger-text">{{ $data->cus_note }}</p>

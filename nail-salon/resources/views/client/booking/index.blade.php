@@ -139,6 +139,9 @@
                                 <div class="col-md-12">
                                     <x-mst-select-client name="service_id" table="nail_services" displayColumn="name" />
                                 </div>
+                                <div class="col-md-12">
+                                    <x-mst-select-branch name="branch" />
+                                </div>
                                 <!-- Form Input -->
                                 <div class="col-md-12">
                                     <input id="datetimepicker" type="text" name="start_at"
