@@ -56,7 +56,7 @@
                             </h4>
 
                             <!-- Working Hours -->
-                            <p class="p-lg">Mon-Saturday: 10AM - 6PM</p>
+                            <p class="p-lg">Lundi - Samedi: 10h - 19h</p>
                         </div>
                     </div>
                     <!-- END FOOTER CONTACTS -->
