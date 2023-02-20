@@ -160,7 +160,8 @@
 			}
 			var coff = 1000 * 60 * 30;
 			var roundedTime = new Date(Math.ceil(currentDateTime / coff) * coff);
-			$("#datetimepicker").val(roundedTime.toLocaleDateString() + " " + roundedTime.getHours() + ":" + roundedTime.getMinutes());
+			var minutes = roundedTime.getMinutes() == 0 ? "00" : roundedTime.getMinutes();
+			$("#datetimepicker").val(roundedTime.toLocaleDateString() + " " + roundedTime.getHours() + ":" + minutes);
 		}
 
 		const disabledDate = new Date($("#disabled_date").val());

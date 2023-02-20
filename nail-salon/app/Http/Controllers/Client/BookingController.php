@@ -7,6 +7,7 @@ use App\Jobs\SendMail;
 use App\Mail\AppMail;
 use App\Models\NailServices;
 use App\Models\Ticket;
+use App\Models\TicketDetail;
 use App\Models\WebConfigs;
 use Carbon\Carbon;
 use Illuminate\Console\Scheduling\Schedule;
@@ -52,19 +53,23 @@ class BookingController extends Controller
 
         $config = WebConfigs::where('name', '=', 'brand_name')
             ->orWhere('name', '=', 'time_cancel')
-            ->orWhere('name', '=', 'list_mail_reciver')->get();
+            ->orWhere('name', '=', 'list_mail_reciver')
+            ->orWhere('name', '=', 'brand_phone')->get();
         $name = $config[0]->value;
-        $time_cancel = $config[1]->value;
+        $time_cancel = $config[2]->value;
         $mail_details = [
             'cus_name' => $data["cus_name"],
             'cus_email' => $data["cus_email"],
             'cus_phone' => $data["cus_phone"],
             'brand_name' => $name,
             'time' => $data["start_at"],
-            'title' => "You have successfully booked your appointment!",
-            'body' => "You can cancel your appoinment before $time_cancel minutes",
+            'title' => "Vous avez pris rendez-vous avec succès !!",
+            'body' => "Vous pouvez annuler votre rendez-vous avant $time_cancel minutes",
+            'branch' => $data['branch'],
+            'service' => "$service->name - $service->price_couleur €",
+            'brand_phone' => $config[1]->value
         ];
-        $list_mail = str_replace(array('[', ']', '{', '}', '"', "value:"), "", $config[2]->value);
+        $list_mail = str_replace(array('[', ']', '{', '}', '"', "value:"), "", $config[3]->value);
         $array_mail = explode(",", $list_mail);
 
         $configApp = config('sendmail');
@@ -84,12 +89,14 @@ class BookingController extends Controller
     function cancel_appoinment($id)
     {
         $ticket = Ticket::findOrFail($id);
+        $ticket_details = TicketDetail::where('bill_id', $id)->first();
         $ticket->status_id = 3;
         $ticket->save();
 
         $config = WebConfigs::where('name', '=', 'brand_name')
             ->orWhere('name', '=', 'time_cancel')
-            ->orWhere('name', '=', 'list_mail_reciver')->get();
+            ->orWhere('name', '=', 'list_mail_reciver')
+            ->orWhere('name', '=', 'brand_phone')->get();
         $name = $config[0]->value;
         $mail_details = [
             'cus_name' => $ticket->cus_name,
@@ -97,10 +104,13 @@ class BookingController extends Controller
             'cus_phone' => $ticket->cus_phone,
             'brand_name' => $name,
             'time' => date("d-m-Y H:i:s", ($ticket->start_at / 1000)),
-            'title' => "$ticket->cus_name canceled appoinment!",
+            'title' => "$ticket->cus_name rendez-vous annulé!",
             'body' => "",
+            'branch' => $ticket->branch,
+            'service' => $ticket_details->service_name . " - " . $ticket_details->price . " €",
+            'brand_phone' => $config[1]->value
         ];
-        $list_mail = str_replace(array('[', ']', '{', '}', '"', "value:"), "", $config[2]->value);
+        $list_mail = str_replace(array('[', ']', '{', '}', '"', "value:"), "", $config[3]->value);
         $array_mail = explode(",", $list_mail);
 
         $configApp = config('sendmail');

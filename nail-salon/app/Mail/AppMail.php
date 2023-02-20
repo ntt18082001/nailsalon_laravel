@@ -31,7 +31,7 @@ class AppMail extends Mailable
     {
         $brand_name = WebConfigs::where('name', '=', 'brand_name')->get();
         $name = $brand_name[0]->value;
-        return $this->subject("Mail from $name")
+        return $this->subject("Confirmation de votre rdv | Salon manicure $name")
             ->view('mail.index');
     }
 }

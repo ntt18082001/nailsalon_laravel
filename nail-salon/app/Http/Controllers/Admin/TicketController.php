@@ -68,33 +68,40 @@ class TicketController extends Controller
     {
         $user = Auth::user();
         $ticket = Ticket::findOrFail($id);
+        $ticket_details = TicketDetail::where('bill_id', $id)->first();
         $ticket->status_id = $id_status;
 
-        $config = WebConfigs::where('name', '=', 'brand_name')
-            ->orWhere('name', '=', 'time_cancel')
-            ->orWhere('name', '=', 'list_mail_reciver')->get();
-        $name = $config[0]->value;
-        $mail_details = [
-            'cus_name' => $ticket->cus_name,
-            'cus_email' => $ticket->cus_email,
-            'cus_phone' => $ticket->cus_phone,
-            'brand_name' => $name,
-            'time' => date("d-m-Y H:i:s", ($ticket->start_at / 1000)),
-            'title' => "$user->name canceled appoinment!",
-            'body' => "",
-        ];
-        $list_mail = str_replace(array('[', ']', '{', '}', '"', "value:"), "", $config[2]->value);
-        $array_mail = explode(",", $list_mail);
+        if ($id_status == 3 || $id_status == 4) {
+            $config = WebConfigs::where('name', '=', 'brand_name')
+                ->orWhere('name', '=', 'time_cancel')
+                ->orWhere('name', '=', 'list_mail_reciver')
+                ->orWhere('name', '=', 'brand_phone')->get();
+            $name = $config[0]->value;
+            $mail_details = [
+                'cus_name' => $ticket->cus_name,
+                'cus_email' => $ticket->cus_email,
+                'cus_phone' => $ticket->cus_phone,
+                'brand_name' => $name,
+                'time' => date("d-m-Y H:i:s", ($ticket->start_at / 1000)),
+                'title' => "$user->name rendez-vous annulé!",
+                'body' => "",
+                'branch' => $ticket->branch,
+                'service' => $ticket_details->service_name . " - " . $ticket_details->price . " €",
+                'brand_phone' => $config[1]->value
+            ];
+            $list_mail = str_replace(array('[', ']', '{', '}', '"', "value:"), "", $config[3]->value);
+            $array_mail = explode(",", $list_mail);
 
-        $configApp = config('sendmail');
-        if ($configApp) {
-            $job = (new SendMail($mail_details, $array_mail));
-            dispatch($job)->delay(now()->addSeconds(30));
-        } else {
-            $send_mail = new AppMail($mail_details);
-            Mail::to($mail_details['cus_email'])->send($send_mail);
-            foreach ($array_mail as $key => $value) {
-                Mail::to($value)->send($send_mail);
+            $configApp = config('sendmail');
+            if ($configApp) {
+                $job = (new SendMail($mail_details, $array_mail));
+                dispatch($job)->delay(now()->addSeconds(30));
+            } else {
+                $send_mail = new AppMail($mail_details);
+                Mail::to($mail_details['cus_email'])->send($send_mail);
+                foreach ($array_mail as $key => $value) {
+                    Mail::to($value)->send($send_mail);
+                }
             }
         }
         $ticket->save();
