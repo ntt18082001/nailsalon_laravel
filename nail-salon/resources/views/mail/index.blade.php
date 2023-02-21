@@ -81,7 +81,7 @@
                                                                 {{ $details['body'] }}
                                                             </h5>
                                                             <h5>
-                                                                Applez vous: {{ $details['brand_phone'] }}
+                                                                Applez-Nous: {{ $details['brand_phone'] }}
                                                             </h5>
                                                             <h5>
                                                                 Service: {{ $details['service'] }}

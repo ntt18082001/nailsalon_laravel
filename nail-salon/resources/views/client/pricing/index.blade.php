@@ -64,7 +64,7 @@
                                                 </div>
                                                 <!-- Description -->
                                                 <div class="price-txt">
-                                                    <p class="p-md"><em>Service length {{ $child->duration }}
+                                                    <p class="p-md"><em>Service {{ $child->duration }}
                                                             minutes</em>
                                                     </p>
                                                 </div>

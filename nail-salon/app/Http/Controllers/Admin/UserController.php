@@ -44,7 +44,7 @@ class UserController extends Controller
             'password' => "Password",
             "confirmPassword" => "Confirm password"
         ];
-        if ($id != null){
+        if ($id != null) {
             // Bỏ qua check unique khi update
             $rules["username"] = ['required', Rule::unique('users')->ignore($id)];
             $rules["email"] = ['required', 'email', Rule::unique('users')->ignore($id)];
@@ -58,9 +58,9 @@ class UserController extends Controller
         // TODO: lỗi không hiển thị validate mesg
         $validator->validate();
 
-        if ($id == null){
+        if ($id == null) {
             $user = new User();
-        }else{
+        } else {
             $user = User::findOrFail($id);
         }
         $user->name = $request->name;
@@ -69,7 +69,7 @@ class UserController extends Controller
         $user->role_id = $request->role_id;
         $user->phone_number = $request->phone_number;
         $user->email = $request->email;
-        if ($id == null){
+        if ($id == null) {
             $user->password = Hash::make($request->password);
         }
         $user->save();
@@ -94,7 +94,8 @@ class UserController extends Controller
         return redirect()->route("index.user");
     }
 
-    function changepassword() {
+    function changepassword()
+    {
         return view('admin.user.changepassword');
     }
     function saveChangePassword(Request $request)
@@ -128,5 +129,19 @@ class UserController extends Controller
                 ->back()
                 ->with("change-err", "Incorect old password!");
         }
+    }
+    function delete($id)
+    {
+        $data = User::findOrFail($id);
+        $data->delete();
+        return redirect()->route("admin.user.index");
+    }
+    function detail($id)
+    {
+        $data = User::findOrFail($id);
+        if ($data == null) {
+            return view('admin.user.index');
+        }
+        return view('admin.user.detail')->with('data', $data);
     }
 }

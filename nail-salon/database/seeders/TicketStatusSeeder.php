@@ -16,7 +16,7 @@ class TicketStatusSeeder extends Seeder
     {
         DB::table('ticket_statuses')->insert([
             'id' => 1,
-            'name' => 'Pending'
+            'name' => 'En cour'
         ]);
         DB::table('ticket_statuses')->insert([
             'id' => 2,

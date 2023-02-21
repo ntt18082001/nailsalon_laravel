@@ -4,7 +4,7 @@
 		<div class="card">
 			<h3 class="card-header">Ticket information</h3>
 			<div class="card-body">
-				<strong><i class="fas fa-code mr-1"></i>#</strong>
+				<strong><i class="fas fa-code mr-1"></i>N.</strong>
 				<p class="text-muted bigger-text">{{ $data->id }}</p>
 
 				<strong><i class="fas fa-book mr-1"></i>Customer name</strong>
@@ -16,7 +16,7 @@
 				<strong><i class="fas fa-phone mr-1"></i>Phone number</strong>
 				<p class="text-muted bigger-text">{{ $data->cus_phone }}</p>
 
-				<strong><i class="fas fa-phone mr-1"></i>Branch</strong>
+				<strong><i class="fas fa-phone mr-1"></i>Addresse</strong>
 				<p class="text-muted bigger-text">{{ $data->branch }}</p>
                 
 				<strong><i class="fas fa-sticky-note mr-1"></i>Note</strong>

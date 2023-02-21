@@ -4,10 +4,10 @@ function getNameRole($role_id) {
         return "Admin";
     }
     if($role_id == 2) {
-        return "Nhân viên";
+        return "Staff";
     }
     if($role_id == 3) {
-        return "Khách hàng";
+        return "Customer";
     }
 }
 @endphp
@@ -47,6 +47,14 @@ function getNameRole($role_id) {
                         <a href=" {{ route('admin.user.update', ['id'=> $item->id]) }}" class="btn btn-secondary">
                             <i class="fa-solid fa-pen-to-square"></i>
                             Edit
+                        </a>
+                        <a href=" {{ route('admin.user.detail', ['id'=> $item->id]) }}" class="btn btn-info">
+                            <i class="fa-solid fa-pen-to-square"></i>
+                            Detail
+                        </a>
+                        <a href=" {{ route('admin.user.delete', ['id'=> $item->id]) }}" class="btn btn-danger" onclick="return confirm('Confirm account deletion?')">
+                            <i class="fa-solid fa-pen-to-square"></i>
+                            Delete
                         </a>
                         {{-- @if ($item->is_blocked == true)
                         <a href="{{ route('block.user', ['id' => $item->id]) }}" class=" btn btn-danger">
