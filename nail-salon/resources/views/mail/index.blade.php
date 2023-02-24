@@ -84,7 +84,11 @@
                                                                 Applez-Nous: {{ $details['brand_phone'] }}
                                                             </h5>
                                                             <h5>
-                                                                Service: {{ $details['service'] }}
+                                                                Service: <span>
+                                                                    @foreach ($details['services'] as $item)
+                                                                       <p>{{ $item->service_name }} - {{ $item->price }} €</p> 
+                                                                    @endforeach
+                                                                </span>
                                                             </h5>
                                                             <h5>
                                                                 Addresse: {{ $details['branch'] }}

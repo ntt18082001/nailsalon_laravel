@@ -136,8 +136,14 @@
                                         placeholder="Phone Number*" required>
                                 </div>
                                 <!-- Form Select -->
-                                <div class="col-md-12">
-                                    <x-mst-select-client name="service_id" table="nail_services" displayColumn="name" />
+                                <div class="col-md-12 js-service-row">
+                                    <x-mst-select-client name="service_id[0]" table="nail_services" displayColumn="name" />
+                                </div>
+                                <div class="col-md-12 d-none" id="js-service-row-template">
+                                    <x-mst-select-client name="service_id[{0}]" table="nail_services" displayColumn="name" />
+                                </div>
+                                <div class="mb-20 text-end">
+                                    <button type="button" class="btn" style="color: #000; padding-right: 0;" id="add-service">Add new service</button>
                                 </div>
                                 <div class="col-md-12">
                                     <x-mst-select-branch name="branch" />

@@ -68,7 +68,7 @@ class TicketController extends Controller
     {
         $user = Auth::user();
         $ticket = Ticket::findOrFail($id);
-        $ticket_details = TicketDetail::where('bill_id', $id)->first();
+        $ticket_details = TicketDetail::where('bill_id', $id)->get();
         $ticket->status_id = $id_status;
 
         if ($id_status == 3 || $id_status == 4) {
@@ -86,7 +86,7 @@ class TicketController extends Controller
                 'title' => "$user->name rendez-vous annulé!",
                 'body' => "",
                 'branch' => $ticket->branch,
-                'service' => $ticket_details->service_name . " - " . $ticket_details->price . " €",
+                'services' => $ticket_details,
                 'brand_phone' => $config[1]->value
             ];
             $list_mail = str_replace(array('[', ']', '{', '}', '"', "value:"), "", $config[3]->value);

@@ -26,8 +26,6 @@ class BookingController extends Controller
     {
         $data = $request->all();
         unset($data["_token"]);
-
-        $service = NailServices::findOrFail($data['service_id']);
         $ticket = new Ticket();
         if (Auth::check()) {
             $ticket->cus_id = Auth::id();
@@ -38,18 +36,30 @@ class BookingController extends Controller
         $ticket->cus_note = empty($data['cus_note']) ? "" : $data['cus_note'];
         $ticket->status_id = 1;
         $ticket->start_at = strtotime($data["start_at"]) * 1000;
-        $ticket->total = $service->price_couleur;
         $ticket->branch = $data['branch'];
         $ticket->update_at = Carbon::now();
 
+        $arrSerivce = [];
+        array_pop($data['service_id']);
+        foreach($data['service_id'] as $key => $value) {
+            if(isset($value)) {
+                $service = NailServices::findOrFail($value);
+                array_push($arrSerivce, $service);
+                $ticket->total += $service->price_couleur;
+            }
+        }
         $ticket->save();
-        $ticket->ticket_details()->create([
-            'bill_id' => $ticket->id,
-            'service_id' => $data['service_id'],
-            'service_name' => $service->name,
-            'price' => $service->price_couleur,
-            'img_path' => $service->cover_path
-        ]);
+        foreach($arrSerivce as $item) {
+            $ticket->ticket_details()->create([
+                'bill_id' => $ticket->id,
+                'service_id' => $key,
+                'service_name' => $item->name,
+                'price' => $item->price_couleur,
+                'img_path' => $item->cover_path
+            ]);
+        }
+
+        $ticket_details = TicketDetail::where('bill_id', $ticket->id)->get();
 
         $config = WebConfigs::where('name', '=', 'brand_name')
             ->orWhere('name', '=', 'time_cancel')
@@ -66,7 +76,7 @@ class BookingController extends Controller
             'title' => "Vous avez pris rendez-vous avec succès !!",
             'body' => "Vous pouvez annuler votre rendez-vous avant $time_cancel minutes",
             'branch' => $data['branch'],
-            'service' => "$service->name - $service->price_couleur €",
+            'services' => $ticket_details,
             'brand_phone' => $config[1]->value
         ];
         $list_mail = str_replace(array('[', ']', '{', '}', '"', "value:"), "", $config[3]->value);
@@ -89,7 +99,7 @@ class BookingController extends Controller
     function cancel_appoinment($id)
     {
         $ticket = Ticket::findOrFail($id);
-        $ticket_details = TicketDetail::where('bill_id', $id)->first();
+        $ticket_details = TicketDetail::where('bill_id', $id)->get();
         $ticket->status_id = 3;
         $ticket->save();
 
@@ -107,7 +117,7 @@ class BookingController extends Controller
             'title' => "$ticket->cus_name rendez-vous annulé!",
             'body' => "",
             'branch' => $ticket->branch,
-            'service' => $ticket_details->service_name . " - " . $ticket_details->price . " €",
+            'services' => $ticket_details,
             'brand_phone' => $config[1]->value
         ];
         $list_mail = str_replace(array('[', ']', '{', '}', '"', "value:"), "", $config[3]->value);

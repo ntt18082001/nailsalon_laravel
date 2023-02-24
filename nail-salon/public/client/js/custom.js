@@ -214,7 +214,6 @@ $(document).ready(function () {
     });
 
     const checkDateIsBlocked = (date) => {
-		console.log(disabledDate);
         return date.getDate() === disabledDate.getDate();
     };
 
@@ -591,4 +590,25 @@ $(".detail-price").map(function (index, item) {
             "text-overflow": "ellipsis",
         });
     }
+});
+
+window.rowCount = 1;
+$("#add-service").click(function (ev) {
+	var template = $("#js-service-row-template");
+	var newRow = template.clone();	// sao chép thẻ
+
+	newRow.removeClass('d-none').addClass('js-service-row');
+	newRow.removeAttr("id");
+
+	var inputOfRow = newRow.find("select");
+	inputOfRow.each(function (i, item) {
+		var inputName = $(item).attr("name");
+		inputName = inputName.replace("{0}", window.rowCount);
+		$(item).attr("name", inputName);
+	});
+
+	window.rowCount++;
+
+	// insert thẻ mới vào sau js-params-row cuối cùng
+	$(".js-service-row").last().after(newRow);
 });
