@@ -21,8 +21,8 @@
                 </span>
             @enderror
         </div>
-        <x-input name="name" label="Name" />
-        <x-textarea name="note" label="Note" />
+        <x-input name="name" label="Name" required />
+        <x-textarea name="note" label="Note" required />
         <div class="mt-3">
             <input type="submit" class="btn btn-primary text-white" value="Create" />
             <a href="{{ route('admin.servicecate.index') }}" class="btn btn-secondary">Back</a>

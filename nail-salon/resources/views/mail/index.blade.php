@@ -91,6 +91,9 @@
                                                                 </span>
                                                             </h5>
                                                             <h5>
+                                                                Total: {{ $details['total'] }} €
+                                                            </h5>
+                                                            <h5>
                                                                 Addresse: {{ $details['branch'] }}
                                                             </h5>
                                                         </div>

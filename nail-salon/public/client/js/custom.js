@@ -217,14 +217,27 @@ $(document).ready(function () {
         return date.getDate() === disabledDate.getDate();
     };
 
-    $(".booking-form").on("submit", function (ev) {
+    const checkDateIsWeekend = (date) => {
+        let dayOfWeek = date.getDay();
+        if (dayOfWeek === 6 || dayOfWeek === 0) {
+            return true;
+        }
+        return false;
+    };
+
+    $("#booking-form").on("submit", function (ev) {
         let dateTimeVal = $("#datetimepicker").val();
         if (
             checkDate(new Date(dateTimeVal)) ||
-            checkDateIsBlocked(new Date(dateTimeVal))
+            checkDateIsBlocked(new Date(dateTimeVal)) ||
+            checkDateIsWeekend(new Date(dateTimeVal))
         ) {
             ev.preventDefault();
             alert("Date is invalid!");
+        }
+        if(window.listService.length === 0) {
+            ev.preventDefault();
+            alert("You have not selected the service!");
         }
     });
 
@@ -594,21 +607,59 @@ $(".detail-price").map(function (index, item) {
 
 window.rowCount = 1;
 $("#add-service").click(function (ev) {
-	var template = $("#js-service-row-template");
-	var newRow = template.clone();	// sao chép thẻ
+    var template = $("#js-service-row-template");
+    var newRow = template.clone(); // sao chép thẻ
 
-	newRow.removeClass('d-none').addClass('js-service-row');
-	newRow.removeAttr("id");
+    newRow.removeClass("d-none").addClass("js-service-row");
+    newRow.removeAttr("id");
 
-	var inputOfRow = newRow.find("select");
-	inputOfRow.each(function (i, item) {
-		var inputName = $(item).attr("name");
-		inputName = inputName.replace("{0}", window.rowCount);
-		$(item).attr("name", inputName);
-	});
+    var inputOfRow = newRow.find("select");
+    inputOfRow.each(function (i, item) {
+        var inputName = $(item).attr("name");
+        inputName = inputName.replace("{0}", window.rowCount);
+        $(item).attr("name", inputName);
+    });
 
-	window.rowCount++;
+    window.rowCount++;
 
-	// insert thẻ mới vào sau js-params-row cuối cùng
-	$(".js-service-row").last().after(newRow);
+    // insert thẻ mới vào sau js-params-row cuối cùng
+    $(".js-service-row").last().after(newRow);
+});
+
+window.listService = [];
+
+const renderListService = () => {
+    const ul = $(".list-service");
+    ul.html("");
+    window.listService.forEach((item, index) => {
+        let li = `<li class="mb-20">
+                    <span>${item.text.trim()}</span>
+                    <button type="button" data-id=${item.id} class="btn-close"></button>
+                    <input hidden type="text" name="service_id[${index}]" value="${item.id}">
+                </li><hr />`;
+        ul.append(li);
+    });
+};
+
+$(".btn-add-service").on("click", function (ev) {
+    const opt = $("#service_id option:selected");
+    if(window.listService.some(item => item.id === opt.val())) {
+        alert("Service was selected!");
+        return;
+    }
+    window.listService.push({
+        id: opt.val(),
+        text: opt.text(),
+    });
+    $("#exampleModal").modal("hide");
+    $(".modal-backdrop").remove();
+    $("body").removeClass("modal-open");
+    renderListService();
+    $("#service_id").val("");
+});
+
+$(document).on("click", ".btn-close", function (ev) {
+    const id = $(ev.currentTarget).attr('data-id');
+    window.listService = window.listService.filter(item => item.id !== id);
+    renderListService();
 });

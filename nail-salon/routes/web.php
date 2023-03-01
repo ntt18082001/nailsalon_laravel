@@ -29,6 +29,7 @@ Route::prefix("/admin")->namespace("App\Http\Controllers\Admin")->name("admin")-
         Route::post('/savechangepassword', "$controller@saveChangePassword")->name('savechangepassword');
         Route::get('/delete/{id}', "$controller@delete")->name('delete');
         Route::get('/detail/{id}', "$controller@detail")->name('detail');
+        Route::get('/guest', "$controller@guest")->name('guest');
     });
 
     Route::name(".account.")->group(function() {

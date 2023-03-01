@@ -5288,5 +5288,18 @@ nav a#pull {
   opacity: 0.8;
 }
 
-
-
+.list-service li {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px;
+}
+.list-service li:last-child {
+  margin-bottom: 20px;
+}
+.list-service li span {
+  width: 90%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

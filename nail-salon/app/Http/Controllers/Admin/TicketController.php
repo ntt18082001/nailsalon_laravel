@@ -87,8 +87,9 @@ class TicketController extends Controller
                 'body' => "",
                 'branch' => $ticket->branch,
                 'services' => $ticket_details,
-                'brand_phone' => $config[1]->value
-            ];
+                'brand_phone' => $config[1]->value,
+                'total' => $ticket->total
+        ];
             $list_mail = str_replace(array('[', ']', '{', '}', '"', "value:"), "", $config[3]->value);
             $array_mail = explode(",", $list_mail);
 

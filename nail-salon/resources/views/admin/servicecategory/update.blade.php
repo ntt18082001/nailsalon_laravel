@@ -25,8 +25,8 @@
                 </span>
             @enderror
         </div>
-        <x-input name="name" label="Name" value="{{ $data->name }}" />
-        <x-textarea name="note" label="Note" value="{{ $data->note }}" />
+        <x-input name="name" label="Name" value="{{ $data->name }}" required/>
+        <x-textarea name="note" label="Note" value="{{ $data->note }}" required/>
         <div class="mt-3">
             <input type="submit" class="btn btn-primary text-white" value="Update" />
             <a href="{{ route('admin.servicecate.index') }}" class="btn btn-secondary">Back</a>

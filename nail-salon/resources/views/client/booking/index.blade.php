@@ -1,8 +1,11 @@
 <x-client-layout title="Booking">
+    <x-slot name="header">
+        <link rel="stylesheet" href="{{ asset('css/chosen.css') }}">
+    </x-slot>
     @php
         $date = App\Models\WebConfigs::where('name', '=', 'disabled_date')->get();
     @endphp
-    <input hidden id="disabled_date" type="date" value="{{$date[0]->value}}" />
+    <input hidden id="disabled_date" type="date" value="{{ $date[0]->value }}" />
     <!-- PAGE HERO
    ============================================= -->
     <section id="booking-page" class="bg-fixed page-hero-section division">
@@ -117,7 +120,7 @@
                             <!-- Title -->
                             <h4 class="h4-xl">Prendre Rendez-vous</h4>
                             <!-- Booking Form -->
-                            <form action="{{ route('client.booking.save') }}" method="POST" class="row booking-form"
+                            <form action="{{ route('client.booking.save') }}" method="POST" class="row booking-form" id="booking-form"
                                 autocomplete="off">
                                 @csrf
                                 <!-- Form Input -->
@@ -135,16 +138,13 @@
                                     <input type="tel" name="cus_phone" class="form-control phone"
                                         placeholder="Phone Number*" required>
                                 </div>
-                                <!-- Form Select -->
-                                <div class="col-md-12 js-service-row">
-                                    <x-mst-select-client name="service_id[0]" table="nail_services" displayColumn="name" />
+                                <div class="mb-20">
+                                    <button type="button" class="btn"
+                                        style="color: #000; padding-left: 0;"data-bs-toggle="modal"
+                                        data-bs-target="#exampleModal">+ Add new service</button>
                                 </div>
-                                <div class="col-md-12 d-none" id="js-service-row-template">
-                                    <x-mst-select-client name="service_id[{0}]" table="nail_services" displayColumn="name" />
-                                </div>
-                                <div class="mb-20 text-end">
-                                    <button type="button" class="btn" style="color: #000; padding-right: 0;" id="add-service">Add new service</button>
-                                </div>
+                                <ul class="list-service">
+                                </ul>
                                 <div class="col-md-12">
                                     <x-mst-select-branch name="branch" />
                                 </div>
@@ -154,8 +154,8 @@
                                         class="form-control date" placeholder="Appointment Date*" required readonly>
                                 </div>
                                 <div class="col-md-12">
-                                    <textarea type="text" name="cus_note"
-                                        class="form-control" placeholder="Note" style="padding: 10px 12px;" rows="3" ></textarea>
+                                    <textarea type="text" name="cus_note" class="form-control" placeholder="Note" style="padding: 10px 12px;"
+                                        rows="3"></textarea>
                                 </div>
                                 <!-- Form Button -->
                                 <div class="col-md-12 mt-10 text-end">
@@ -169,6 +169,30 @@
             </div> <!-- End row -->
         </div> <!-- End container -->
     </section> <!-- END BOOKING-1 -->
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Select a service</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <!-- Form Select -->
+                    <div class="col-md-12 js-service-row">
+                        <label class="mb-10" for="service_id">Select service</label>
+                        <x-mst-select-client name="service_id" table="nail_services" displayColumn="name" />
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary bg-primary btn-add-service">Save</button>
+                    <button type="button" class="btn btn-secondary bg-secondary"
+                        data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- TESTIMONIALS-1
    ============================================= -->
@@ -202,4 +226,13 @@
 
         </div> <!-- End container -->
     </section> <!-- END TESTIMONIALS-1 -->
+    <x-slot name="script">
+        <script src="{{ asset('js/chosen.jquery.js') }}"></script>
+        <script>
+            $(".chosen-select").chosen();
+            $(".chosen-container").css({
+                'width': '100%'
+            });
+        </script>
+    </x-slot>
 </x-client-layout>

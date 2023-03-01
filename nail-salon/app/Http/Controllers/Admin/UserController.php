@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use App\Models\WalkinGuest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -143,5 +144,11 @@ class UserController extends Controller
             return view('admin.user.index');
         }
         return view('admin.user.detail')->with('data', $data);
+    }
+
+    function guest() {
+        $users = User::select('id', 'name', 'email', 'phone_number')->where('role_id', '=', 3);
+        $result = WalkinGuest::select('id', 'name', 'email', 'phone_number')->union($users)->orderBy('id')->paginate();
+        return view('admin.user.guest')->with('data', $result);
     }
 }
