@@ -1354,6 +1354,7 @@ ol.digit-list p {
   -moz-transition: transform 400ms;
   -o-transition: transform 400ms;
   transition: transform 400ms;
+  height: 427px;
 }
 
 /*------------------------------------------*/

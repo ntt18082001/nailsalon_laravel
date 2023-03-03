@@ -27,6 +27,11 @@
             <ul class="navbar-nav" id="navbar-nav">
                 <li class="menu-title"><span data-key="t-menu">Menu</span></li>
                 <li class="nav-item">
+                    <a class="nav-link menu-link" href="{{ route('admin.ticketpromo.index') }}">
+                        <i class="mdi mdi-ticket"></i> <span data-key="t-widgets">Ticket 2</span>
+                    </a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link menu-link" href="{{ route('admin.ticket.index') }}">
                         <i class="mdi mdi-ticket"></i> <span data-key="t-widgets">Ticket</span>
                     </a>
