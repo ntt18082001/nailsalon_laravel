@@ -71,8 +71,11 @@
                             </ol>
                         </td>
                         <td class="fit" style="vertical-align: bottom;">
+                            @php
+                                $invisible = count($item->user_ticket_details) == 10 ? "invisible" : "";
+                            @endphp
                             <button type="button" data-check-id={{ $item->id }}
-                                class="btn btn-primary btn-add-check" data-bs-toggle="modal"
+                                class="btn btn-primary btn-add-check {{$invisible}}" data-bs-toggle="modal"
                                 data-bs-target="#exampleModalgrid">
                                 Check
                             </button>

@@ -22,8 +22,11 @@ $(document).ready(function () {
                                     <span
                                     class="badge text-bg-dark">${format(date)}</span>
                                 </li>`;
-                    $(`.js-parent-${checkIdGlobal} .list-check`).append($(newLi));
+                                $(`.js-parent-${checkIdGlobal} .list-check`).append($(newLi));
                     valDate.val("");
+                    if($(`.js-parent-${checkIdGlobal} .list-check li`).length == 10) {
+                        $(".btn-add-check").addClass('invisible');
+                    }
                 }
             });
         } else {
