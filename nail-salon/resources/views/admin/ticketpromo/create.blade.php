@@ -15,7 +15,7 @@
                     <!-- Inline Checkbox -->
                     <div class="form-check form-check-inline">
                         <label class="form-check-label"
-                            for="inlineCheckbox{{$i}}">.{{ $i + 1 }}</label>
+                            for="inlineCheckbox{{$i}}">.{{ $i + 1 }}<span></span></label>
                         <input class="form-check-input checkbox" type="checkbox" data-index="{{$i}}" id="inlineCheckbox{{$i}}"
                             value="{{$i}}" data-bs-toggle="modal" data-bs-target="#varyingcontentModal" >
                         <input type="hidden" name="ticket_detail[{{$i}}]">

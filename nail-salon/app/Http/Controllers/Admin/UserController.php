@@ -145,10 +145,4 @@ class UserController extends Controller
         }
         return view('admin.user.detail')->with('data', $data);
     }
-
-    function guest() {
-        $users = User::select('id', 'name', 'email', 'phone_number')->where('role_id', '=', 3);
-        $result = WalkinGuest::select('id', 'name', 'email', 'phone_number')->union($users)->orderBy('id')->paginate();
-        return view('admin.user.guest')->with('data', $result);
-    }
 }

@@ -7,18 +7,20 @@ $(document).ready(function () {
     });
 
     $(".submit").on("click", function (ev) {
-        $("#varyingcontentModal").modal("hide");
-        $(".modal-backdrop").remove();
-        $("body").removeClass("modal-open");
         const valDate = $("#checked_date");
         if (valDate.val() != "") {
+            $("#varyingcontentModal").modal("hide");
+            $(".modal-backdrop").remove();
+            $("body").removeClass("modal-open");
             const checked = $(`#inlineCheckbox${dataIndex}`);
             checked.prop("checked", true);
             checked.next().val(valDate.val());
-            checked.closest('.form-check').attr('title', valDate.val());
+            checked.closest('.form-check').find('label span').text(": " + valDate.val());
             valDate.val("");
             $(".checkbox:not(:checked)").attr("disabled", false);
             $(".checkbox:not(:checked):not(:first)").attr("disabled", true);
+        } else {
+            alert("Date is null");
         }
     });
 });

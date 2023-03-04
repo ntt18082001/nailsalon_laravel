@@ -52,81 +52,8 @@ class BookingController extends Controller
             }
         }
 
-        $cus_promo = null;
-        if (Auth::check()) {
-            $cus_promo = CustomerPromotion::where('cus_id', Auth::id())->first();
-            if ($cus_promo == null) {
-                $cus_promo = new CustomerPromotion();
-                $cus_promo->cus_id = Auth::id();
-                $cus_promo->discount = 0;
-            } else {
-                $cus_promo->booking_no += 1;
-                if ($cus_promo->booking_no > 5 && $cus_promo->booking_no <= 10) {
-                    $cus_promo->discount = 10;
-                } elseif ($cus_promo->booking_no > 10) {
-                    $cus_promo->discount = 20;
-                }
-            }
-        } else {
-            $user = User::where('email', $data['cus_email'])->orWhere('phone_number', $data['cus_phone'])->first();
-            $walkin_guest = WalkinGuest::where('email', $data['cus_email'])->orWhere('phone_number', $data['cus_phone'])->first();
-            if ($user != null) {
-                $cus_promo = CustomerPromotion::where('cus_id', $user->id)->first();
-                if ($cus_promo == null) {
-                    $cus_promo = new CustomerPromotion();
-                    $cus_promo->cus_id = $user->id;
-                    $cus_promo->discount = 0;
-                } else {
-                    $cus_promo->booking_no += 1;
-                    if ($cus_promo->booking_no > 5 && $cus_promo->booking_no <= 10) {
-                        $cus_promo->discount = 10;
-                    } elseif ($cus_promo->booking_no > 10) {
-                        $cus_promo->discount = 20;
-                    }
-                }
-            } elseif ($walkin_guest != null) {
-                $cus_promo = CustomerPromotion::where('walkin_guest_id', $walkin_guest->id)->first();
-                if ($cus_promo == null) {
-                    $cus_promo = new CustomerPromotion();
-                    $cus_promo->walkin_guest_id = $walkin_guest->id;
-                    $cus_promo->discount = 0;
-                } else {
-                    $cus_promo->booking_no += 1;
-                    if ($cus_promo->booking_no > 5 && $cus_promo->booking_no <= 10) {
-                        $cus_promo->discount = 10;
-                    } elseif ($cus_promo->booking_no > 10) {
-                        $cus_promo->discount = 20;
-                    }
-                }
-            } else {
-                $walk_guest = new WalkinGuest();
-                $walk_guest->name = $data['cus_name'];
-                $walk_guest->email = $data['cus_email'];
-                $walk_guest->phone_number = $data['cus_phone'];
-                $walk_guest->save();
-
-                $cus_promo = new CustomerPromotion();
-                $cus_promo->walkin_guest_id = $walk_guest->id;
-                $cus_promo->discount = 0;
-            }
-        }
-
-        if ($cus_promo != null) {
-            if($cus_promo->booking_no > 5 && $cus_promo->booking_no <= 10) {
-                $ticket->total = $ticket->total -  ($ticket->total * $cus_promo->discount / 100);
-            } elseif($cus_promo->booking_no > 10) {
-                $ticket->total =  $ticket->total - ($ticket->total * $cus_promo->discount / 100);
-                $cus_promo->booking_no = 0;
-                $cus_promo->discount = 0;
-            }
-            $cus_promo->save();
-        }
-
         $ticket->save();
         
-        $cus_promo->bill_id = $ticket->id;
-        $cus_promo->save();
-
         foreach ($arrSerivce as $item) {
             $ticket->ticket_details()->create([
                 'bill_id' => $ticket->id,
