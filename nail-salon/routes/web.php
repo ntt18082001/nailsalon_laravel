@@ -97,6 +97,16 @@ Route::prefix("/admin")->namespace("App\Http\Controllers\Admin")->name("admin")-
         $controller = "SubscriberController";
         Route::get('/', "$controller@index")->name('index');
     });
+
+    Route::prefix('/ticket-promo')->name('.ticketpromo.')->group(function() {
+        $controller = "UserTicketPromoController";
+        Route::get('/', "$controller@index")->name('index');
+        Route::get('/create', "$controller@create")->name('create');
+        Route::get('/delete/{id}', "$controller@delete")->name('delete');
+        Route::get('/reset/{id}', "$controller@reset")->name('reset');
+        Route::post('/createsave/{id?}', "$controller@save")->name('createsave');
+        Route::get('/add-checked', "$controller@addChecked")->name('addcheck');
+    });
 });
 
 Route::prefix("/")->namespace("App\Http\Controllers\Client")->name("client.")->group(function() {

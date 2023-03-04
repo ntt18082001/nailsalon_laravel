@@ -22,7 +22,7 @@ $(document).ready(function () {
 			$('.modal-backdrop').remove();
 			$('body').removeClass("modal-open");
 			if(res.message) {
-				noti.success(`Cập nhật trạng thái ticket #${orderIdGlobal} thành công!`);
+				noti.success(`Update status of ticket #${orderIdGlobal} successfully!`);
 				$(`.btn-status-${orderIdGlobal}`).attr('data-status-id', statusId);
 				$(`.status-${orderIdGlobal}`)
 					.text(statusText)

@@ -8,7 +8,7 @@ $_value = empty($_old_value) ? $_value : $_old_value;
 $_isrequired=isset($attributes['required']) ? "required" : '';
 @endphp
 <div class="form-group mt-3">
-    <label for="{{ $_name }}" class="form-label"> {{ $_label }} </label>
+    <label for="{{ $_name }}" class="form-label {{$_isrequired}}"> {{ $_label }} </label>
     <input id="{{ $_name }}" name="{{ $_name }}" value="{{ $_value }}" type="{{ $_type }}" {{$_isrequired}}
         class="form-control @error($_name) is-inavalid @enderror">
         <span class="text-danger"></span>
