@@ -647,15 +647,19 @@ $(".btn-add-service").on("click", function (ev) {
         alert("Service was selected!");
         return;
     }
-    window.listService.push({
-        id: opt.val(),
-        text: opt.text(),
-    });
-    $("#exampleModal").modal("hide");
-    $(".modal-backdrop").remove();
-    $("body").removeClass("modal-open");
-    renderListService();
-    $("#service_id").val("");
+    if(opt.val() != "") {
+        window.listService.push({
+            id: opt.val(),
+            text: opt.text(),
+        });
+        $("#exampleModal").modal("hide");
+        $(".modal-backdrop").remove();
+        $("body").removeClass("modal-open");
+        renderListService();
+        $("#service_id").val("");
+    } else {
+        alert('Choose a service!');
+    }
 });
 
 $(document).on("click", ".btn-close", function (ev) {
