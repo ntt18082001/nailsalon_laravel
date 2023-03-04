@@ -141,7 +141,7 @@
                                 <div class="mb-20">
                                     <button type="button" class="btn"
                                         style="color: #000; padding-left: 0;"data-bs-toggle="modal"
-                                        data-bs-target="#exampleModal">+ Add new service</button>
+                                        data-bs-target="#exampleModal">+ Ajouter un service</button>
                                 </div>
                                 <ul class="list-service">
                                 </ul>

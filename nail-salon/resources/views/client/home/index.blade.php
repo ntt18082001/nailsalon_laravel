@@ -74,7 +74,6 @@
                 <div class="col-md-7 col-lg-6">
                     <div class="txt-block left-column wow fadeInRight">
                         <!-- Section ID -->
-                        <div class="section-id">Get Your Shine On</div>
                         <x-web-config displayData='about' />
                     </div>
                 </div>
