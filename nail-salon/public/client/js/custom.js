@@ -642,24 +642,19 @@ const renderListService = () => {
 };
 
 $(".btn-add-service").on("click", function (ev) {
-    const opt = $("#service_id option:selected");
-    if(window.listService.some(item => item.id === opt.val())) {
-        alert("Service was selected!");
-        return;
-    }
-    if(opt.val() != "") {
+    const listChecked = $('#exampleModal input:checked');
+    window.listService = [];
+    listChecked.each(function(index, item) {
+        const ele = $(item).closest('.form-check');
         window.listService.push({
-            id: opt.val(),
-            text: opt.text(),
+            id: ele.attr('data-id'),
+            text: `${ele.attr('data-cate-name')} - ${ele.attr('data-service-name')} - ${ele.attr('data-price')} €`
         });
-        $("#exampleModal").modal("hide");
-        $(".modal-backdrop").remove();
-        $("body").removeClass("modal-open");
-        renderListService();
-        $("#service_id").val("");
-    } else {
-        alert('Choose a service!');
-    }
+    });
+    $("#exampleModal").modal("hide");
+    $(".modal-backdrop").remove();
+    $("body").removeClass("modal-open");
+    renderListService();
 });
 
 $(document).on("click", ".btn-close", function (ev) {

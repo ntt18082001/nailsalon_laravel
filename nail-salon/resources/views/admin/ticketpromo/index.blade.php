@@ -72,9 +72,9 @@
                         </td>
                         <td class="fit" style="vertical-align: bottom;">
                             @php
-                                $invisible = count($item->user_ticket_details) == 10 ? "invisible" : "";
+                                $invisible = count($item->user_ticket_details) >= 10 ? "invisible" : "";
                             @endphp
-                            <button type="button" data-check-id={{ $item->id }}
+                            <button type="button" data-check-id="{{ $item->id }}" data-cus-name="{{$item->name}}"
                                 class="btn btn-primary btn-add-check {{$invisible}}" data-bs-toggle="modal"
                                 data-bs-target="#exampleModalgrid">
                                 Check
@@ -104,12 +104,11 @@
                 <div class="modal-body">
                     <div class="mb-3">
                         <label for="recipient-name" class="col-form-label">Checked date</label>
-                        <input type="date" class="form-control" id="checked_date" />
+                        <input type="date" class="form-control" id="checked_date" value="{{date('Y-m-d')}}" />
                     </div>
                 </div>
                 <div class="modal-footer">
                     <div class="hstack gap-2 justify-content-end">
-                        <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
                         <button type="button" class="btn btn-primary btn-submit">Add</button>
                     </div>
                 </div>

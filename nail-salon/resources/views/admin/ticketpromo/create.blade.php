@@ -12,14 +12,37 @@
                     $defaultcheck = config('defaultchecket');
                 @endphp
                 @for ($i = 0; $i < $defaultcheck; $i++)
-                    <!-- Inline Checkbox -->
-                    <div class="form-check form-check-inline">
-                        <label class="form-check-label"
-                            for="inlineCheckbox{{$i}}">.{{ $i + 1 }}<span></span></label>
-                        <input class="form-check-input checkbox" type="checkbox" data-index="{{$i}}" id="inlineCheckbox{{$i}}"
-                            value="{{$i}}" data-bs-toggle="modal" data-bs-target="#varyingcontentModal" >
-                        <input type="hidden" name="ticket_detail[{{$i}}]">
-                    </div>
+                    @if ($i == 4)
+                        <!-- Inline Checkbox -->
+                        <div class="form-check form-check-inline">
+                            <label class="form-check-label"
+                                for="inlineCheckbox{{ $i }}">.{{ $i + 1 }}<span></span> (-10%)</label>
+                            <input class="form-check-input checkbox" type="checkbox" data-index="{{ $i }}"
+                                id="inlineCheckbox{{ $i }}" value="{{ $i }}"
+                                data-bs-toggle="modal" data-bs-target="#varyingcontentModal">
+                            <input type="hidden" name="ticket_detail[{{ $i }}]">
+                        </div>
+                    @elseif ($i == 9)
+                        <!-- Inline Checkbox -->
+                        <div class="form-check form-check-inline">
+                            <label class="form-check-label"
+                                for="inlineCheckbox{{ $i }}">.{{ $i + 1 }}<span></span> (-20%)</label>
+                            <input class="form-check-input checkbox" type="checkbox" data-index="{{ $i }}"
+                                id="inlineCheckbox{{ $i }}" value="{{ $i }}"
+                                data-bs-toggle="modal" data-bs-target="#varyingcontentModal">
+                            <input type="hidden" name="ticket_detail[{{ $i }}]">
+                        </div>
+                    @else
+                        <!-- Inline Checkbox -->
+                        <div class="form-check form-check-inline">
+                            <label class="form-check-label"
+                                for="inlineCheckbox{{ $i }}">.{{ $i + 1 }}<span></span></label>
+                            <input class="form-check-input checkbox" type="checkbox" data-index="{{ $i }}"
+                                id="inlineCheckbox{{ $i }}" value="{{ $i }}"
+                                data-bs-toggle="modal" data-bs-target="#varyingcontentModal">
+                            <input type="hidden" name="ticket_detail[{{ $i }}]">
+                        </div>
+                    @endif
                 @endfor
             </div>
             <div class="form-group mt-3">
@@ -40,18 +63,17 @@
                 <div class="modal-body">
                     <div class="mb-3">
                         <label for="recipient-name" class="col-form-label">Checked date</label>
-                        <input type="date" class="form-control" id="checked_date" />
+                        <input type="date" class="form-control" id="checked_date" value="{{date('Y-m-d')}}" />
                     </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-primary submit">Submit</button>
-                    <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
                 </div>
             </div>
         </div>
     </div>
     <x-slot name="script">
-        <script src="{{asset('js/jquery-3.6.3.min.js')}}"></script>
+        <script src="{{ asset('js/jquery-3.6.3.min.js') }}"></script>
         <script src="{{ asset('js/admin/ticketpromo/index.js') }}"></script>
     </x-slot>
 </x-admin-layout>

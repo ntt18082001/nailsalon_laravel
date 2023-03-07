@@ -16,7 +16,7 @@ $(document).ready(function () {
             checked.prop("checked", true);
             checked.next().val(valDate.val());
             checked.closest('.form-check').find('label span').text(": " + valDate.val());
-            valDate.val("");
+            valDate.val(new Date().toISOString().slice(0, 10));
             $(".checkbox:not(:checked)").attr("disabled", false);
             $(".checkbox:not(:checked):not(:first)").attr("disabled", true);
         } else {

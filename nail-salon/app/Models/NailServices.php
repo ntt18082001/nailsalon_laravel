@@ -11,6 +11,6 @@ class NailServices extends Model
     protected $guarded = [];
     protected $dates = ["discount_from", "discount_to"];
     public function service_cate() {
-        return $this->hasOne(ServiceCategory::class, 'id', 'service_cate_id');
+        return $this->belongsTo(ServiceCategory::class, 'service_cate_id');
     }
 }

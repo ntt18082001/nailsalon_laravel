@@ -57,6 +57,6 @@ class WebConfigController extends Controller
             ]);
         }
 
-        return redirect()->route('admin.config.about');
+        return redirect()->route('admin.about.index');
     }
 }

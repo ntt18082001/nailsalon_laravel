@@ -69,8 +69,14 @@ Route::prefix("/admin")->namespace("App\Http\Controllers\Admin")->name("admin")-
     Route::prefix('/config')->name('.config.')->group(function() {
         $controller = "WebConfigController";
         Route::get('/', "$controller@index")->name('index');
-        Route::get('/about', "$controller@about")->name('about');
         Route::post('/save', "$controller@save")->name('save');
+        Route::get('/about', "$controller@about")->name('about');
+        Route::post('/saveabout', "$controller@saveAbout")->name('saveabout');
+    });
+
+    Route::prefix('/about')->name('.about.')->group(function() {
+        $controller = "WebConfigController";
+        Route::get('/', "$controller@about")->name('index');
         Route::post('/saveabout', "$controller@saveAbout")->name('saveabout');
     });
 
@@ -97,7 +103,7 @@ Route::prefix("/admin")->namespace("App\Http\Controllers\Admin")->name("admin")-
         Route::get('/', "$controller@index")->name('index');
     });
 
-    Route::prefix('/ticket-promo')->name('.ticketpromo.')->group(function() {
+    Route::prefix('/promotion')->name('.ticketpromo.')->group(function() {
         $controller = "UserTicketPromoController";
         Route::get('/', "$controller@index")->name('index');
         Route::get('/create', "$controller@create")->name('create');

@@ -68,6 +68,7 @@
     <script src="{{ asset('assets/js/plugins.js') }}"></script>
     <!-- App js -->
     <script src="{{ asset('assets/js/app.js') }}"></script>
+    <script src="{{ asset('js/admin/navbar/index.js') }}"></script>
     {{ $script ?? '' }}
 
 </body>

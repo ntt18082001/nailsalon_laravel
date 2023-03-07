@@ -1,8 +1,11 @@
 $(document).ready(function () {
 	let checkIdGlobal = 0;
+    let cusNameGlobal = "";
     $(".btn-add-check").on("click", function (ev) {
 		const orderId = $(this).attr("data-check-id");
+		const cusName = $(this).attr("data-cus-name");
 		checkIdGlobal = orderId;
+        cusNameGlobal = cusName;
 	});
     
 	const noti = new AWN();
@@ -12,10 +15,10 @@ $(document).ready(function () {
             $("#exampleModalgrid").modal("hide");
             $(".modal-backdrop").remove();
             $("body").removeClass("modal-open");
-            $.get(`/admin/ticket-promo/add-checked`, {id: checkIdGlobal, date: valDate.val()}, function(res) {
+            $.get(`/admin/promotion/add-checked`, {id: checkIdGlobal, date: valDate.val()}, function(res) {
                 if(res) {
                     const date = new Date(valDate.val());
-                    noti.success(`Add checked #${checkIdGlobal} successfully!`);
+                    noti.success(`'${cusNameGlobal}' has been successfully checked!`);
                     let newLi = `<li>
                                     <input class="form-check-input checkbox"
                                     onclick="return false;" type="checkbox" checked>
@@ -23,10 +26,10 @@ $(document).ready(function () {
                                     class="badge text-bg-dark">${format(date)}</span>
                                 </li>`;
                                 $(`.js-parent-${checkIdGlobal} .list-check`).append($(newLi));
-                    valDate.val("");
                     if($(`.js-parent-${checkIdGlobal} .list-check li`).length == 10) {
                         $(".btn-add-check").addClass('invisible');
                     }
+                    valDate.val(new Date().toISOString().slice(0, 10));
                 }
             });
         } else {

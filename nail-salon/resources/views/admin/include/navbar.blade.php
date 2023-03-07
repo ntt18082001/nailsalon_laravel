@@ -28,12 +28,12 @@
                 <li class="menu-title"><span data-key="t-menu">Menu</span></li>
                 <li class="nav-item">
                     <a class="nav-link menu-link" href="{{ route('admin.ticket.index') }}">
-                        <i class="mdi mdi-ticket"></i> <span data-key="t-widgets">Ticket</span>
+                        <i class="mdi mdi-ticket"></i> <span data-key="t-widgets">Réservation</span>
                     </a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link menu-link" href="{{ route('admin.ticketpromo.index') }}">
-                        <i class="mdi mdi-ticket"></i> <span data-key="t-widgets">Ticket Promotion</span>
+                        <i class="mdi mdi-ticket"></i> <span data-key="t-widgets">Carte de fidélité</span>
                     </a>
                 </li>
                 <li class="nav-item">
@@ -67,7 +67,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link menu-link" href="{{ route('admin.config.about') }}">
+                    <a class="nav-link menu-link" href="{{ route('admin.about.index') }}">
                         <i class="mdi mdi-alert-circle"></i> <span data-key="t-widgets">About</span>
                     </a>
                 </li>
