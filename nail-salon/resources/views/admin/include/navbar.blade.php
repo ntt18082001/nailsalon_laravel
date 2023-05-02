@@ -27,6 +27,11 @@
             <ul class="navbar-nav" id="navbar-nav">
                 <li class="menu-title"><span data-key="t-menu">Menu</span></li>
                 <li class="nav-item">
+                    <a class="nav-link menu-link" href="{{ route('admin.customer.index') }}">
+                        <i class="mdi mdi-account-multiple"></i> <span data-key="t-widgets">Customer</span>
+                    </a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link menu-link" href="{{ route('admin.ticket.index') }}">
                         <i class="mdi mdi-ticket"></i> <span data-key="t-widgets">Réservation</span>
                     </a>

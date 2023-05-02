@@ -112,6 +112,15 @@ Route::prefix("/admin")->namespace("App\Http\Controllers\Admin")->name("admin")-
         Route::post('/createsave/{id?}', "$controller@save")->name('createsave');
         Route::get('/add-checked', "$controller@addChecked")->name('addcheck');
     });
+
+    Route::prefix('/customer')->name('.customer.')->group(function() {
+        $controller = "CustomerController";
+        Route::get('/', "$controller@index")->name('index');
+        Route::get('/create', "$controller@create")->name('create');
+        Route::post('/save/{id?}', "$controller@save")->name('save');
+        Route::get('/update/{id}', "$controller@update")->name('update');
+        Route::get('/delete/{id}', "$controller@delete")->name('delete');
+    });
 });
 
 Route::prefix("/")->namespace("App\Http\Controllers\Client")->name("client.")->group(function() {

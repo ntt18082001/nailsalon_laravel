@@ -25,6 +25,7 @@
             'time_cancel' => 'Time cancel booking (minutes)',
             'list_mail_reciver' => 'List mail reciver booking',
             'disabled_date' => 'Disabled date',
+            'sms_content' => 'SMS content'
         ];
         $arrPlaceholder = [
             'logo' => 'Path logo...',
@@ -37,6 +38,7 @@
             'time_cancel' => '',
             'list_mail_reciver' => 'List mail reciver booking',
             'disabled_date' => 'Disabled date',
+            'sms_content' => 'SMS content',
         ];
     @endphp
 
@@ -72,12 +74,12 @@
                                         </div>
 
                                     </div>
-                                @elseif($item->name == 'brand_address')
+                                @elseif($item->name == 'brand_address' || $item->name == 'sms_content')
                                     <div class="col-md-6 form-group mb-3">
                                         <label for="{{ $item->name }}"
                                             class="control-label">{{ $arrLabel[$item->name] }}</label>
                                         <textarea id="{{ $item->name }}" name="{{ $item->name }}" placeholder="{{ $arrPlaceholder[$item->name] }}"
-                                            rows="1" class="form-control" value="{{ $item->value }}">{{ $item->value }}</textarea>
+                                            rows="2" class="form-control" value="{{ $item->value }}">{{ $item->value }}</textarea>
                                     </div>
                                 @elseif($item->name == 'disabled_date')
                                     <div class="col-md-6 form-group mb-3">

@@ -1,0 +1,9 @@
+.sms {
+  display: none;
+}
+
+@media only screen and (max-width: 1400px) {
+  .sms {
+    display: inline-block;
+  }
+}
