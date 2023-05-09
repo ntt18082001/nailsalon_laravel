@@ -12,7 +12,7 @@ class HomeController extends Controller
         if(Auth::check()) {
             $user = Auth::user();
             if($user->role_id == 1 || $user->role_id == 2) {
-                return redirect()->route('admin.ticket.index');
+                return redirect()->route('admin.customer.index');
             }
             if($user->role_id == 3) {
                 return redirect("/");

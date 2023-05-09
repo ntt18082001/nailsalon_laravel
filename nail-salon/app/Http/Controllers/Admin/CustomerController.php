@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Customer;
+use App\Models\WebConfigs;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
@@ -14,20 +16,31 @@ class CustomerController extends Controller
 {
     function index()
     {
-        $result = DB::table('customers')
-            ->selectRaw('
-                id,
-                name,
-                date_of_birth,
-                phone_number,
-                email,
-                date_of_birth + INTERVAL (YEAR(CURRENT_DATE) - YEAR(date_of_birth))     YEAR AS currbirthday,
-                date_of_birth + INTERVAL (YEAR(CURRENT_DATE) - YEAR(date_of_birth)) + 1 YEAR AS nextbirthday')
-            ->orderByRaw('CASE
-                    WHEN currbirthday >= CURRENT_DATE THEN currbirthday
-                    ELSE nextbirthday
-                END')->paginate();
-        return view('admin.customer.index')->with('data', $result);
+        return view('admin.customer.index');
+    }
+    public function getListCusBirthday()
+    {
+        $today = Carbon::today();
+        $nextMonth = Carbon::today()->addMonth();
+        $customers = Customer::whereRaw('MONTH(date_of_birth) BETWEEN ? AND ?', [$today->month, $nextMonth->month])
+            ->select('date_of_birth')
+            ->get()
+            ->map(function ($customer) {
+                return $customer->date_of_birth->format('Y-m-d');
+            });
+        return response()->json([
+            'customers' => $customers,
+        ]);
+    }
+    public function getCustomersByBirthday($date)
+    {
+        $selectedDate = Carbon::parse($date);
+        $customers = Customer::select('name', 'date_of_birth', 'phone_number')
+            ->whereDay('date_of_birth', '=', $selectedDate->day)
+            ->whereMonth('date_of_birth', '=', $selectedDate->month)
+            ->get();
+        $sms_config = WebConfigs::where('name', 'sms_content')->get();
+        return response()->json(['customers' => $customers, 'sms_content' => $sms_config[0]->value]);
     }
     function save(Request $request, $id = null)
     {

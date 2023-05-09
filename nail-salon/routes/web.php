@@ -120,6 +120,8 @@ Route::prefix("/admin")->namespace("App\Http\Controllers\Admin")->name("admin")-
         Route::post('/save/{id?}', "$controller@save")->name('save');
         Route::get('/update/{id}', "$controller@update")->name('update');
         Route::get('/delete/{id}', "$controller@delete")->name('delete');
+        Route::get('/get-birthday-customers', "$controller@getListCusBirthday")->name('getListCusBirthday');
+        Route::get('/get-cus-by-birthday/{date}', "$controller@getCustomersByBirthday")->name('getCustomersByBirthday');
     });
 });
 
