@@ -32,6 +32,11 @@
                     </a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link menu-link" href="{{ route('admin.customer.birthday') }}">
+                        <i class="mdi mdi-cake-variant"></i> <span data-key="t-widgets">Customer's birthday</span>
+                    </a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link menu-link" href="{{ route('admin.ticket.index') }}">
                         <i class="mdi mdi-ticket"></i> <span data-key="t-widgets">Réservation</span>
                     </a>

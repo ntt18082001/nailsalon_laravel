@@ -116,6 +116,7 @@ Route::prefix("/admin")->namespace("App\Http\Controllers\Admin")->name("admin")-
     Route::prefix('/customer')->name('.customer.')->group(function() {
         $controller = "CustomerController";
         Route::get('/', "$controller@index")->name('index');
+        Route::get('/birthday', "$controller@birthday")->name('birthday');
         Route::get('/create', "$controller@create")->name('create');
         Route::post('/save/{id?}', "$controller@save")->name('save');
         Route::get('/update/{id}', "$controller@update")->name('update');

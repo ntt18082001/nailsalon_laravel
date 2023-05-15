@@ -18,6 +18,25 @@ function formatDate(date) {
     return [now.getFullYear(), month, day].join("-");
 }
 
+const renderColumnMobile = (phone, sms) => {
+    if (window.innerWidth <= 1400) {
+        return `<td class="fit">
+        <a href="sms:${phone}${charUserAgent()}body=${sms}"
+            class="btn btn-secondary sms">
+            <i class="mdi mdi-email"></i>
+        </a>
+      </td>`;
+    }
+    return '';
+};
+
+const charUserAgent = () => {
+    if(navigator.userAgent.includes('iPad') || navigator.userAgent.includes('iPhone')) {
+        return '&';
+    }
+    return '?';
+}
+
 axios.get("/admin/customer/get-birthday-customers").then((res) => {
     console.log(res.data.customers);
     const arrDob = res.data.customers.map((item) => {
@@ -30,6 +49,7 @@ axios.get("/admin/customer/get-birthday-customers").then((res) => {
             visibility: {
                 weekend: false,
                 today: false,
+                theme: "light",
             },
             selected: {
                 holidays: arrDob,
@@ -45,12 +65,13 @@ axios.get("/admin/customer/get-birthday-customers").then((res) => {
                         const tbody = document.querySelector(".tbody-table");
                         const tbl = document.querySelector(".table-responsive");
                         const mBody = document.querySelector(".modal-body");
-                        const txtEmpty = document.querySelector(".modal-body .t");
+                        const txtEmpty =
+                            document.querySelector(".modal-body .t");
 
                         tbl.classList.remove("d-none");
                         tbody.innerHTML = "";
-                        if(txtEmpty != null) {
-                          txtEmpty.remove();
+                        if (txtEmpty != null) {
+                            txtEmpty.remove();
                         }
                         if (customers.length > 0) {
                             customers.forEach((item, index) => {
@@ -65,16 +86,14 @@ axios.get("/admin/customer/get-birthday-customers").then((res) => {
                                     .replace("{{discount}}", 30);
                                 const dob = new Date(item.date_of_birth);
                                 const li = `<tr>
-                                              <td>${item.name}</td>
-                                              <td>${dob.toLocaleDateString()}</td>
                                               <td>
-                                              <a href="sms:${
-                                                  item.phone_number
-                                              }?body=${smsCus}"
-                                                  class="btn btn-secondary">
-                                                  <i class="mdi mdi-phone"></i>
-                                              </a>
+                                                <p class="mb-0">${item.name}</p>
+                                                <span class="badge text-bg-primary">${
+                                                    item.phone_number
+                                                }</span>
                                               </td>
+                                              <td class="fit">${dob.toLocaleDateString()}</td>
+                                              ${renderColumnMobile(item.phone_number, smsCus)}
                                           </tr>`;
                                 tbody.insertAdjacentHTML("beforeend", li);
                             });

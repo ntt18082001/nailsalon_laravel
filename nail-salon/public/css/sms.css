@@ -1,9 +1,26 @@
-.sms {
-  display: none;
+.calendar-nail {
+  box-shadow: 0 0 5px -1px gray;
+  margin: 0 auto;
+}
+@media only screen and (min-width: 1400px) {
+  .sms {
+    pointer-events: none;
+    cursor: default;
+    text-decoration: none;
+    color: black;
+  }
+  .calendar-nail {
+    width: 500px !important;
+    height: 450px !important;
+  }
 }
 
-@media only screen and (max-width: 1400px) {
-  .sms {
-    display: inline-block;
-  }
+.fit {
+  width: 1%;
+  white-space: nowrap;
+}
+
+.vanilla-calendar-day__btn_holiday {
+  background-color: #ffb90094 !important;
+  color: black !important;
 }

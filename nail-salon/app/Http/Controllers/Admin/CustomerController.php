@@ -16,7 +16,23 @@ class CustomerController extends Controller
 {
     function index()
     {
-        return view('admin.customer.index');
+        $result = DB::table('customers')
+            ->selectRaw('
+                id,
+                name,
+                date_of_birth,
+                phone_number,
+                email,
+                date_of_birth + INTERVAL (YEAR(CURRENT_DATE) - YEAR(date_of_birth))     YEAR AS currbirthday,
+                date_of_birth + INTERVAL (YEAR(CURRENT_DATE) - YEAR(date_of_birth)) + 1 YEAR AS nextbirthday')
+            ->orderByRaw('CASE
+                    WHEN currbirthday >= CURRENT_DATE THEN currbirthday
+                    ELSE nextbirthday
+                END')->paginate();
+        return view('admin.customer.index')->with('data', $result);
+    }
+    function birthday() {
+        return view('admin.customer.birthday');
     }
     public function getListCusBirthday()
     {
